@@ -6,7 +6,7 @@
   --header-height: 3.5rem;
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  /* 
+  /*
         Change favorite color
         Default: hsl(230, 55%, 55%)
         Purple: hsl(245, 55%, 55%) - Blue: hsl(210, 55%, 55%)
@@ -14,7 +14,7 @@
         Orange: hsl(14, 55%, 55%)
 
         For more colors visit: https://colors.dopely.top/color-pedia
-        -> Choose any color 
+        -> Choose any color
         -> Click on tab (Color Conversion)
         -> Copy the color mode (HSL)
   */
@@ -467,6 +467,19 @@ img {
   width: 100%;
 }
 
+#githubButton{
+  background-color: #333;
+ color: white;
+ margin-top: 10px;
+ margin-bottom: 10px;
+}
+
+#linkedinButton{
+  background-color: #0077B5;
+  color: white;
+  width: 100%;
+}
+
 /* EXPERIENCE */
 
 .experience__content {
@@ -863,6 +876,20 @@ img {
 
   .about__button {
     width: initial;
+  }
+
+  #githubButton{
+    background-color: #333;
+   color: white;
+   margin: 10px;
+   width: 189px;
+   position: relative;
+   left: 10px;
+  }
+
+  #linkedinButton{
+    background-color: #0077B5;
+    color: white;
   }
 
   .experience__content {
