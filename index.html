@@ -1,562 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="pt-br">
 
-    <!--=============== FAVICON ===============-->
-    <link
-      rel="shortcut icon"
-      href="assets/img/favicon.png"
-      type="image/x-icon"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Curcino | Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <!--=============== REMIXICONS ===============-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
-    />
-
-    <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-
-    <title>JoaoPec</title>
-  </head>
-
-  <body>
-    <!--==================== HEADER ====================-->
-    <header class="header" id="header">
-      <nav class="nav navcontainer">
-        <a href="#" class="nav__logo">Curcino</a>
-        <div id="nav-menu" class="nav__menu">
-          <ul class="nav__list">
-            <li>
-              <a href="#home" class="nav__link active-link">Home</a>
-            </li>
-
-            <li>
-              <a href="#work" class="nav__link">Projetos</a>
-            </li>
-
-            <li>
-              <a href="#info" class="nav__link">Sobre mim</a>
-            </li>
-
-            <li>
-              <a href="#services" class="nav__link">Serviços</a>
-            </li>
-            <li>
-              <a href="#contact" class="nav__link">Contate-me</a>
-            </li>
-          </ul>
-          <div class="nav__close" id="nav-close">
-            <i class="ri-close-large-line"></i>
-          </div>
-        </div>
-        <div class="nav__toggle" id="nav-toggle">
-          <i class="ri-menu-line"></i>
-        </div>
-      </nav>
-    </header>
-
-    <!--==================== MAIN ====================-->
-    <main class="main">
-      <!--==================== HOME ====================-->
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <img src="assets/img/pfp.png" alt="image" class="home__img" />
-
-          <div class="home__data">
-            <h1 class="home__name">
-              João <br />
-              Curcino
-            </h1>
-            <h3 class="home__profession">Engenheiro de Software</h3>
-          </div>
-
-          <a href="#work" class="home__scroll">
-            <div class="home__scroll-box">
-              <i class="ri-arrow-down-line"> </i>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="photo-container">
+                    <!-- Espaço para sua foto com caminho fixo -->
+                    <img id="profile-photo" src="./assets/profile.jpg" alt="João Curcino" class="profile-photo">
+                </div>
+                <div class="header-content">
+                    <h1>João Curcino</h1>
+                    <p class="title">Desenvolvedor de Software</p>
+                    <div class="contact-info">
+                        <a href="tel:71984313715"><i class="fas fa-phone"></i> 71984313715</a>
+                        <a href="mailto:joaopecurcino.dev@gmail.com"><i class="fas fa-envelope"></i>
+                            joaopecurcino.dev@gmail.com</a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> Linkedin</a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Github</a>
+                    </div>
+                </div>
             </div>
-          </a>
-        </div>
-      </section>
+        </header>
 
-      <!--==================== WORKS ====================-->
-      <section class="work section" id="work">
-        <h2 class="section__title">PROJETOS RECENTES</h2>
+        <nav>
+            <ul>
+                <li><a href="#habilidades" class="nav-link active">Habilidades</a></li>
+                <li><a href="#experiencias" class="nav-link">Experiências</a></li>
+                <li><a href="#formacao" class="nav-link">Formação</a></li>
+                <li><a href="#projetos" class="nav-link">Projetos</a></li>
+            </ul>
+        </nav>
 
-        <div class="work__container container grid">
-          <article class="work__card">
-            <a
-              href="https://limpa-salvador-frontend.vercel.app/"
-              target="_blank"
-              class="work__link"
-            >
-              <h2 class="work__title">Limpa Salvador</h2>
-              <p class="work__description">
-                O Limpa Salvador é uma plataforma web que tem como objetivo
-                facilitar a denuncia de locais com acumulo de lixo na cidade de
-                Salvador. Na plataforma é possível fazer denuncias de locais com
-                acumulo de lixo, visualizar as denuncias feitas por outros
-                usuários e fazer comentários nas denuncias.
-              </p>
+        <main>
+            <section id="habilidades" class="section active">
+                <h2>Habilidades</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Linguagens</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Golang</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Bash</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frameworks/Bibliotecas</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">GraphQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Banco de dados</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Sistemas Operacionais</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Windows Server</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">openSUSE</span>
+                            <span class="skill-tag">Arch Linux</span>
+                            <span class="skill-tag">Debian</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Línguas</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Inglês intermediário</span>
+                            <span class="skill-tag">Português fluente</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-              <b
-                >A plataforma foi desenvolvida utilizando React.js no
-                frontend,node.js no backend e Postgresql como banco de dados.</b
-              >
-              <img
-                src="assets/img/limpaSalvador.jpg"
-                alt=""
-                class="work__img"
-              />
+            <section id="experiencias" class="section">
+                <h2>Experiências</h2>
 
-              <i class="ri-arrow-right-line"></i>
-            </a>
-          </article>
-
-          <article class="work__card">
-            <a
-              href="https://www.adrianacivil.com.br/"
-              target="_blank"
-              class="work__link"
-            >
-              <h2 class="work__title">Portfolio Engenheira Civil</h2>
-              <p class="work__description">
-                Site portfolio de Adriana Silva, Engenheira Civil, especialista
-                em reformas e gestão de obras. O site inclui as seguintes
-                sessões Home: Página inicial com uma visão geral do trabalho e
-                das especialidades da Adriana. Features: Detalhamento das
-                principais características e serviços oferecidos. Pricing:
-                Informações sobre preços e pacotes disponíveis.
-              </p>
-
-              <b>O site foi desenvolvido utilizando React.js e tailwind</b>
-              <img src="assets/img/adriana.png" alt="" class="work__img" />
-
-              <i class="ri-arrow-right-line"></i>
-            </a>
-          </article>
-
-          <article class="work__card">
-            <a
-              href="https://www.joaopec.com/"
-              target="_blank"
-              class="work__link"
-            >
-              <h2 class="work__title">Meu Portfólio</h2>
-              <p class="work__description">
-                Este é o meu portfólio profissional, onde apresento meus
-                projetos, habilidades e experiências como desenvolvedor
-                freelancer. O site inclui seções detalhadas sobre meus projetos,
-                contatos e uma visão geral da minha formação e serviços
-                oferecidos.
-              </p>
-              <b>
-                A plataforma foi desenvolvida HTML, CSS e JavaScript. A
-                estilização foi feita utilizando os princípios do mobile first e
-                jquery e icones remixcon.
-              </b>
-              <img
-                src="assets/img/portfolio.png"
-                alt="Meu Portfólio"
-                class="work__img"
-              />
-              <i class="ri-arrow-right-line"></i>
-            </a>
-          </article>
-
-          <article class="work__card">
-            <a href="#" target="_blank" class="work__link">
-              <h2 class="work__title">Declinium RPG - Criação de Fichas</h2>
-              <p class="work__description">
-                Site dedicado à criação de fichas no sistema Declinium RPG, um
-                sistema desenvolvido a partir da campanha "A aurora do Caos".
-                Esta plataforma permite aos usuários criar, gerenciar e
-                visualizar fichas de personagens de forma intuitiva e eficiente,
-                facilitando a preparação e o andamento das sessões de RPG.
-              </p>
-              <b>
-                O site foi desenvolvido utilizando React.js para a interface do
-                usuário, Tailwind CSS para estilização e Node.js no backend.
-              </b>
-              <img
-                src="assets/img/declinium.png"
-                alt="Declinium RPG - Criação de Fichas"
-                class="work__img"
-              />
-              <i class="ri-arrow-right-line"></i>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <!--==================== INFO ====================-->
-      <section class="info section" id="info">
-        <h2 class="section__title">Informações</h2>
-
-        <div class="info__container container grid">
-          <div class="about grid">
-            <div class="about__content">
-              <h3 class="info__title">Sobre mim</h3>
-              <p class="about__description">
-                Sou apaixonado por tecnologia e desenvolvimento de Software com
-                foco em <b>desenvolvimento web</b>. Sempre buscando aprender
-                novas tecnologias e desenvolver projetos que possam ajudar as
-                pessoas e empresas a resolverem problemas do dia a dia.
-              </p>
-
-              <a
-                href="assets/pdf/resume.pdf"
-                download=""
-                target="_blank"
-                class="button about__button"
-                >Baixar currículo
-              </a>
-              <a
-                href="https://github.com/JoaoPec"
-                target="_blank"
-                id="githubButton"
-                class="button about__button"
-              >
-                Github
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/"
-                target="_blank"
-                id="linkedinButton"
-                class="button social__button"
-              >
-                Linkedin
-              </a>
-            </div>
-
-            <img src="assets/img/pfp.png" alt="image" class="about__img" />
-          </div>
-
-          <div class="experience">
-            <h3 class="info__title">Experiencias</h3>
-
-            <div class="experience__content grid">
-              <div class="experience__data grid">
-                <h2 class="experience__company">INFOCRAFT</h2>
-
-                <div>
-                  <h3 class="experience__profession">
-                    Estagiário em desenvolvimento php
-                  </h3>
-                  <span class="experience__date">07/24 - Present</span>
-                  <p class="experience__description">
-                    Durante minha atuação como estagiário em desenvolvimento
-                    PHP, desenvolvi e mantive um ERP para gestão escolar e
-                    financeira, utilizando PHP, Laravel, Postgresql, Javascript e CSS.
-                    Além disso, integrei serviços de terceiros, como sistemas de
-                    pagamento e envio de e-mails, para criar soluções completas e
-                    funcionais para os clientes.
-                    Também mantive a API do sistema, garantindo a segurança e
-                    integridade dos dados.
-                  </p>
+                <div class="experience">
+                    <div class="experience-header">
+                        <h3>Infocraft</h3>
+                        <span class="date">07/2024 – Atualmente</span>
+                    </div>
+                    <p class="job-title">Estagiário em Desenvolvimento de Software</p>
+                    <ul class="experience-details">
+                        <li>Desenvolvimento e manutenção do sistema de gestão educacional E-Grafite (Laravel + Blade),
+                            incluindo a criação de novas funcionalidades e melhorias.</li>
+                        <li>Integração do módulo financeiro com APIs bancárias para pagamento de títulos (boletos, PIX e
+                            cartão de crédito) e implementação de assinatura digital.</li>
+                        <li>Automação e otimização da geração de relatórios com JasperReports, integrando à API para que
+                            todos os sistemas da empresa pudessem utilizá-la. Reduzi o tempo de geração de relatórios de
+                            30 segundos para 10 segundos.</li>
+                        <li>Desenvolvimento do módulo de Filantropia para gerenciar a concessão de bolsas do município
+                            de Simões Filho, processando mais de 600 inscrições em uma rede de colégios São José.</li>
+                        <li>Criação do módulo AEE (Atendimento Educacional Especializado) para gestão de entrevistas,
+                            avaliações e acompanhamento de alunos com necessidades especiais no município de Simões
+                            Filho, atendendo 454 alunos.</li>
+                    </ul>
                 </div>
 
-              <div class="experience__data grid">
-                <h2 class="experience__company">FABESP</h2>
-
-                <div>
-                  <h3 class="experience__profession">
-                    Bolsista iniciação cientifica
-                  </h3>
-                  <span class="experience__date">03/24 - Present</span>
-                  <p class="experience__description">
-                    Durante minha atuação como bolsista de iniciação científica,
-                    realizei análises detalhadas sobre a aplicação de tecnologia
-                    Blockchain e Smart Contracts para auditorias governamentais.
-                    Conduzi revisões sistemáticas da literatura para identificar
-                    pesquisas existentes e lacunas no conhecimento sobre essas
-                    tecnologias. Além disso, compilei e analisei criticamente
-                    estudos acadêmicos relevantes para fornecer uma
-                    fundamentação teórica sólida ao projeto. Paralelamente,
-                    redigi e coautorei artigos científicos baseados nos
-                    resultados das pesquisas e análises conduzidas, preparando
-                    manuscritos para submissão em conferências e periódicos
-                    acadêmicos.
-                  </p>
+                <div class="experience">
+                    <div class="experience-header">
+                        <h3>UNIFACS</h3>
+                        <span class="date">02/2024 – 07/2024</span>
+                    </div>
+                    <p class="job-title">Bolsista de iniciação científica - Blockchain</p>
+                    <ul class="experience-details">
+                        <li>Pesquisa sobre aplicação de Blockchain e Smart Contracts em auditorias governamentais.</li>
+                        <li>Revisão sistemática da literatura para identificar lacunas e oportunidades na área.</li>
+                        <li>Análise crítica de estudos acadêmicos para fundamentação teórica do projeto.</li>
+                        <li>Redação e coautoria de artigos científicos para conferências e periódicos.</li>
+                        <li>Estudo sobre Web3 e desenvolvimento de Smart Contracts em Solidity na rede Ethereum.</li>
+                    </ul>
                 </div>
 
-                <h2 class="experience__company">Desenvolvedor Freelancer</h2>
-
-                <div>
-                  <h3 class="experience__profession">Desenvolvedor</h3>
-                  <span class="experience__date">09/23 - Present</span>
-                  <p class="experience__description">
-                    Durante minha atuação como desenvolvedor freelancer,
-                    desenvolvi sistemas de autenticação e autorização seguros
-                    usando JWT e OAuth, garantindo a proteção de dados e
-                    acessos. Integrei diversos serviços de terceiros, como
-                    sistemas de pagamento e envio de e-mails, para criar
-                    soluções completas e funcionais para os clientes. Além
-                    disso, criei APIs robustas e escaláveis utilizando Node.js,
-                    assegurando uma performance otimizada e a segurança das
-                    aplicações. No frontend, desenvolvi interfaces de usuário
-                    responsivas e interativas utilizando React, proporcionando
-                    uma experiência agradável e eficiente aos usuários. No que
-                    tange a bancos de dados, projetei e implementei esquemas
-                    tanto relacionais quanto não relacionais, otimizando o
-                    armazenamento e a recuperação de dados. Por fim, planejei
-                    projetos e defini prazos realistas com base nos requisitos
-                    dos clientes, assegurando que as entregas fossem feitas
-                    dentro do cronograma acordado.
-                  </p>
+                <div class="experience">
+                    <div class="experience-header">
+                        <h3>Desenvolvedor Freelancer</h3>
+                        <span class="date">01/2022 – 04/2022</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li><strong>Transformação de planilha Excel em sistema interativo para empresa de
+                                marketing:</strong> Converti dados de rotas e linhas de ônibus em Salvador, usados para
+                            a veiculação de campanhas publicitárias, em um banco de dados e desenvolvi uma aplicação web
+                            com HTML, CSS e JavaScript puro para garantir alta performance e agilidade, melhorando a
+                            gestão das campanhas e reduzindo erros manuais.</li>
+                        <li><strong>Desenvolvimento de análise de fronteira eficiente de Markowitz para otimização de
+                                portfólio:</strong> Realizei a criação de um sistema de análise de investimentos
+                            utilizando dados de ações de empresas brasileiras. Desenvolvi um código para calcular o
+                            retorno, risco e índice de Sharpe de carteiras de investimento, aplicando técnicas de
+                            otimização de portfólio. O sistema também gerou um gráfico da fronteira eficiente, salvou os
+                            resultados em um arquivo Excel e otimizou o processo, tornando-o mais rápido e automatizado,
+                            utilizando Python e bibliotecas como Pandas, NumPy, SciPy e Matplotlib.</li>
+                        <li><strong>Criação de landing pages e sites institucionais</strong></li>
+                    </ul>
                 </div>
-              </div>
-            </div>
-          </div>
+            </section>
 
-          <div class="skills">
-            <h3 class="info__title">Skills</h3>
+            <section id="formacao" class="section">
+                <h2>Formação Acadêmica</h2>
 
-            <div class="skills__content grid">
-              <div class="skills__box">
-                <img
-                  src="assets/img/info-html.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">HTML</span>
-              </div>
+                <div class="education">
+                    <div class="education-header">
+                        <h3>UNIFACS - Universidade de Salvador</h3>
+                        <span class="date">06/2023 – 06/2027</span>
+                    </div>
+                    <p>Bacharelado em Engenharia de Software</p>
+                </div>
 
-              <div class="skills__box">
-                <img
-                  src="assets/img/info-css.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">CSS</span>
-              </div>
+                <div class="education">
+                    <div class="education-header">
+                        <h3>SENAI</h3>
+                        <span class="date">01/2023 – 07/2023</span>
+                    </div>
+                    <p>Técnico em Desenvolvimento de Sistemas</p>
+                </div>
+            </section>
 
-              <div class="skills__box">
-                <img
-                  src="assets/img/info-javascript.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">JavaScript</span>
-              </div>
+            <section id="projetos" class="section">
+                <h2>Projetos</h2>
+                <div class="projects-container" id="projects-container">
+                    <!-- Projetos serão adicionados via JavaScript -->
+                </div>
+            </section>
+        </main>
 
-              <div class="skills__box">
-                <img
-                  src="assets/img/info-git.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Git</span>
-              </div>
+        <footer>
+            <p>&copy; 2025 João Curcino. Todos os direitos reservados.</p>
+        </footer>
+    </div>
 
-              <div class="skills__box">
-                <img
-                  src="assets/img/info-tailwind-css.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Tailwind CSS</span>
-              </div>
+    <script src="script.js"></script>
+</body>
 
-              <div class="skills__box">
-                <img
-                  src="assets/img/linux-tux.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Linux</span>
-              </div>
-
-              <div class="skills__box">
-                <img
-                  src="assets/img/typescript-2.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Typescript</span>
-              </div>
-
-              <div class="skills__box">
-                <img
-                  src="assets/img/react-2.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">React.js</span>
-              </div>
-
-              <div class="skills__box">
-                <img
-                  src="assets/img/golang-1.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Golang</span>
-              </div>
-
-              <div class="skills__box">
-                <img
-                  src="assets/img/nodejs-1.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Node.js</span>
-              </div>
-
-              <div class="skills__box">
-                <img
-                  src="assets/img/python-5.svg"
-                  alt="image"
-                  class="skills__img"
-                />
-                <span class="skills_name">Python</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--==================== SERVICES ====================-->
-
-      <section class="services section" id="services">
-        <h2 class="section__title">SERVIÇOS</h2>
-
-        <div class="services__container container grid">
-          <article class="services__card">
-            <i class="ri-code-box-line services__icon"></i>
-            <h3 class="services__title">Desenvolvimento web</h3>
-            <p class="services__description">
-              Criação de soluções web personalizadas
-            </p>
-          </article>
-
-          <article class="services__card">
-            <i class="ri-cloud-line services__icon"></i>
-            <h3 class="services__title">Desenvolvimento de API e CLI tools</h3>
-            <p class="services__description">
-              Desenvolvimento de APIs para integração de serviços e ferramentas
-              de linhas de comando
-            </p>
-          </article>
-
-          <article class="services__card">
-            <i class="ri-pencil-line services__icon"></i>
-            <h3 class="services__title">Designer</h3>
-            <p class="services__description">
-              Criação de designs diversos, desde cards promocionais até layouts
-              para aplicativos e websites
-            </p>
-          </article>
-
-          <article class="services__card">
-            <i class="ri-server-line services__icon"></i>
-            <h3 class="services__title">Gestão de servidores</h3>
-            <p class="services__description">
-              Gestão de servidores e configuração de ambientes linux
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!--==================== CONTACT ====================-->
-      <section class="contact section" id="contact">
-        <h2 class="section__title">CONTATE-ME</h2>
-
-        <div class="contact__container container grid">
-          <form action="" class="contact__form grid" id="contact-form">
-            <div class="contact__group grid">
-              <input
-                type="text"
-                name="user_name"
-                placeholder="Nome"
-                required
-                class="contact__input"
-              />
-              <input
-                type="text"
-                name="user_emai"
-                placeholder="Email ou Telefone para contato"
-                required
-                class="contact__input"
-              />
-            </div>
-            <textarea
-              name="user_message"
-              id=""
-              placeholder="Mensagem"
-              required
-              class="contact__input contact__area"
-            ></textarea>
-
-            <button type="submit" class="button contact">
-              Enviar Mensagem
-            </button>
-          </form>
-
-          <p class="contact_message" id="contact-message"></p>
-
-          <div class="contact__social grid">
-            <a
-              href="https://www.linkedin.com/in/jo%C3%A3o-pedro-curcino-dos-santos-490601262/"
-              target="_blank"
-              class="contact__social-link"
-            >
-              <i class="ri-linkedin-box-line"></i>
-              <span>Linkedin</span>
-            </a>
-
-            <a
-              href="https://github.com/JoaoPec"
-              target="_blank"
-              class="contact__social-link"
-            >
-              <i class="ri-github-fill"></i>
-              <span>Github</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!--==================== FOOTER ====================-->
-    <footer class="footer">
-      <div class="footer__container container grid">
-        <ul class="footer__links">
-          <li>
-            <a href="#home" class="footer__link">Home</a>
-          </li>
-
-          <li>
-            <a href="#work" class="footer__link">Projetos</a>
-          </li>
-
-          <li>
-            <a href="#info" class="footer__link">Informações</a>
-          </li>
-        </ul>
-
-        <span class="footer__copy"
-          >&#169; All Rights Reserved By João Curcino</span
-        >
-      </div>
-    </footer>
-
-    <!--========== SCROLL UP ==========-->
-
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="ri-arrow-up-line"></i>
-    </a>
-
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
-
-    <!--=============== EMAIL JS ===============-->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
-  </body>
 </html>
