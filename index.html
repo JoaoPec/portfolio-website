@@ -1,1129 +1,790 @@
 <!DOCTYPE html>
-
 <html lang="pt-br" class="scroll-smooth">
 
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>João Curcino | Desenvolvedor Full-Stack</title>
 
-
     <!-- === FAVICON SVG (ATUALIZADO) === -->
-
     <link rel="icon"
         href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%230f172a"/><text x="50" y="52" font-family="Inter, sans-serif" font-size="50" font-weight="700" fill="%233b82f6" text-anchor="middle" dominant-baseline="middle">JC</text></svg>'>
-
     <!-- ================================ -->
 
-
     <!-- Tailwind CSS -->
-
     <script src="https://cdn.tailwindcss.com"></script>
 
-
     <!-- Font Awesome (para ícones) -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
     <!-- Google Fonts: Inter -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
     <!-- Estilos personalizados -->
-
     <style>
         body {
-
             font-family: 'Inter', sans-serif;
-
             /* Fundo azul escuro principal */
-
             background-color: #0f172a;
-
             /* Tailwind slate-900 */
-
             position: relative;
-
             /* Para o pseudo-elemento */
-
             overflow-x: hidden;
-
             /* Para esconder o overflow dos discos */
-
         }
 
-
-        /* NOVO: Discos de fundo sutis */
-
+        /* Discos de fundo sutis (Efeito Liquid Glass) */
         body::before {
-
             content: "";
-
             position: fixed;
-
             /* Fixo para ficar no viewport */
-
             top: 0;
-
             left: 0;
-
             right: 0;
-
             bottom: 0;
-
             z-index: -1;
-
             /* Atrás de todo o conteúdo */
 
-
-            /* Cor dos discos (AGORA AZUL SUTIL) */
-
+            /* Cor dos discos (AZUL SUTIL) */
             --disco-color: rgba(59, 130, 246, 0.1);
-
             /* blue-500 com 10% de opacidade */
 
-
             background-image:
-
                 /* Disco 1 (Topo Esquerda) */
-
                 radial-gradient(circle, var(--disco-color) 0%, transparent 60%),
-
                 /* Disco 2 (Meio Direita) */
-
                 radial-gradient(circle, var(--disco-color) 0%, transparent 70%);
 
-
             background-position:
-
                 -20% 10%,
-
                 /* Posição do Disco 1 */
-
                 110% 60%;
-
             /* Posição do Disco 2 */
 
-
             background-size:
-
                 800px 800px,
-
                 /* Tamanho do Disco 1 */
-
                 1000px 1000px;
-
             /* Tamanho do Disco 2 */
 
-
             background-repeat: no-repeat;
-
             opacity: 1;
-
             /* Opacidade controlada pelo RGBA */
-
         }
-
 
         /* Estilo para o link de navegação ativo (via JS) */
-
         .nav-link.active {
-
             color: #3b82f6;
-
             /* Azul brilhante */
-
             font-weight: 600;
-
             /* semibold */
-
         }
-
 
         /* Garante que o scroll não esconda o título da seção atrás do menu fixo */
-
         section[id] {
-
             scroll-margin-top: 80px;
-
             /* Ajuste conforme a altura do seu menu */
-
         }
 
-
-        /* Classes para animação de fade-in (RE-INTRODUZIDO E OTIMIZADO) */
-
+        /* Classes para animação de fade-in (Otimizado) */
         .section-fade {
-
             opacity: 0;
-
             transform: translateY(10px);
-
             /* Diminuído para 10px */
-
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-
             /* Mais rápido */
-
         }
-
 
         .section-fade.is-visible {
-
             opacity: 1;
-
             transform: translateY(0);
-
         }
 
 
-        /* Estilos para o seletor de idioma (REMOVIDO) */
+        /* === CSS DO EASTER EGG === */
+        #easter-egg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff85a1 0%, #ffc2b2 100%);
+            z-index: 100;
+            display: none;
+            /* Começa escondido */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+        }
 
-        /* .lang-btn ... */
+        #easter-egg.visible {
+            display: flex;
+            opacity: 1;
+        }
 
-        /* .lang-btn.active ... */
+        /* Animação de Corações */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            transform: rotate(45deg);
+            animation: float 10s infinite linear;
+            bottom: -50px;
+            /* Começa fora da tela */
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(600deg);
+                /* Sobe e gira */
+                opacity: 0;
+            }
+        }
+
+        /* Animação de clique no nome (NOVO) */
+        @keyframes nameClickAnimation {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            /* Aumenta */
+            100% {
+                transform: scale(1);
+            }
+
+            /* Volta ao normal */
+        }
+
+        .name-clicked {
+            /* Aplica a animação */
+            animation: nameClickAnimation 0.3s ease-out;
+        }
     </style>
-
 </head>
-
 
 <body class="text-gray-300">
 
-
     <!-- === NAVEGAÇÃO FIXA === -->
-
     <!-- Fundo escuro com blur -->
-
     <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm shadow-md shadow-black/20">
-
         <div class="container max-w-5xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-
-            <a href="#inicio" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">João
-
+            <!-- Gatilho 1 do Easter Egg -->
+            <a href="#inicio" id="name-link"
+                class="text-xl font-bold text-white hover:text-blue-400 transition-colors">João
                 Curcino</a>
 
-
             <div class="flex-grow flex justify-end items-center">
-
                 <!-- Links da Navegação -->
-
                 <div class="hidden md:flex space-x-8">
-
                     <a href="#habilidades"
                         class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Habilidades</a>
-
                     <a href="#experiencias"
                         class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Experiência</a>
-
                     <a href="#projetos"
                         class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Projetos</a>
-
                     <a href="#formacao"
                         class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Formação</a>
-
                 </div>
 
-
-                <!-- Seletor de Idioma (REMOVIDO) -->
-
-
                 <!-- Menu mobile (opcional, mas recomendado) -->
-
                 <button class="md:hidden text-gray-300 text-xl ml-4">
-
                     <i class="fas fa-bars"></i>
-
                     <!-- Adicionar funcionalidade de menu mobile aqui -->
-
                 </button>
-
             </div>
-
         </div>
-
     </nav>
 
-
     <!-- Adiciona padding-top para compensar o menu fixo -->
-
     <div class="container max-w-5xl mx-auto p-4 md:p-8 pt-24">
 
-
         <!-- === HEADER / INÍCIO / SOBRE === -->
-
         <section id="inicio" class="section-fade">
-
-            <!-- Card de fundo azul-ardósia mais claro e mais arredondado -->
-
+            <!-- Card de fundo (Efeito Liquid Glass) -->
             <header class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 mt-12 md:p-8 mb-8">
-
                 <div class="flex flex-col md:flex-row items-center">
-
                     <!-- Foto do Perfil (Placeholder) -->
-
                     <div class="w-32 h-32 md:w-40 md:h-40 mb-4 md:mb-0 md:mr-8 flex-shrink-0">
-
                         <img src="assets/pfp_elevador.jpg" alt="João Curcino"
-                            class="w-full h-full rounded-full object-cover border-4 border-slate-700 shadow-sm">
-
+                            class="w-full h-full rounded-full object-cover border-4 border-slate-700 shadow-sm"
+                            onerror="this.src='https://placehold.co/160x160/1e293b/3b82f6?text=JC'">
                     </div>
 
-
                     <!-- Informações de Contato -->
-
                     <div class="w-full text-center md:text-left">
-
-                        <h1 class="text-3xl md:text-4xl font-bold text-white">João Curcino</h1>
-
+                        <!-- Gatilho 2 do Easter Egg -->
+                        <h1 id="name-title" class="text-3xl md:text-4xl font-bold text-white cursor-pointer"
+                            title="Easter Egg?">João Curcino</h1>
                         <p class="text-xl md:text-2xl font-light text-blue-400 mt-1">
-
                             Desenvolvedor de Software
-
                         </p>
-
 
                         <!-- Bio Curta -->
-
                         <p class="text-lg text-gray-300 mt-6 max-w-3xl">
-
                             Desenvolvedor focado em construir soluções web completas e eficientes, do front-end ao
-
                             back-end, aplicando novas tecnologias para resolver problemas complexos.
-
                         </p>
-
-                        <!-- Hobby (NOVO) -->
-
-                        <p class="text-lg text-gray-300 mt-4 max-w-3xl" data-i18n="header.bio2">
-
+                        <!-- Hobby (DJ) -->
+                        <p class="text-lg text-gray-300 mt-4 max-w-3xl">
                             <i class="fas fa-record-vinyl fa-fw mr-1.5 text-blue-400"></i>
-
                             Além do código, sou apaixonado por música e atuo como DJ, focado em <strong>tech
-
                                 house</strong> e <strong>hard techno</strong>.
-
                         </p>
-
 
                         <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 mt-5 text-gray-400">
-
                             <a href="tel:71984313715" class="hover:text-blue-400 transition-colors">
-
                                 <i class="fas fa-phone fa-fw mr-1.5"></i> 71 98431-3715
-
                             </a>
-
                             <a href="mailto:joaopecurcino.dev@gmail.com" class="hover:text-blue-400 transition-colors">
-
                                 <i class="fas fa-envelope fa-fw mr-1.5"></i> joaopecurcino.dev@gmail.com
-
                             </a>
-
                         </div>
-
                         <div class="flex justify-center md:justify-start gap-4 mt-4">
-
                             <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank"
                                 class="text-gray-400 hover:text-blue-400 transition-colors text-2xl"
                                 aria-label="LinkedIn">
-
                                 <i class="fab fa-linkedin"></i>
-
                             </a>
-
                             <a href="https://github.com/JoaoPec/" target="_blank"
                                 class="text-gray-400 hover:text-blue-400 transition-colors text-2xl"
                                 aria-label="Github">
-
                                 <i class="fab fa-github"></i>
-
                             </a>
-
                         </div>
-
 
                         <!-- Botão de Download do Currículo -->
-
                         <div class="mt-8 flex justify-center md:justify-start">
-
                             <a href="assets/Resumé-7.pdf" download="JoaoCurcino_Resume.pdf" target="_blank"
                                 class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:scale-105">
-
                                 <i class="fas fa-download mr-2.5"></i>
-
                                 <span>Baixar Currículo (PDF)</span>
-
                             </a>
-
                         </div>
 
-
                     </div>
-
                 </div>
-
             </header>
-
         </section>
 
-
         <!-- === CONTEÚDO PRINCIPAL (Todas as seções) === -->
-
         <main class="space-y-12">
 
-
             <!-- ======================= -->
-
             <!--   SEÇÃO HABILIDADES     -->
-
             <!-- ======================= -->
-
             <section id="habilidades"
                 class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-
                 <h2 class="text-2xl font-bold mb-6 text-white">Habilidades Full-Stack</h2>
-
                 <div class="space-y-6">
 
-
                     <div>
-
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Frontend</h3>
-
                         <div class="flex flex-wrap gap-2">
-
                             <span class="skill-tag">JavaScript</span>
-
                             <span class="skill-tag">TypeScript</span>
-
                             <span class="skill-tag">React</span>
-
                             <span class="skill-tag">Vue.js</span>
-
                             <span class="skill-tag">Tailwind</span>
-
                         </div>
-
                     </div>
 
-
                     <div>
-
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Backend</h3>
-
                         <div class="flex flex-wrap gap-2">
-
                             <span class="skill-tag">Node.js</span>
-
                             <span class="skill-tag">Nest.js</span>
-
                             <span class="skill-tag">Laravel</span>
-
                             <span class="skill-tag">PHP</span>
-
                             <span class="skill-tag">Python</span>
-
                             <span class="skill-tag">Golang</span>
-
                             <span class="skill-tag">Java</span>
-
                             <span class="skill-tag">GraphQL</span>
-
                         </div>
-
                     </div>
 
-
                     <div>
-
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Banco de Dados
-
                         </h3>
-
                         <div class="flex flex-wrap gap-2">
-
                             <span class="skill-tag">PostgreSQL</span>
-
                             <span class="skill-tag">MySql</span>
-
                             <span class="skill-tag">MongoDB</span>
-
                             <span class="skill-tag">SQLite</span>
-
                         </div>
-
                     </div>
 
-
                     <div>
-
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Ferramentas &
-
                             DevOps</h3>
-
                         <div class="flex flex-wrap gap-2">
-
                             <span class="skill-tag">Linux</span>
-
                             <span class="skill-tag">Bash</span>
-
                             <span class="skill-tag">Git & GitHub</span>
-
                             <span class="skill-tag">GitHub actions</span>
-
                             <span class="skill-tag">JasperReports</span>
-
                             <span class="skill-tag">Docker</span>
-
                         </div>
-
                     </div>
-
 
                     <div>
-
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Línguas</h3>
-
                         <div class="flex flex-wrap gap-2">
-
                             <span class="skill-tag">Inglês intermediário</span>
-
                             <span class="skill-tag">Português fluente</span>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </section>
 
-
             <!-- ======================= -->
-
             <!--   SEÇÃO EXPERIÊNCIAS    -->
-
             <!-- ======================= -->
-
             <section id="experiencias"
                 class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-
                 <h2 class="text-2xl font-bold mb-6 text-white">Experiências</h2>
-
                 <div class="space-y-8">
 
-
                     <!-- Experiência 1 (Cargo Atual) -->
-
                     <div class="experience-item">
-
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-
                             <h3 class="text-xl font-semibold text-white">
-
                                 Desenvolvedor de Software Júnior</h3>
-
                             <span class="date-tag mt-2 sm:mt-0">01/2025 – Atualmente</span>
-
                         </div>
-
                         <p class="text-lg font-medium text-blue-400 mb-2">Infocraft
-
                         </p>
-
                         <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
-
                             <li>Desenvolvimento e manutenção do sistema de gestão
-
                                 educacional E-Grafite (Laravel +
-
                                 Blade), incluindo a criação de novas funcionalidades e melhorias.</li>
-
-                            <li data-i18n="experience.job1.desc2">Integração do módulo financeiro com APIs bancárias
-
+                            <li>Integração do módulo financeiro com APIs bancárias
                                 para pagamento de títulos (boletos,
-
                                 PIX e cartão de crédito) e implementação de assinatura digital.</li>
-
                         </ul>
-
                     </div>
-
 
                     <!-- Experiência 2 (Cargo Anterior) -->
-
                     <div class="experience-item">
-
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-
                             <h3 class="text-xl font-semibold text-white">Estagiário
-
                                 em Desenvolvimento de Software</h3>
-
                             <span class="date-tag mt-2 sm:mt-0">07/2024 – 12/2024</span>
-
                         </div>
-
                         <p class="text-lg font-medium text-blue-400 mb-2">Infocraft
-
                         </p>
-
                         <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
-
                             <li>Automação e otimização da geração de relatórios com
-
                                 JasperReports, integrando à API para
-
                                 que todos os sistemas da empresa pudessem utilizá-la. Reduzi o tempo de geração de
-
                                 relatórios de 30 segundos para 10 segundos.</li>
-
-                            <li data-i18n="experience.job2.desc2">Desenvolvimento do módulo de Filantropia para
-
+                            <li>Desenvolvimento do módulo de Filantropia para
                                 gerenciar a concessão de bolsas do
-
                                 município de Simões Filho, processando mais de 600 inscrições.</li>
-
-                            <li data-i18n="experience.job2.desc3">Criação do módulo AEE (Atendimento Educacional
-
+                            <li>Criação do módulo AEE (Atendimento Educacional
                                 Especializado) para gestão de
-
                                 entrevistas, avaliações e acompanhamento de alunos com necessidades especiais.</li>
-
                         </ul>
-
                     </div>
-
 
                     <!-- Experiência 3 -->
-
                     <div class="experience-item">
-
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-
                             <h3 class="text-xl font-semibold text-white">Bolsista de
-
                                 Iniciação Científica - Blockchain
-
                             </h3>
-
                             <span class="date-tag mt-2 sm:mt-0">02/2024 – 07/2024</span>
-
                         </div>
-
                         <p class="text-lg font-medium text-blue-400 mb-2">UNIFACS
-
                         </p>
-
                         <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
-
                             <li>Pesquisa sobre aplicação de Blockchain e Smart
-
                                 Contracts em auditorias governamentais.
-
                             </li>
-
-                            <li data-i18n="experience.job3.desc2">Revisão sistemática da literatura para identificar
-
+                            <li>Revisão sistemática da literatura para identificar
                                 lacunas e oportunidades na área.</li>
-
-                            <li data-i18n="experience.job3.desc3">Estudo sobre Web3 e desenvolvimento de Smart Contracts
-
+                            <li>Estudo sobre Web3 e desenvolvimento de Smart Contracts
                                 em Solidity na rede Ethereum.
-
                             </li>
-
                         </ul>
-
                     </div>
-
 
                     <!-- Experiência 4 (Freelancer) -->
-
                     <div class="experience-item">
-
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-
                             <h3 class="text-xl font-semibold text-white">
-
                                 Desenvolvedor Freelancer</h3>
-
                             <span class="date-tag mt-2 sm:mt-0">01/2022 – 04/2022</span>
-
                         </div>
-
                         <p class="text-lg font-medium text-blue-400 mb-2">Projetos
-
                             Autônomos</p>
-
                         <p class="text-gray-300">Desenvolvimento de projetos sob
-
                             demanda, incluindo landing pages,
-
                             sistemas web interativos e scripts de análise de dados. (Veja a seção 'Projetos' para
-
                             detalhes)</p>
-
                     </div>
 
-
                 </div>
-
             </section>
 
-
             <!-- ======================= -->
-
             <!--     SEÇÃO PROJETOS      -->
-
             <!-- ======================= -->
-
             <section id="projetos"
                 class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-
                 <h2 class="text-2xl font-bold mb-6 text-white">Projetos em Destaque</h2>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-
                     <!-- Projeto 1 (do PDF) -->
-
                     <div class="project-card">
-
                         <img src="https://placehold.co/600x400/1e293b/60a5fa?text=Gest%C3%A3o+de+Campanhas"
                             alt="Sistema de Gestão de Campanhas Publicitárias"
-                            class="w-full h-48 object-cover rounded-t-lg">
-
+                            class="w-full h-48 object-cover rounded-t-lg"
+                            onerror="this.src='https://placehold.co/600x400/1e293b/60a5fa?text=Projeto+1'">
                         <div class="p-5">
-
                             <h3 class="text-lg font-semibold mb-2 text-white">Sistema
-
                                 de Gestão de Campanhas
-
                                 Publicitárias</h3>
-
                             <p class="text-sm text-gray-300 mb-4">Aplicação web
-
                                 interativa para uma empresa de
-
                                 marketing, convertendo dados de planilhas de rotas de ônibus em Salvador em um banco de
-
                                 dados e sistema de consulta (HTML, CSS, JS puro).</p>
-
                         </div>
-
                         <div class="project-links">
-
                             <a href="#" class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
-
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>
-
                                 <span>Demo</span></a>
-
                         </div>
-
                     </div>
-
 
                     <!-- Projeto 2 (do PDF) -->
-
                     <div class="project-card">
-
                         <img src="https://placehold.co/600x400/1e293b/60a5fa?text=An%C3%A1lise+de+Portf%C3%B3lio"
                             alt="Análise de Fronteira Eficiente de Markowitz"
-                            class="w-full h-48 object-cover rounded-t-lg">
-
+                            class="w-full h-48 object-cover rounded-t-lg"
+                            onerror="this.src='https://placehold.co/600x400/1e293b/60a5fa?text=Projeto+2'">
                         <div class="p-5">
-
                             <h3 class="text-lg font-semibold mb-2 text-white">Análise
-
                                 de Fronteira Eficiente de
-
                                 Markowitz</h3>
-
                             <p class="text-sm text-gray-300 mb-4">Sistema de análise de
-
                                 investimentos para otimização de
-
                                 portfólio, calculando risco, retorno e índice de Sharpe para ações brasileiras (Python,
-
                                 Pandas, NumPy, SciPy).</p>
-
                         </div>
-
                         <div class="project-links">
-
                             <a href="#" class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
-
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>
-
                                 <span>Demo</span></a>
-
                         </div>
-
                     </div>
-
 
                     <!-- Projeto 3 (Placeholder) -->
-
                     <div class="project-card">
-
                         <img src="https://placehold.co/600x400/1e293b/60a5fa?text=Novo+Projeto" alt="Novo Projeto"
-                            class="w-full h-48 object-cover rounded-t-lg">
-
+                            class="w-full h-48 object-cover rounded-t-lg"
+                            onerror="this.src='https://placehold.co/600x400/1e293b/60a5fa?text=Projeto+3'">
                         <div class="p-5">
-
                             <h3 class="text-lg font-semibold mb-2 text-white">
-
                                 Historias Vivas</h3>
-
                             <p class="text-sm text-gray-300 mb-4">Descrição do seu
-
                                 próximo projeto incrível. Pode ser um
-
                                 app full-stack com Nest.js e React, por exemplo.</p>
-
                         </div>
-
                         <div class="project-links">
-
                             <a href="#" class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
-
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>
-
                                 <span>Demo</span></a>
-
                         </div>
-
                     </div>
 
-
                 </div>
-
             </section>
 
-
             <!-- ======================= -->
-
             <!--    SEÇÃO FORMAÇÃO       -->
-
             <!-- ======================= -->
-
             <section id="formacao"
                 class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-
                 <h2 class="text-2xl font-bold mb-6 text-white">Formação Acadêmica</h2>
-
                 <div class="space-y-6">
 
-
                     <div class="education-item">
-
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-
                             <h3 class="text-lg font-semibold text-white">
-
                                 Bacharelado em Engenharia de Software</h3>
-
                             <span class="date-tag mt-2 sm:mt-0">06/2023 – 06/2027</span>
-
                         </div>
-
                         <p class="text-md font-medium text-blue-400">UNIFACS -
-
                             Universidade de Salvador</p>
-
                     </div>
-
 
                     <div class="education-item">
-
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-
                             <h3 class="text-lg font-semibold text-white">Técnico
-
                                 em Desenvolvimento de Sistemas</h3>
-
-                            <span class="date-tag mt-2 sm:mt-0">01/2023 – 07/2025</span>
-
+                            <span class="date-tag mt-2 sm:mt-0">01/2023 – 07/2023</span>
                         </div>
-
                         <p class="text-md font-medium text-blue-400">SENAI</p>
-
                     </div>
-
 
                 </div>
-
             </section>
-
 
         </main>
 
-
         <!-- === RODAPÉ === -->
-
         <footer class="text-center mt-12 mb-6 text-gray-500 text-sm">
-
             <p>&copy; 2025 João Curcino. Todos os direitos reservados.</p>
-
         </footer>
+    </div>
 
+    <!-- === EASTER EGG (NOVO) === -->
+    <div id="easter-egg" class="relative">
+        <!-- Contêiner para os corações -->
+        <div id="heart-container" class="absolute inset-0"></div>
+
+        <!-- Conteúdo Central -->
+        <div class="relative z-10 flex flex-col items-center text-center p-8">
+            <!-- Placeholder para a Foto -->
+            <div
+                class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-white/30 backdrop-blur-md shadow-lg flex items-center justify-center border-4 border-white mb-6">
+                <!-- ATUALIZE ESTE 'src' com o caminho para a foto dela -->
+                <img src="assets/momo.jpg" alt="Foto da Namorada" class="w-full h-full rounded-full object-cover"
+                    onerror="this.src='https://placehold.co/256x256/ffc2b2/ff4d6d?text=Foto+Aqui'">
+            </div>
+
+            <!-- Mensagem -->
+            <h2 class="text-4xl md:text-5xl font-bold text-white shadow-md" style="font-family: 'Inter', sans-serif;">
+                Para a Pessoa Mais Incrível!</h2>
+            <p class="text-xl md:text-2xl text-white/90 mt-4 max-w-lg" style="font-family: 'Inter', sans-serif;">
+                Você encontrou meu segredo! Mas a verdade é que não é segredo nenhum o quanto eu te amo. Você é minha
+                inspiração diária.
+
+                Te amo meu momozi <3 </p>
+
+                    <!-- Botão de Voltar -->
+                    <button id="back-to-portfolio"
+                        class="mt-8 bg-white/30 backdrop-blur-md text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
+                        Voltar ao Portfólio
+                    </button>
+        </div>
     </div>
 
 
     <!-- CSS EMBLUTIDO PARA COMPONENTES (fácil manutenção) -->
-
     <style>
         .skill-tag {
-
             /* Tags com fundo escuro e texto claro */
-
             @apply bg-slate-700 text-slate-100 text-sm font-medium px-3 py-1 rounded-full;
-
         }
-
 
         .date-tag {
-
             /* Tags de data com fundo escuro sutil */
-
             @apply bg-slate-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full whitespace-nowrap;
-
         }
-
 
         .experience-item,
-
         .education-item {
-
             /* Bordas mais escuras */
-
             @apply border-b border-slate-700 pb-6;
-
         }
-
 
         .experience-item:last-child,
-
         .education-item:last-child {
-
             @apply border-b-0 pb-0;
-
         }
-
 
         .project-card {
-
             /* Card com fundo escuro e animação de hover */
-
             @apply bg-slate-900 border border-slate-700 rounded-lg shadow-sm hover:shadow-lg hover:shadow-blue-500/10 hover:border-slate-600 transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1 hover:scale-[1.02];
-
         }
-
 
         .project-card .p-5 {
-
             flex-grow: 1;
-
             /* Faz a descrição ocupar o espaço */
-
         }
-
 
         .project-links {
-
             /* Fundo dos links levemente diferente */
-
             @apply bg-slate-800 border-t border-slate-700 px-5 py-3 flex gap-4;
-
         }
 
-
         .project-link {
-
             /* Links com cor de destaque */
-
             @apply text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors;
-
         }
     </style>
 
-
-    <!-- === JAVASCRIPT EMBUTIDO (Scroll-Spy, Fade-in e Tradução) === -->
-
+    <!-- === JAVASCRIPT EMBUTIDO (Scroll-Spy, Fade-in e Easter Egg) === -->
     <script>
-
-        // === OBJETO DE TRADUÇÕES (REMOVIDO) ===
-
-
-
         document.addEventListener("DOMContentLoaded", () => {
-
             const sections = document.querySelectorAll("section[id]");
-
             const navLinks = document.querySelectorAll(".nav-link");
-
-            const fadeSections = document.querySelectorAll(".section-fade"); // RE-ADICIONADO
-
+            const fadeSections = document.querySelectorAll(".section-fade");
 
             // --- Observer para o Scroll-Spy (marcar link do menu) ---
-
             if (sections.length && navLinks.length) {
-
                 const scrollObserver = new IntersectionObserver((entries) => {
-
                     entries.forEach(entry => {
-
                         if (entry.isIntersecting) {
-
                             const id = entry.target.getAttribute("id");
-
 
                             navLinks.forEach(link => link.classList.remove("active"));
 
-
                             const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-
                             if (activeLink) {
-
                                 activeLink.classList.add("active");
-
                             }
-
                         }
-
                     });
-
                 }, {
-
                     rootMargin: "-20% 0px -70% 0px" // Ajustado para ativar um pouco antes
-
                 });
-
 
                 sections.forEach(section => {
-
                     scrollObserver.observe(section);
-
                 });
-
             }
 
-
-            // --- Observer para o Fade-in (RE-ADICIONADO E OTIMIZADO) ---
-
-
+            // --- Observer para o Fade-in (Otimizado) ---
             if (fadeSections.length) {
-
                 const fadeInObserver = new IntersectionObserver((entries, observer) => {
-
                     entries.forEach(entry => {
-
                         if (entry.isIntersecting) {
-
                             entry.target.classList.add("is-visible");
-
                             observer.unobserve(entry.target); // Anima só uma vez
-
                         }
-
                     });
-
                 }, {
-
                     threshold: 0.1 // Ativa quando 10% da seção está visível
-
                 });
-
 
                 fadeSections.forEach(section => {
-
                     fadeInObserver.observe(section);
-
                 });
-
             }
 
+            // === LÓGICA DO EASTER EGG (ATUALIZADA COM ANIMAÇÃO) ===
+            const easterEggEl = document.getElementById('easter-egg');
+            const nameEl = document.getElementById('name-title'); // Gatilho no H1
+            const nameLinkEl = document.getElementById('name-link'); // Gatilho no Link do Nav
+            const heartContainer = document.getElementById('heart-container');
+            let clickCount = 0;
+            const clicksNeeded = 12;
 
-            // === LÓGICA DE TRADUÇÃO (REMOVIDO) ===
-
-            /*
-
-            const langPtBtn = document.getElementById('lang-pt');
-
-            const langEnBtn = document.getElementById('lang-en');
-
-
-            function getTranslation(key, lang) {
-
-                // Helper para navegar no objeto (ex: "nav.skills")
-
-                return key.split('.').reduce((obj, k) => obj && obj[k], translations[lang]);
-
-            }
-
-
-            function setLanguage(lang) {
-
-                // 1. Atualiza todos os elementos com data-i18n
-
-                document.querySelectorAll('[data-i18n]').forEach(el => {
-
-                    const key = el.getAttribute('data-i18n');
-
-                    const translation = getTranslation(key, lang);
-
-                    if (translation) {
-
-                        el.textContent = translation; // Define o texto
-
+            function toggleEasterEgg(show) {
+                if (show) {
+                    easterEggEl.classList.add('visible');
+                    // Cria corações
+                    if (heartContainer) {
+                        // Limpa corações antigos antes de adicionar novos
+                        heartContainer.innerHTML = '';
+                        for (let i = 0; i < 30; i++) {
+                            createHeart();
+                        }
                     }
+                } else {
+                    easterEggEl.classList.remove('visible');
+                    // Remove corações para não pesar
+                    if (heartContainer) {
+                        heartContainer.innerHTML = '';
+                    }
+                    clickCount = 0; // Reseta a contagem
+                }
+            }
 
+            function createHeart() {
+                if (!heartContainer) return;
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 5 + 5}s`; // Duração entre 5s e 10s
+                heart.style.animationDelay = `${Math.random() * 3}s`; // Delay aleatório
+                heartContainer.appendChild(heart);
+
+                // Remove o coração do DOM depois que a animação termina
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
                 });
-
-
-                // 2. Atualiza o atributo lang do HTML
-
-                document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
-
-
-                // 3. Atualiza os botões ativos
-
-                langPtBtn.classList.toggle('active', lang === 'pt');
-
-                langEnBtn.classList.toggle('active', lang === 'en');
-
             }
 
+            // ATUALIZADA: Função de clique única com animação
+            function onNameClick(event) {
+                clickCount++;
+                console.log(`Easter Egg clicks: ${clickCount}/${clicksNeeded}`);
 
-            // Event Listeners para os botões de idioma
+                // Aplica a animação ao elemento clicado
+                const clickedElement = event.currentTarget;
 
-            if(langPtBtn && langEnBtn) {
+                // Remove a classe se ela já existir (para re-animar)
+                clickedElement.classList.remove('name-clicked');
+                // Força o navegador a recalcular o estilo (necessário para re-animar)
+                void clickedElement.offsetWidth;
+                // Adiciona a classe para animar
+                clickedElement.classList.add('name-clicked');
 
-                langPtBtn.addEventListener('click', () => setLanguage('pt'));
+                // Remove a classe após a animação
+                setTimeout(() => {
+                    clickedElement.classList.remove('name-clicked');
+                }, 300); // Duração da animação
 
-                langEnBtn.addEventListener('click', () => setLanguage('en'));
+                // Previne o 'pulo' da página do link do nav, exceto no primeiro clique
+                if (clickedElement === nameLinkEl && clickCount > 1) {
+                    event.preventDefault();
+                }
 
+                if (clickCount >= clicksNeeded) {
+                    toggleEasterEgg(true);
+                }
             }
 
-            */
+            if (nameEl && nameLinkEl && easterEggEl) {
+                // ATUALIZADO: Adiciona o gatilho nos dois lugares
+                nameEl.addEventListener('click', onNameClick);
+                nameLinkEl.addEventListener('click', onNameClick);
 
+                // Botão de Voltar
+                document.getElementById('back-to-portfolio').addEventListener('click', () => {
+                    toggleEasterEgg(false);
+                });
+            }
         });
-
     </script>
-
 </body>
-
 
 </html>
