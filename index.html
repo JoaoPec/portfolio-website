@@ -1,100 +1,203 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>João Curcino | Portfólio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>João Curcino | Desenvolvedor Full-Stack</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome (para ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Fundo azul escuro principal */
+            background-color: #0f172a;
+            /* Tailwind slate-900 */
+        }
+
+        /* Estilo para o link de navegação ativo (via JS) */
+        .nav-link.active {
+            color: #3b82f6;
+            /* Azul brilhante */
+            font-weight: 600;
+            /* semibold */
+        }
+
+        /* Garante que o scroll não esconda o título da seção atrás do menu fixo */
+        section[id] {
+            scroll-margin-top: 80px;
+            /* Ajuste conforme a altura do seu menu */
+        }
+
+        /* Classes para animação de fade-in */
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-fade.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container">
-        <header>
-            <div class="profile-container">
-                <div class="photo-container">
-                    <!-- Espaço para sua foto com caminho fixo -->
-                    <img id="profile-photo" src="./assets/profile.jpg" alt="João Curcino" class="profile-photo">
-                </div>
-                <div class="header-content">
-                    <h1>João Curcino</h1>
-                    <p class="title">Desenvolvedor de Software</p>
-                    <div class="contact-info">
-                        <a href="tel:71984313715"><i class="fas fa-phone"></i> 71984313715</a>
-                        <a href="mailto:joaopecurcino.dev@gmail.com"><i class="fas fa-envelope"></i>
-                            joaopecurcino.dev@gmail.com</a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> Linkedin</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> Github</a>
+<body class="text-gray-300">
+
+    <!-- === NAVEGAÇÃO FIXA === -->
+    <!-- Fundo escuro com blur -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm shadow-md shadow-black/20">
+        <div class="container max-w-5xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <a href="#inicio" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">João
+                Curcino</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#habilidades"
+                    class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Habilidades</a>
+                <a href="#experiencias"
+                    class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Experiência</a>
+                <a href="#projetos" class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Projetos</a>
+                <a href="#formacao" class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Formação</a>
+            </div>
+            <!-- Menu mobile (opcional, mas recomendado) -->
+            <button class="md:hidden text-gray-300 text-xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Adiciona padding-top para compensar o menu fixo -->
+    <div class="container max-w-5xl mx-auto p-4 md:p-8 pt-24">
+
+        <!-- === HEADER / INÍCIO / SOBRE === -->
+        <section id="inicio" class="section-fade">
+            <!-- Card de fundo azul-ardósia mais claro e mais arredondado -->
+            <header class="bg-slate-800 shadow-lg rounded-xl p-6 mt-12 md:p-8 mb-8">
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Foto do Perfil (Placeholder) -->
+                    <div class="w-32 h-32 md:w-40 md:h-40 mb-4 md:mb-0 md:mr-8 flex-shrink-0">
+                        <img src="assets/pfp_elevador.jpg" alt="João Curcino"
+                            class="w-full h-full rounded-full object-cover border-4 border-slate-700 shadow-sm">
+                    </div>
+
+                    <!-- Informações de Contato -->
+                    <div class="w-full text-center md:text-left">
+                        <h1 class="text-3xl md:text-4xl font-bold text-white">João Curcino</h1>
+                        <p class="text-xl md:text-2xl font-light text-blue-400 mt-1">Desenvolvedor de Software Júnior
+                        </p>
+
+                        <!-- Bio Curta -->
+                        <p class="text-lg text-gray-300 mt-6 max-w-3xl">
+                            Desenvolvedor focado em construir soluções web completas e eficientes, do front-end ao
+                            back-end, aplicando novas tecnologias para resolver problemas complexos.
+                        </p>
+
+                        <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 mt-5 text-gray-400">
+                            <a href="tel:71984313715" class="hover:text-blue-400 transition-colors">
+                                <i class="fas fa-phone fa-fw mr-1.5"></i> 71 98431-3715
+                            </a>
+                            <a href="mailto:joaopecurcino.dev@gmail.com" class="hover:text-blue-400 transition-colors">
+                                <i class="fas fa-envelope fa-fw mr-1.5"></i> joaopecurcino.dev@gmail.com
+                            </a>
+                        </div>
+                        <div class="flex justify-center md:justify-start gap-4 mt-4">
+                            <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank"
+                                class="text-gray-400 hover:text-blue-400 transition-colors text-2xl"
+                                aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/JoaoPec/" target="_blank"
+                                class="text-gray-400 hover:text-blue-400 transition-colors text-2xl"
+                                aria-label="Github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+
+                        <!-- Botão de Download do Currículo (NOVO) -->
+                        <div class="mt-8 flex justify-center md:justify-start">
+                            <a href="assets/Resumé-7.pdf" download="JoaoCurcino_Resume.pdf" target="_blank"
+                                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:scale-105">
+                                <i class="fas fa-download mr-2.5"></i>
+                                Baixar Currículo (PDF)
+                            </a>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </section>
 
-        <nav>
-            <ul>
-                <li><a href="#habilidades" class="nav-link active">Habilidades</a></li>
-                <li><a href="#experiencias" class="nav-link">Experiências</a></li>
-                <li><a href="#formacao" class="nav-link">Formação</a></li>
-                <li><a href="#projetos" class="nav-link">Projetos</a></li>
-            </ul>
-        </nav>
+        <!-- === CONTEÚDO PRINCIPAL (Todas as seções) === -->
+        <main class="space-y-12">
 
-        <main>
-            <section id="habilidades" class="section active">
-                <h2>Habilidades</h2>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3>Linguagens</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">C</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Golang</span>
+            <!-- ======================= -->
+            <!--   SEÇÃO HABILIDADES     -->
+            <!-- ======================= -->
+            <section id="habilidades" class="bg-slate-800 shadow-lg rounded-xl p-6 md:p-8 section-fade">
+                <h2 class="text-2xl font-bold mb-6 text-white">Habilidades Full-Stack</h2>
+                <div class="space-y-6">
+
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-200">Frontend</h3>
+                        <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">Bash</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">SQL</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frameworks/Bibliotecas</h3>
-                        <div class="skill-tags">
                             <span class="skill-tag">React</span>
-                            <span class="skill-tag">Laravel</span>
                             <span class="skill-tag">Vue.js</span>
                             <span class="skill-tag">Tailwind</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-200">Backend</h3>
+                        <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Nest.js</span>
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Golang</span>
+                            <span class="skill-tag">Java</span>
                             <span class="skill-tag">GraphQL</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Banco de dados</h3>
-                        <div class="skill-tags">
+
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-200">Banco de Dados</h3>
+                        <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">MySql</span>
                             <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">SQLite</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Sistemas Operacionais</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Windows Server</span>
+
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-200">Ferramentas & DevOps</h3>
+                        <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">openSUSE</span>
-                            <span class="skill-tag">Arch Linux</span>
-                            <span class="skill-tag">Debian</span>
+                            <span class="skill-tag">Bash</span>
+                            <span class="skill-tag">Git & GitHub</span>
+                            <span class="skill-tag">GitHub actions</span>
+                            <span class="skill-tag">JasperReports</span>
+                            <span class="skill-tag">Docker</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Línguas</h3>
-                        <div class="skill-tags">
+
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-gray-200">Línguas</h3>
+                        <div class="flex flex-wrap gap-2">
                             <span class="skill-tag">Inglês intermediário</span>
                             <span class="skill-tag">Português fluente</span>
                         </div>
@@ -102,103 +205,267 @@
                 </div>
             </section>
 
-            <section id="experiencias" class="section">
-                <h2>Experiências</h2>
+            <!-- ======================= -->
+            <!--   SEÇÃO EXPERIÊNCIAS    -->
+            <!-- ======================= -->
+            <section id="experiencias" class="bg-slate-800 shadow-lg rounded-xl p-6 md:p-8 section-fade">
+                <h2 class="text-2xl font-bold mb-6 text-white">Experiências</h2>
+                <div class="space-y-8">
 
-                <div class="experience">
-                    <div class="experience-header">
-                        <h3>Infocraft</h3>
-                        <span class="date">07/2024 – Atualmente</span>
+                    <!-- Experiência 1 (Cargo Atual) -->
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-xl font-semibold text-white">Desenvolvedor de Software Júnior</h3>
+                            <span class="date-tag">01/2025 – Atualmente</span>
+                        </div>
+                        <p class="text-lg font-medium text-blue-400 mb-2">Infocraft</p>
+                        <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
+                            <li>Desenvolvimento e manutenção do sistema de gestão educacional E-Grafite (Laravel +
+                                Blade), incluindo a criação de novas funcionalidades e melhorias.</li>
+                            <li>Integração do módulo financeiro com APIs bancárias para pagamento de títulos (boletos,
+                                PIX e cartão de crédito) e implementação de assinatura digital.</li>
+                        </ul>
                     </div>
-                    <p class="job-title">Estagiário em Desenvolvimento de Software</p>
-                    <ul class="experience-details">
-                        <li>Desenvolvimento e manutenção do sistema de gestão educacional E-Grafite (Laravel + Blade),
-                            incluindo a criação de novas funcionalidades e melhorias.</li>
-                        <li>Integração do módulo financeiro com APIs bancárias para pagamento de títulos (boletos, PIX e
-                            cartão de crédito) e implementação de assinatura digital.</li>
-                        <li>Automação e otimização da geração de relatórios com JasperReports, integrando à API para que
-                            todos os sistemas da empresa pudessem utilizá-la. Reduzi o tempo de geração de relatórios de
-                            30 segundos para 10 segundos.</li>
-                        <li>Desenvolvimento do módulo de Filantropia para gerenciar a concessão de bolsas do município
-                            de Simões Filho, processando mais de 600 inscrições em uma rede de colégios São José.</li>
-                        <li>Criação do módulo AEE (Atendimento Educacional Especializado) para gestão de entrevistas,
-                            avaliações e acompanhamento de alunos com necessidades especiais no município de Simões
-                            Filho, atendendo 454 alunos.</li>
-                    </ul>
-                </div>
 
-                <div class="experience">
-                    <div class="experience-header">
-                        <h3>UNIFACS</h3>
-                        <span class="date">02/2024 – 07/2024</span>
+                    <!-- Experiência 2 (Cargo Anterior) -->
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-xl font-semibold text-white">Estagiário em Desenvolvimento de Software</h3>
+                            <span class="date-tag">07/2024 – 12/2024</span>
+                        </div>
+                        <p class="text-lg font-medium text-blue-400 mb-2">Infocraft</p>
+                        <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
+                            <li>Automação e otimização da geração de relatórios com JasperReports, integrando à API para
+                                que todos os sistemas da empresa pudessem utilizá-la. Reduzi o tempo de geração de
+                                relatórios de 30 segundos para 10 segundos.</li>
+                            <li>Desenvolvimento do módulo de Filantropia para gerenciar a concessão de bolsas do
+                                município de Simões Filho, processando mais de 600 inscrições.</li>
+                            <li>Criação do módulo AEE (Atendimento Educacional Especializado) para gestão de
+                                entrevistas, avaliações e acompanhamento de alunos com necessidades especiais.</li>
+                        </ul>
                     </div>
-                    <p class="job-title">Bolsista de iniciação científica - Blockchain</p>
-                    <ul class="experience-details">
-                        <li>Pesquisa sobre aplicação de Blockchain e Smart Contracts em auditorias governamentais.</li>
-                        <li>Revisão sistemática da literatura para identificar lacunas e oportunidades na área.</li>
-                        <li>Análise crítica de estudos acadêmicos para fundamentação teórica do projeto.</li>
-                        <li>Redação e coautoria de artigos científicos para conferências e periódicos.</li>
-                        <li>Estudo sobre Web3 e desenvolvimento de Smart Contracts em Solidity na rede Ethereum.</li>
-                    </ul>
-                </div>
 
-                <div class="experience">
-                    <div class="experience-header">
-                        <h3>Desenvolvedor Freelancer</h3>
-                        <span class="date">01/2022 – 04/2022</span>
+                    <!-- Experiência 3 -->
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-xl font-semibold text-white">Bolsista de Iniciação Científica - Blockchain
+                            </h3>
+                            <span class="date-tag">02/2024 – 07/2024</span>
+                        </div>
+                        <p class="text-lg font-medium text-blue-400 mb-2">UNIFACS</p>
+                        <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
+                            <li>Pesquisa sobre aplicação de Blockchain e Smart Contracts em auditorias governamentais.
+                            </li>
+                            <li>Revisão sistemática da literatura para identificar lacunas e oportunidades na área.</li>
+                            <li>Estudo sobre Web3 e desenvolvimento de Smart Contracts em Solidity na rede Ethereum.
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="experience-details">
-                        <li><strong>Transformação de planilha Excel em sistema interativo para empresa de
-                                marketing:</strong> Converti dados de rotas e linhas de ônibus em Salvador, usados para
-                            a veiculação de campanhas publicitárias, em um banco de dados e desenvolvi uma aplicação web
-                            com HTML, CSS e JavaScript puro para garantir alta performance e agilidade, melhorando a
-                            gestão das campanhas e reduzindo erros manuais.</li>
-                        <li><strong>Desenvolvimento de análise de fronteira eficiente de Markowitz para otimização de
-                                portfólio:</strong> Realizei a criação de um sistema de análise de investimentos
-                            utilizando dados de ações de empresas brasileiras. Desenvolvi um código para calcular o
-                            retorno, risco e índice de Sharpe de carteiras de investimento, aplicando técnicas de
-                            otimização de portfólio. O sistema também gerou um gráfico da fronteira eficiente, salvou os
-                            resultados em um arquivo Excel e otimizou o processo, tornando-o mais rápido e automatizado,
-                            utilizando Python e bibliotecas como Pandas, NumPy, SciPy e Matplotlib.</li>
-                        <li><strong>Criação de landing pages e sites institucionais</strong></li>
-                    </ul>
+
+                    <!-- Experiência 4 (Freelancer) -->
+                    <div class="experience-item">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-xl font-semibold text-white">Desenvolvedor Freelancer</h3>
+                            <span class="date-tag">01/2022 – 04/2022</span>
+                        </div>
+                        <p class="text-lg font-medium text-blue-400 mb-2">Projetos Autônomos</p>
+                        <p class="text-gray-300">Desenvolvimento de projetos sob demanda, incluindo landing pages,
+                            sistemas web interativos e scripts de análise de dados. (Veja a seção 'Projetos' para
+                            detalhes)</p>
+                    </div>
+
                 </div>
             </section>
 
-            <section id="formacao" class="section">
-                <h2>Formação Acadêmica</h2>
+            <!-- ======================= -->
+            <!--     SEÇÃO PROJETOS      -->
+            <!-- ======================= -->
+            <section id="projetos" class="bg-slate-800 shadow-lg rounded-xl p-6 md:p-8 section-fade">
+                <h2 class="text-2xl font-bold mb-6 text-white">Projetos em Destaque</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <div class="education">
-                    <div class="education-header">
-                        <h3>UNIFACS - Universidade de Salvador</h3>
-                        <span class="date">06/2023 – 06/2027</span>
+                    <!-- Projeto 1 (do PDF) -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/1e293b/60a5fa?text=Gest%C3%A3o+de+Campanhas"
+                            alt="Sistema de Gestão de Campanhas Publicitárias"
+                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-white">Sistema de Gestão de Campanhas
+                                Publicitárias</h3>
+                            <p class="text-sm text-gray-300 mb-4">Aplicação web interativa para uma empresa de
+                                marketing, convertendo dados de planilhas de rotas de ônibus em Salvador em um banco de
+                                dados e sistema de consulta (HTML, CSS, JS puro).</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                     </div>
-                    <p>Bacharelado em Engenharia de Software</p>
-                </div>
 
-                <div class="education">
-                    <div class="education-header">
-                        <h3>SENAI</h3>
-                        <span class="date">01/2023 – 07/2023</span>
+                    <!-- Projeto 2 (do PDF) -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/1e293b/60a5fa?text=An%C3%A1lise+de+Portf%C3%B3lio"
+                            alt="Análise de Fronteira Eficiente de Markowitz"
+                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-white">Análise de Fronteira Eficiente de
+                                Markowitz</h3>
+                            <p class="text-sm text-gray-300 mb-4">Sistema de análise de investimentos para otimização de
+                                portfólio, calculando risco, retorno e índice de Sharpe para ações brasileiras (Python,
+                                Pandas, NumPy, SciPy).</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                     </div>
-                    <p>Técnico em Desenvolvimento de Sistemas</p>
+
+                    <!-- Projeto 3 (Placeholder) -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/1e293b/60a5fa?text=Novo+Projeto" alt="Novo Projeto"
+                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-white">Historias Vivas</h3>
+                            <p class="text-sm text-gray-300 mb-4">Descrição do seu próximo projeto incrível. Pode ser um
+                                app full-stack com Nest.js e React, por exemplo.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
-            <section id="projetos" class="section">
-                <h2>Projetos</h2>
-                <div class="projects-container" id="projects-container">
-                    <!-- Projetos serão adicionados via JavaScript -->
+            <!-- ======================= -->
+            <!--    SEÇÃO FORMAÇÃO       -->
+            <!-- ======================= -->
+            <section id="formacao" class="bg-slate-800 shadow-lg rounded-xl p-6 md:p-8 section-fade">
+                <h2 class="text-2xl font-bold mb-6 text-white">Formação Acadêmica</h2>
+                <div class="space-y-6">
+
+                    <div class="education-item">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-lg font-semibold text-white">Bacharelado em Engenharia de Software</h3>
+                            <span class="date-tag">06/2023 – 06/2027</span>
+                        </div>
+                        <p class="text-md font-medium text-blue-400">UNIFACS - Universidade de Salvador</p>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-lg font-semibold text-white">Técnico em Desenvolvimento de Sistemas</h3>
+                            <span class="date-tag">01/2023 – 07/2023</span>
+                        </div>
+                        <p class="text-md font-medium text-blue-400">SENAI</p>
+                    </div>
+
                 </div>
             </section>
+
         </main>
 
-        <footer>
+        <!-- === RODAPÉ === -->
+        <footer class="text-center mt-12 mb-6 text-gray-500 text-sm">
             <p>&copy; 2025 João Curcino. Todos os direitos reservados.</p>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <!-- CSS EMBLUTIDO PARA COMPONENTES (fácil manutenção) -->
+    <style>
+        .skill-tag {
+            /* Tags com fundo escuro e texto claro */
+            @apply bg-slate-700 text-slate-100 text-sm font-medium px-3 py-1 rounded-full;
+        }
+
+        .date-tag {
+            /* Tags de data com fundo escuro sutil */
+            @apply bg-slate-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full whitespace-nowrap;
+        }
+
+        .experience-item,
+        .education-item {
+            /* Bordas mais escuras */
+            @apply border-b border-slate-700 pb-6;
+        }
+
+        .experience-item:last-child,
+        .education-item:last-child {
+            @apply border-b-0 pb-0;
+        }
+
+        .project-card {
+            /* Card com fundo escuro e animação de hover */
+            @apply bg-slate-900 border border-slate-700 rounded-lg shadow-sm hover:shadow-lg hover:shadow-blue-500/10 hover:border-slate-600 transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1 hover:scale-[1.02];
+        }
+
+        .project-card .p-5 {
+            flex-grow: 1;
+            /* Faz a descrição ocupar o espaço */
+        }
+
+        .project-links {
+            /* Fundo dos links levemente diferente */
+            @apply bg-slate-800 border-t border-slate-700 px-5 py-3 flex gap-4;
+        }
+
+        .project-link {
+            /* Links com cor de destaque */
+            @apply text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors;
+        }
+    </style>
+
+    <!-- === JAVASCRIPT EMBUTIDO (Scroll-Spy e Fade-in) === -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const fadeSections = document.querySelectorAll(".section-fade");
+
+            // --- Observer para o Scroll-Spy (marcar link do menu) ---
+            if (sections.length && navLinks.length) {
+                const scrollObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute("id");
+
+                            navLinks.forEach(link => link.classList.remove("active"));
+
+                            const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                            if (activeLink) {
+                                activeLink.classList.add("active");
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: "-20% 0px -70% 0px"
+                });
+
+                sections.forEach(section => {
+                    scrollObserver.observe(section);
+                });
+            }
+
+            // --- Observer para o Fade-in (animar ao aparecer) ---
+            if (fadeSections.length) {
+                const fadeInObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            observer.unobserve(entry.target); // Anima só uma vez
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // Ativa quando 10% da seção está visível
+                });
+
+                fadeSections.forEach(section => {
+                    fadeInObserver.observe(section);
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
