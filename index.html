@@ -19,7 +19,7 @@
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Estilos personalizados -->
@@ -35,7 +35,34 @@
             /* Para esconder o overflow dos discos */
         }
 
-        /* NOVO: Discos de fundo sutis */
+
+        /* NOVO: Animação de clique */
+        @keyframes click-perk {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .perk-animation {
+            /* Aplica a animação */
+            animation: click-perk 0.2s ease-in-out;
+        }
+
+        /* Fim da
+
+        .click-animate {
+            animation: click-bounce 0.2s ease-in-out;
+        }
+
+        /* Discos de fundo sutis (Efeito Liquid Glass) */
         body::before {
             content: "";
             position: fixed;
@@ -47,7 +74,7 @@
             z-index: -1;
             /* Atrás de todo o conteúdo */
 
-            /* Cor dos discos (AGORA AZUL SUTIL) */
+            /* Cor dos discos (AZUL SUTIL) */
             --disco-color: rgba(59, 130, 246, 0.1);
             /* blue-500 com 10% de opacidade */
 
@@ -88,7 +115,7 @@
             /* Ajuste conforme a altura do seu menu */
         }
 
-        /* Classes para animação de fade-in (RE-INTRODUZIDO E OTIMIZADO) */
+        /* Classes para animação de fade-in (Otimizado) */
         .section-fade {
             opacity: 0;
             transform: translateY(10px);
@@ -102,9 +129,79 @@
             transform: translateY(0);
         }
 
-        /* Estilos para o seletor de idioma (REMOVIDO) */
-        /* .lang-btn ... */
-        /* .lang-btn.active ... */
+
+        /* === CSS DO EASTER EGG === */
+        #easter-egg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff85a1 0%, #ffc2b2 100%);
+            z-index: 100;
+            display: none;
+            /* Começa escondido */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        #easter-egg.visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Animação de Corações */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            transform: rotate(45deg);
+            animation: float 10s infinite linear;
+            bottom: -50px;
+            /* Começa fora da tela */
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(600deg);
+                /* Sobe e gira */
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -114,7 +211,8 @@
     <!-- Fundo escuro com blur -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm shadow-md shadow-black/20">
         <div class="container max-w-5xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-            <a href="#inicio" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">João
+            <a href="#inicio" id="name-link"
+                class="text-xl font-bold text-white hover:text-blue-400 transition-colors">João
                 Curcino</a>
 
             <div class="flex-grow flex justify-end items-center">
@@ -130,8 +228,6 @@
                         class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Formação</a>
                 </div>
 
-                <!-- Seletor de Idioma (REMOVIDO) -->
-
                 <!-- Menu mobile (opcional, mas recomendado) -->
                 <button class="md:hidden text-gray-300 text-xl ml-4">
                     <i class="fas fa-bars"></i>
@@ -146,7 +242,7 @@
 
         <!-- === HEADER / INÍCIO / SOBRE === -->
         <section id="inicio" class="section-fade">
-            <!-- Card de fundo azul-ardósia mais claro e mais arredondado -->
+            <!-- Card de fundo (Efeito Liquid Glass) -->
             <header class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 mt-12 md:p-8 mb-8">
                 <div class="flex flex-col md:flex-row items-center">
                     <!-- Foto do Perfil (Placeholder) -->
@@ -157,9 +253,10 @@
 
                     <!-- Informações de Contato -->
                     <div class="w-full text-center md:text-left">
-                        <h1 class="text-3xl md:text-4xl font-bold text-white">João Curcino</h1>
+                        <h1 id="name-title" class="text-3xl md:text-4xl font-bold text-white cursor-pointer"
+                            title="Easter Egg?">João Curcino</h1>
                         <p class="text-xl md:text-2xl font-light text-blue-400 mt-1">
-                            Desenvolvedor de Software Júnior
+                            Desenvolvedor de Software
                         </p>
 
                         <!-- Bio Curta -->
@@ -167,8 +264,8 @@
                             Desenvolvedor focado em construir soluções web completas e eficientes, do front-end ao
                             back-end, aplicando novas tecnologias para resolver problemas complexos.
                         </p>
-                        <!-- Hobby (NOVO) -->
-                        <p class="text-lg text-gray-300 mt-4 max-w-3xl" data-i18n="header.bio2">
+                        <!-- Hobby (DJ) -->
+                        <p class="text-lg text-gray-300 mt-4 max-w-3xl">
                             <i class="fas fa-record-vinyl fa-fw mr-1.5 text-blue-400"></i>
                             Além do código, sou apaixonado por música e atuo como DJ, focado em <strong>tech
                                 house</strong> e <strong>hard techno</strong>.
@@ -300,7 +397,7 @@
                             <li>Desenvolvimento e manutenção do sistema de gestão
                                 educacional E-Grafite (Laravel +
                                 Blade), incluindo a criação de novas funcionalidades e melhorias.</li>
-                            <li data-i18n="experience.job1.desc2">Integração do módulo financeiro com APIs bancárias
+                            <li>Integração do módulo financeiro com APIs bancárias
                                 para pagamento de títulos (boletos,
                                 PIX e cartão de crédito) e implementação de assinatura digital.</li>
                         </ul>
@@ -320,10 +417,10 @@
                                 JasperReports, integrando à API para
                                 que todos os sistemas da empresa pudessem utilizá-la. Reduzi o tempo de geração de
                                 relatórios de 30 segundos para 10 segundos.</li>
-                            <li data-i18n="experience.job2.desc2">Desenvolvimento do módulo de Filantropia para
+                            <li>Desenvolvimento do módulo de Filantropia para
                                 gerenciar a concessão de bolsas do
                                 município de Simões Filho, processando mais de 600 inscrições.</li>
-                            <li data-i18n="experience.job2.desc3">Criação do módulo AEE (Atendimento Educacional
+                            <li>Criação do módulo AEE (Atendimento Educacional
                                 Especializado) para gestão de
                                 entrevistas, avaliações e acompanhamento de alunos com necessidades especiais.</li>
                         </ul>
@@ -343,9 +440,9 @@
                             <li>Pesquisa sobre aplicação de Blockchain e Smart
                                 Contracts em auditorias governamentais.
                             </li>
-                            <li data-i18n="experience.job3.desc2">Revisão sistemática da literatura para identificar
+                            <li>Revisão sistemática da literatura para identificar
                                 lacunas e oportunidades na área.</li>
-                            <li data-i18n="experience.job3.desc3">Estudo sobre Web3 e desenvolvimento de Smart Contracts
+                            <li>Estudo sobre Web3 e desenvolvimento de Smart Contracts
                                 em Solidity na rede Ethereum.
                             </li>
                         </ul>
@@ -379,8 +476,7 @@
 
                     <!-- Projeto 1 (do PDF) -->
                     <div class="project-card">
-                        <img src="https://placehold.co/600x400/1e293b/60a5fa?text=Gest%C3%A3o+de+Campanhas"
-                            alt="Sistema de Gestão de Campanhas Publicitárias"
+                        <img src="assets/print_kallas.png" alt="Sistema de Gestão de Campanhas Publicitárias"
                             class="w-full h-48 object-cover rounded-t-lg">
                         <div class="p-5">
                             <h3 class="text-lg font-semibold mb-2 text-white">Sistema
@@ -392,13 +488,35 @@
                                 dados e sistema de consulta (HTML, CSS, JS puro).</p>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>
+                            <a href="https://rotaskallas.onrender.com/" target="_blank" class="project-link"><i
+                                    class="fas fa-external-link-alt"></i>
                                 <span>Demo</span></a>
                         </div>
                     </div>
 
-                    <!-- Projeto 2 (do PDF) -->
+                    <!-- Projeto 2 (Placeholder) -->
+                    <div class="project-card">
+                        <img src="assets/historiasVivasPrint.png" alt="Novo Projeto"
+                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-white">
+                                Historias Vivas</h3>
+                            <p class="text-sm text-gray-300 mb-4">Sistema desenvolvido para auxiliar no cuidado de
+                                pessoas com Alzheimer, permitindo registrar e apresentar memórias essenciais — em texto,
+                                áudio, foto e vídeo — para fortalecer a identidade e vínculos afetivos do paciente.
+                                Criado em parceria com o curso de Psicologia, utiliza Laravel, SQLite, Blade, Alpine.js
+                                e Tailwind, com deploy em VPS Linux via NGINX.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/JoaoPec/historiasVivas" target="_blank" class="project-link"><i
+                                    class="fab fa-github"></i> <span>GitHub</span></a>
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D"
+                                class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i>
+                                <span>Demo</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 (do PDF) -->
                     <div class="project-card">
                         <img src="https://placehold.co/600x400/1e293b/60a5fa?text=An%C3%A1lise+de+Portf%C3%B3lio"
                             alt="Análise de Fronteira Eficiente de Markowitz"
@@ -413,29 +531,12 @@
                                 Pandas, NumPy, SciPy).</p>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>
-                                <span>Demo</span></a>
+                            <a href="https://github.com/JoaoPec/Fronteira-de-Markowitz" target="_blank"
+                                class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
                         </div>
                     </div>
 
-                    <!-- Projeto 3 (Placeholder) -->
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/1e293b/60a5fa?text=Novo+Projeto" alt="Novo Projeto"
-                            class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-5">
-                            <h3 class="text-lg font-semibold mb-2 text-white">
-                                Historias Vivas</h3>
-                            <p class="text-sm text-gray-300 mb-4">Descrição do seu
-                                próximo projeto incrível. Pode ser um
-                                app full-stack com Nest.js e React, por exemplo.</p>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> <span>GitHub</span></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>
-                                <span>Demo</span></a>
-                        </div>
-                    </div>
+
 
                 </div>
             </section>
@@ -462,7 +563,7 @@
                         <div class="flex justify-between items-start mb-1 flex-wrap">
                             <h3 class="text-lg font-semibold text-white">Técnico
                                 em Desenvolvimento de Sistemas</h3>
-                            <span class="date-tag mt-2 sm:mt-0">01/2023 – 07/2025</span>
+                            <span class="date-tag mt-2 sm:mt-0">01/2023 – 07/2023</span>
                         </div>
                         <p class="text-md font-medium text-blue-400">SENAI</p>
                     </div>
@@ -477,6 +578,38 @@
             <p>&copy; 2025 João Curcino. Todos os direitos reservados.</p>
         </footer>
     </div>
+
+    <!-- === EASTER EGG (NOVO) === -->
+    <div id="easter-egg" class="relative">
+        <!-- Contêiner para os corações -->
+        <div id="heart-container" class="absolute inset-0"></div>
+
+        <!-- Conteúdo Central -->
+        <div class="relative z-10 flex flex-col items-center text-center p-8">
+            <!-- Placeholder para a Foto -->
+            <div
+                class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-white/30 backdrop-blur-md shadow-lg flex items-center justify-center border-4 border-white mb-6">
+                <img src="https://placehold.co/256x256/ffc2b2/ff4d6d?text=Foto+Aqui" alt="Foto da Namorada"
+                    class="w-full h-full rounded-full object-cover"
+                    onerror="this.src='https://placehold.co/256x256/ffc2b2/ff4d6d?text=Foto+Aqui'">
+            </div>
+
+            <!-- Mensagem -->
+            <h2 class="text-4xl md:text-5xl font-bold text-white shadow-md" style="font-family: 'Inter', sans-serif;">
+                Para a Pessoa Mais Incrível!</h2>
+            <p class="text-xl md:text-2xl text-white/90 mt-4 max-w-lg" style="font-family: 'Inter', sans-serif;">
+                Você encontrou meu segredo! Mas a verdade é que não é segredo nenhum o quanto eu te amo. Você é minha
+                inspiração diária.
+            </p>
+
+            <!-- Botão de Voltar -->
+            <button id="back-to-portfolio"
+                class="mt-8 bg-white/30 backdrop-blur-md text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
+                Voltar ao Portfólio
+            </button>
+        </div>
+    </div>
+
 
     <!-- CSS EMBLUTIDO PARA COMPONENTES (fácil manutenção) -->
     <style>
@@ -522,15 +655,12 @@
         }
     </style>
 
-    <!-- === JAVASCRIPT EMBUTIDO (Scroll-Spy, Fade-in e Tradução) === -->
+    <!-- === JAVASCRIPT EMBUTIDO (Scroll-Spy, Fade-in e Easter Egg) === -->
     <script>
-        // === OBJETO DE TRADUÇÕES (REMOVIDO) ===
-
-
         document.addEventListener("DOMContentLoaded", () => {
             const sections = document.querySelectorAll("section[id]");
             const navLinks = document.querySelectorAll(".nav-link");
-            const fadeSections = document.querySelectorAll(".section-fade"); // RE-ADICIONADO
+            const fadeSections = document.querySelectorAll(".section-fade");
 
             // --- Observer para o Scroll-Spy (marcar link do menu) ---
             if (sections.length && navLinks.length) {
@@ -556,8 +686,7 @@
                 });
             }
 
-            // --- Observer para o Fade-in (RE-ADICIONADO E OTIMIZADO) ---
-
+            // --- Observer para o Fade-in (Otimizado) ---
             if (fadeSections.length) {
                 const fadeInObserver = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
@@ -575,40 +704,70 @@
                 });
             }
 
-            // === LÓGICA DE TRADUÇÃO (REMOVIDO) ===
-            /*
-            const langPtBtn = document.getElementById('lang-pt');
-            const langEnBtn = document.getElementById('lang-en');
+            // === LÓGICA DO EASTER EGG (NOVO) ===
+            const easterEggEl = document.getElementById('easter-egg');
+            const nameEl = document.getElementById('name-title'); // Gatilho no H1
+            const nameLinkEl = document.getElementById('name-link'); // Gatilho no Link do Nav
+            const heartContainer = document.getElementById('heart-container');
+            let clickCount = 0;
+            const clicksNeeded = 12;
 
-            function getTranslation(key, lang) {
-                // Helper para navegar no objeto (ex: "nav.skills")
-                return key.split('.').reduce((obj, k) => obj && obj[k], translations[lang]);
+            function toggleEasterEgg(show) {
+                if (show) {
+                    easterEggEl.classList.add('visible');
+                    // Cria corações
+                    if (heartContainer) {
+                        for (let i = 0; i < 30; i++) {
+                            createHeart();
+                        }
+                    }
+                } else {
+                    easterEggEl.classList.remove('visible');
+                    // Remove corações para não pesar
+                    if (heartContainer) {
+                        heartContainer.innerHTML = '';
+                    }
+                    clickCount = 0; // Reseta a contagem
+                }
             }
 
-            function setLanguage(lang) {
-                // 1. Atualiza todos os elementos com data-i18n
-                document.querySelectorAll('[data-i18n]').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    const translation = getTranslation(key, lang);
-                    if (translation) {
-                        el.textContent = translation; // Define o texto
-                    }
+            function createHeart() {
+                if (!heartContainer) return;
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 5 + 5}s`; // Duração entre 5s e 10s
+                heart.style.animationDelay = `${Math.random() * 3}s`; // Delay aleatório
+                heartContainer.appendChild(heart);
+
+                // Remove o coração do DOM depois que a animação termina
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+
+            function onNameClick() {
+                clickCount++;
+                console.log(`Easter Egg clicks: ${clickCount}/${clicksNeeded}`);
+                if (clickCount >= clicksNeeded) {
+                    toggleEasterEgg(true);
+                }
+            }
+
+            if (nameEl && nameLinkEl && easterEggEl) {
+                // Adiciona o gatilho nos dois lugares (nome no header e nome no nav)
+                nameEl.addEventListener('click', onNameClick);
+                nameLinkEl.addEventListener('click', (e) => {
+                    // Previne o pulo da página se não for o primeiro clique
+                    if (clickCount > 0) e.preventDefault();
+                    onNameClick();
                 });
 
-                // 2. Atualiza o atributo lang do HTML
-                document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
-
-                // 3. Atualiza os botões ativos
-                langPtBtn.classList.toggle('active', lang === 'pt');
-                langEnBtn.classList.toggle('active', lang === 'en');
+                // Botão de Voltar
+                document.getElementById('back-to-portfolio').addEventListener('click', () => {
+                    toggleEasterEgg(false);
+                });
             }
-
-            // Event Listeners para os botões de idioma
-            if(langPtBtn && langEnBtn) {
-                langPtBtn.addEventListener('click', () => setLanguage('pt'));
-                langEnBtn.addEventListener('click', () => setLanguage('en'));
-            }
-            */
         });
     </script>
 </body>
