@@ -24,109 +24,158 @@
 
     <!-- Estilos personalizados -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Fundo azul escuro principal */
-            background-color: #0f172a;
-            /* Tailwind slate-900 */
-            position: relative;
-            /* Para o pseudo-elemento */
-            overflow-x: hidden;
-            /* Para esconder o overflow dos discos */
+        * {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-        /* NOVO: Animação de clique */
+        /* Partículas animadas no fundo */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(59, 130, 246, 0.25), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(59, 130, 246, 0.3), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(59, 130, 246, 0.2), transparent),
+                radial-gradient(2px 2px at 90% 60%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(1px 1px at 33% 80%, rgba(59, 130, 246, 0.2), transparent);
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+            animation: particleMove 20s ease infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes particleMove {
+            0%, 100% {
+                background-position: 0% 0%, 100% 100%, 50% 50%, 80% 10%, 90% 60%, 33% 80%;
+            }
+            50% {
+                background-position: 100% 100%, 0% 0%, 50% 50%, 20% 90%, 10% 40%, 67% 20%;
+            }
+        }
+
+        /* Discos de fundo animados (Efeito Liquid Glass melhorado) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            --disco-color-1: rgba(59, 130, 246, 0.12);
+            --disco-color-2: rgba(59, 130, 246, 0.08);
+            background-image:
+                radial-gradient(circle, var(--disco-color-1) 0%, transparent 60%),
+                radial-gradient(circle, var(--disco-color-2) 0%, transparent 70%),
+                radial-gradient(circle, var(--disco-color-1) 0%, transparent 50%);
+            background-position:
+                -20% 10%,
+                110% 60%,
+                50% 90%;
+            background-size:
+                800px 800px,
+                1000px 1000px,
+                600px 600px;
+            background-repeat: no-repeat;
+            animation: discoFloat 15s ease-in-out infinite;
+            opacity: 1;
+        }
+
+        @keyframes discoFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        /* Animação de clique melhorada */
         @keyframes click-perk {
             0% {
                 transform: scale(1);
             }
-
             50% {
-                transform: scale(1.05);
+                transform: scale(1.08) rotate(2deg);
             }
-
             100% {
                 transform: scale(1);
             }
         }
 
         .perk-animation {
-            /* Aplica a animação */
-            animation: click-perk 0.2s ease-in-out;
+            animation: click-perk 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* Fim da
-
-        .click-animate {
-            animation: click-bounce 0.2s ease-in-out;
-        }
-
-        /* Discos de fundo sutis (Efeito Liquid Glass) */
-        body::before {
-            content: "";
-            position: fixed;
-            /* Fixo para ficar no viewport */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            /* Atrás de todo o conteúdo */
-
-            /* Cor dos discos (AZUL SUTIL) */
-            --disco-color: rgba(59, 130, 246, 0.1);
-            /* blue-500 com 10% de opacidade */
-
-            background-image:
-                /* Disco 1 (Topo Esquerda) */
-                radial-gradient(circle, var(--disco-color) 0%, transparent 60%),
-                /* Disco 2 (Meio Direita) */
-                radial-gradient(circle, var(--disco-color) 0%, transparent 70%);
-
-            background-position:
-                -20% 10%,
-                /* Posição do Disco 1 */
-                110% 60%;
-            /* Posição do Disco 2 */
-
-            background-size:
-                800px 800px,
-                /* Tamanho do Disco 1 */
-                1000px 1000px;
-            /* Tamanho do Disco 2 */
-
-            background-repeat: no-repeat;
-            opacity: 1;
-            /* Opacidade controlada pelo RGBA */
-        }
-
-        /* Estilo para o link de navegação ativo (via JS) */
+        /* Estilo para o link de navegação ativo (via JS) melhorado */
         .nav-link.active {
             color: #3b82f6;
-            /* Azul brilhante */
             font-weight: 600;
-            /* semibold */
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: #3b82f6;
+            border-radius: 2px;
         }
 
         /* Garante que o scroll não esconda o título da seção atrás do menu fixo */
         section[id] {
-            scroll-margin-top: 80px;
-            /* Ajuste conforme a altura do seu menu */
+            scroll-margin-top: 100px;
+            scroll-behavior: smooth;
         }
 
-        /* Classes para animação de fade-in (Otimizado) */
+        /* Classes para animação de fade-in melhorada */
         .section-fade {
             opacity: 0;
-            transform: translateY(10px);
-            /* Diminuído para 10px */
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            /* Mais rápido */
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .section-fade.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+        }
+
+        /* Animação de entrada escalonada para elementos filhos */
+        .section-fade.is-visible > * {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section-fade.is-visible > *:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+        .section-fade.is-visible > *:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+        .section-fade.is-visible > *:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+        .section-fade.is-visible > *:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
 
@@ -208,30 +257,48 @@
 <body class="text-gray-300">
 
     <!-- === NAVEGAÇÃO FIXA === -->
-    <!-- Fundo escuro com blur -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm shadow-md shadow-black/20">
+    <!-- Fundo escuro com blur melhorado -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md shadow-lg shadow-black/30 border-b border-slate-800/50">
         <div class="container max-w-5xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
             <a href="#inicio" id="name-link"
-                class="text-xl font-bold text-white hover:text-blue-400 transition-colors">João
-                Curcino</a>
+                class="text-xl font-bold text-white hover:text-blue-400 transition-all duration-300 hover:scale-105 relative group">
+                <span class="relative z-10">João Curcino</span>
+                <span class="absolute inset-0 bg-blue-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </a>
 
             <div class="flex-grow flex justify-end items-center">
                 <!-- Links da Navegação -->
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex space-x-6">
                     <a href="#habilidades"
-                        class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Habilidades</a>
+                        class="nav-link text-gray-300 hover:text-blue-400 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-500/10">
+                        <span class="relative z-10">Habilidades</span>
+                        <span class="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
                     <a href="#experiencias"
-                        class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Experiência</a>
+                        class="nav-link text-gray-300 hover:text-blue-400 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-500/10">
+                        <span class="relative z-10">Experiência</span>
+                        <span class="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
                     <a href="#projetos"
-                        class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Projetos</a>
+                        class="nav-link text-gray-300 hover:text-blue-400 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-500/10">
+                        <span class="relative z-10">Projetos</span>
+                        <span class="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="#blockchain"
+                        class="nav-link text-gray-300 hover:text-blue-400 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-500/10">
+                        <span class="relative z-10">Blockchain</span>
+                        <span class="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
                     <a href="#formacao"
-                        class="nav-link text-gray-300 hover:text-blue-400 transition-colors">Formação</a>
+                        class="nav-link text-gray-300 hover:text-blue-400 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-500/10">
+                        <span class="relative z-10">Formação</span>
+                        <span class="absolute inset-0 bg-blue-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
                 </div>
 
-                <!-- Menu mobile (opcional, mas recomendado) -->
-                <button class="md:hidden text-gray-300 text-xl ml-4">
+                <!-- Menu mobile -->
+                <button class="md:hidden text-gray-300 text-xl ml-4 hover:text-blue-400 transition-colors duration-300 p-2 rounded-lg hover:bg-blue-500/10">
                     <i class="fas fa-bars"></i>
-                    <!-- Adicionar funcionalidade de menu mobile aqui -->
                 </button>
             </div>
         </div>
@@ -242,62 +309,71 @@
 
         <!-- === HEADER / INÍCIO / SOBRE === -->
         <section id="inicio" class="section-fade">
-            <!-- Card de fundo (Efeito Liquid Glass) -->
-            <header class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 mt-12 md:p-8 mb-8">
+            <!-- Card de fundo (Efeito Liquid Glass melhorado) -->
+            <header class="bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 rounded-3xl p-6 mt-12 md:p-8 mb-8 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-500 hover:shadow-blue-500/20">
                 <div class="flex flex-col md:flex-row items-center">
-                    <!-- Foto do Perfil (Placeholder) -->
-                    <div class="w-32 h-32 md:w-40 md:h-40 mb-4 md:mb-0 md:mr-8 flex-shrink-0">
+                    <!-- Foto do Perfil com efeito de brilho -->
+                    <div class="w-32 h-32 md:w-40 md:h-40 mb-4 md:mb-0 md:mr-8 flex-shrink-0 relative group">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 animate-pulse"></div>
                         <img src="assets/pfp_elevador.jpg" alt="João Curcino"
-                            class="w-full h-full rounded-full object-cover border-4 border-slate-700 shadow-sm">
+                            class="w-full h-full rounded-full object-cover border-4 border-slate-700 shadow-lg relative z-10 group-hover:border-blue-500/50 transition-all duration-300 group-hover:scale-105">
                     </div>
 
                     <!-- Informações de Contato -->
                     <div class="w-full text-center md:text-left">
-                        <h1 id="name-title" class="text-3xl md:text-4xl font-bold text-white cursor-pointer"
-                            title="Easter Egg?">João Curcino</h1>
+                        <h1 id="name-title" class="text-3xl md:text-4xl font-bold text-white cursor-pointer relative inline-block group"
+                            title="Easter Egg?">
+                            <span>João Curcino</span>
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-500"></span>
+                        </h1>
                         <p class="text-xl md:text-2xl font-light text-blue-400 mt-1">
                             Desenvolvedor de Software
                         </p>
 
                         <!-- Bio Curta -->
-                        <p class="text-lg text-gray-300 mt-6 max-w-3xl">
+                        <p class="text-lg text-gray-300 mt-6 max-w-3xl leading-relaxed">
                             Desenvolvedor focado em construir soluções web completas e eficientes, do front-end ao
                             back-end, aplicando novas tecnologias para resolver problemas complexos.
                         </p>
                         <!-- Hobby (DJ) -->
-                        <p class="text-lg text-gray-300 mt-4 max-w-3xl">
-                            <i class="fas fa-record-vinyl fa-fw mr-1.5 text-blue-400"></i>
-                            Além do código, sou apaixonado por música e atuo como DJ, focado em <strong>tech
-                                house</strong> e <strong>hard techno</strong>.
+                        <p class="text-lg text-gray-300 mt-4 max-w-3xl leading-relaxed group/dj">
+                            <i class="fas fa-record-vinyl fa-fw mr-1.5 text-blue-400 group-hover/dj:animate-spin transition-transform duration-1000"></i>
+                            Além do código, sou apaixonado por música e atuo como DJ, focado em <strong class="text-blue-400">tech
+                                house</strong> e <strong class="text-blue-400">hard techno</strong>.
                         </p>
 
                         <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 mt-5 text-gray-400">
-                            <a href="tel:71984313715" class="hover:text-blue-400 transition-colors">
-                                <i class="fas fa-phone fa-fw mr-1.5"></i> 71 98431-3715
+                            <a href="https://wa.me/5571984313715" target="_blank" class="group hover:text-blue-400 transition-all duration-300 inline-flex items-center hover:scale-105">
+                                <i class="fab fa-whatsapp fa-fw mr-1.5 group-hover:animate-bounce"></i> 
+                                <span>71 98431-3715</span>
                             </a>
-                            <a href="mailto:joaopecurcino.dev@gmail.com" class="hover:text-blue-400 transition-colors">
-                                <i class="fas fa-envelope fa-fw mr-1.5"></i> joaopecurcino.dev@gmail.com
+                            <a href="mailto:joaopecurcino.dev@gmail.com" class="group hover:text-blue-400 transition-all duration-300 inline-flex items-center hover:scale-105">
+                                <i class="fas fa-envelope fa-fw mr-1.5 group-hover:animate-bounce"></i> 
+                                <span>joaopecurcino.dev@gmail.com</span>
                             </a>
                         </div>
                         <div class="flex justify-center md:justify-start gap-4 mt-4">
                             <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank"
-                                class="text-gray-400 hover:text-blue-400 transition-colors text-2xl"
+                                class="group relative text-gray-400 hover:text-blue-400 transition-all duration-300 text-2xl p-3 rounded-full hover:bg-blue-500/10 hover:scale-110"
                                 aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
+                                <i class="fab fa-linkedin relative z-10 group-hover:animate-pulse"></i>
+                                <span class="absolute inset-0 bg-blue-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                             </a>
                             <a href="https://github.com/JoaoPec/" target="_blank"
-                                class="text-gray-400 hover:text-blue-400 transition-colors text-2xl"
+                                class="group relative text-gray-400 hover:text-blue-400 transition-all duration-300 text-2xl p-3 rounded-full hover:bg-blue-500/10 hover:scale-110"
                                 aria-label="Github">
-                                <i class="fab fa-github"></i>
+                                <i class="fab fa-github relative z-10 group-hover:animate-pulse"></i>
+                                <span class="absolute inset-0 bg-blue-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                             </a>
                         </div>
 
-                        <!-- Botão de Download do Currículo -->
+                        <!-- Botão de Download do Currículo melhorado -->
                         <div class="mt-8 flex justify-center md:justify-start">
                             <a href="assets/Resumé-7.pdf" download="JoaoCurcino_Resume.pdf" target="_blank"
-                                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:scale-105">
-                                <i class="fas fa-download mr-2.5"></i>
-                                <span>Baixar Currículo (PDF)</span>
+                                class="group relative inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 overflow-hidden">
+                                <i class="fas fa-download mr-2.5 relative z-10 group-hover:animate-bounce"></i>
+                                <span class="relative z-10">Baixar Currículo (PDF)</span>
+                                <span class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
                             </a>
                         </div>
 
@@ -313,32 +389,35 @@
             <!--   SEÇÃO HABILIDADES     -->
             <!-- ======================= -->
             <section id="habilidades"
-                class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-                <h2 class="text-2xl font-bold mb-6 text-white">Habilidades Full-Stack</h2>
+                class="bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 rounded-3xl p-6 md:p-8 section-fade border border-slate-700/50 hover:border-blue-500/30 transition-all duration-500">
+                <h2 class="text-2xl font-bold mb-6 text-white relative inline-block">
+                    Habilidades 
+                    <span class="absolute -bottom-2 left-0 w-16 h-1 bg-blue-400 rounded-full"></span>
+                </h2>
                 <div class="space-y-6">
 
                     <div>
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Frontend</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Vue.js</span>
-                            <span class="skill-tag">Tailwind</span>
+                            <span class="skill-tag"><span>JavaScript</span></span>
+                            <span class="skill-tag"><span>TypeScript</span></span>
+                            <span class="skill-tag"><span>React</span></span>
+                            <span class="skill-tag"><span>Vue.js</span></span>
+                            <span class="skill-tag"><span>Tailwind</span></span>
                         </div>
                     </div>
 
                     <div>
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Backend</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Nest.js</span>
-                            <span class="skill-tag">Laravel</span>
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Golang</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">GraphQL</span>
+                            <span class="skill-tag"><span>Node.js</span></span>
+                            <span class="skill-tag"><span>Nest.js</span></span>
+                            <span class="skill-tag"><span>Laravel</span></span>
+                            <span class="skill-tag"><span>PHP</span></span>
+                            <span class="skill-tag"><span>Python</span></span>
+                            <span class="skill-tag"><span>Golang</span></span>
+                            <span class="skill-tag"><span>Java</span></span>
+                            <span class="skill-tag"><span>GraphQL</span></span>
                         </div>
                     </div>
 
@@ -346,10 +425,10 @@
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Banco de Dados
                         </h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MySql</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag"><span>PostgreSQL</span></span>
+                            <span class="skill-tag"><span>MySql</span></span>
+                            <span class="skill-tag"><span>MongoDB</span></span>
+                            <span class="skill-tag"><span>SQLite</span></span>
                         </div>
                     </div>
 
@@ -357,41 +436,48 @@
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Ferramentas &
                             DevOps</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">Bash</span>
-                            <span class="skill-tag">Git & GitHub</span>
-                            <span class="skill-tag">GitHub actions</span>
-                            <span class="skill-tag">JasperReports</span>
-                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag"><span>Linux</span></span>
+                            <span class="skill-tag"><span>Bash</span></span>
+                            <span class="skill-tag"><span>Git & GitHub</span></span>
+                            <span class="skill-tag"><span>GitHub actions</span></span>
+                            <span class="skill-tag"><span>JasperReports</span></span>
+                            <span class="skill-tag"><span>Docker</span></span>
                         </div>
                     </div>
 
                     <div>
                         <h3 class="text-lg font-semibold mb-3 text-gray-200">Línguas</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Inglês intermediário</span>
-                            <span class="skill-tag">Português fluente</span>
+                            <span class="skill-tag"><span>Inglês intermediário</span></span>
+                            <span class="skill-tag"><span>Português fluente</span></span>
                         </div>
                     </div>
                 </div>
             </section>
 
+       
+
             <!-- ======================= -->
             <!--   SEÇÃO EXPERIÊNCIAS    -->
             <!-- ======================= -->
             <section id="experiencias"
-                class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-                <h2 class="text-2xl font-bold mb-6 text-white">Experiências</h2>
+                class="bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 rounded-3xl p-6 md:p-8 section-fade border border-slate-700/50 hover:border-blue-500/30 transition-all duration-500">
+                <h2 class="text-2xl font-bold mb-6 text-white relative inline-block">
+                    Experiências
+                    <span class="absolute -bottom-2 left-0 w-16 h-1 bg-blue-400 rounded-full"></span>
+                </h2>
                 <div class="space-y-8">
 
                     <!-- Experiência 1 (Cargo Atual) -->
                     <div class="experience-item">
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-                            <h3 class="text-xl font-semibold text-white">
-                                Desenvolvedor de Software Júnior</h3>
+                            <h3 class="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                Desenvolvedor de Software Júnior
+                            </h3>
                             <span class="date-tag mt-2 sm:mt-0">01/2025 – Atualmente</span>
                         </div>
-                        <p class="text-lg font-medium text-blue-400 mb-2">Infocraft
+                        <p class="text-lg font-medium text-blue-400 mb-2">
+                            Infocraft
                         </p>
                         <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
                             <li>Desenvolvimento e manutenção do sistema de gestão
@@ -406,11 +492,13 @@
                     <!-- Experiência 2 (Cargo Anterior) -->
                     <div class="experience-item">
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-                            <h3 class="text-xl font-semibold text-white">Estagiário
-                                em Desenvolvimento de Software</h3>
+                            <h3 class="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                Estagiário em Desenvolvimento de Software
+                            </h3>
                             <span class="date-tag mt-2 sm:mt-0">07/2024 – 12/2024</span>
                         </div>
-                        <p class="text-lg font-medium text-blue-400 mb-2">Infocraft
+                        <p class="text-lg font-medium text-blue-400 mb-2">
+                            Infocraft
                         </p>
                         <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
                             <li>Automação e otimização da geração de relatórios com
@@ -429,12 +517,13 @@
                     <!-- Experiência 3 -->
                     <div class="experience-item">
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-                            <h3 class="text-xl font-semibold text-white">Bolsista de
-                                Iniciação Científica - Blockchain
+                            <h3 class="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                Bolsista de Iniciação Científica - Blockchain
                             </h3>
                             <span class="date-tag mt-2 sm:mt-0">02/2024 – 07/2024</span>
                         </div>
-                        <p class="text-lg font-medium text-blue-400 mb-2">UNIFACS
+                        <p class="text-lg font-medium text-blue-400 mb-2">
+                            UNIFACS
                         </p>
                         <ul class="list-disc list-outside pl-5 space-y-1.5 text-gray-300">
                             <li>Pesquisa sobre aplicação de Blockchain e Smart
@@ -451,12 +540,14 @@
                     <!-- Experiência 4 (Freelancer) -->
                     <div class="experience-item">
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-                            <h3 class="text-xl font-semibold text-white">
-                                Desenvolvedor Freelancer</h3>
+                            <h3 class="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                Desenvolvedor Freelancer
+                            </h3>
                             <span class="date-tag mt-2 sm:mt-0">01/2022 – 04/2022</span>
                         </div>
-                        <p class="text-lg font-medium text-blue-400 mb-2">Projetos
-                            Autônomos</p>
+                        <p class="text-lg font-medium text-blue-400 mb-2">
+                            Projetos Autônomos
+                        </p>
                         <p class="text-gray-300">Desenvolvimento de projetos sob
                             demanda, incluindo landing pages,
                             sistemas web interativos e scripts de análise de dados. (Veja a seção 'Projetos' para
@@ -470,18 +561,24 @@
             <!--     SEÇÃO PROJETOS      -->
             <!-- ======================= -->
             <section id="projetos"
-                class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-                <h2 class="text-2xl font-bold mb-6 text-white">Projetos em Destaque</h2>
+                class="bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 rounded-3xl p-6 md:p-8 section-fade border border-slate-700/50 hover:border-blue-500/30 transition-all duration-500">
+                <h2 class="text-2xl font-bold mb-6 text-white relative inline-block">
+                    Projetos em Destaque
+                    <span class="absolute -bottom-2 left-0 w-16 h-1 bg-blue-400 rounded-full"></span>
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <!-- Projeto 1 (do PDF) -->
                     <div class="project-card">
-                        <img src="assets/print_kallas.png" alt="Sistema de Gestão de Campanhas Publicitárias"
-                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="relative overflow-hidden">
+                            <img src="assets/print_kallas.png" alt="Sistema de Gestão de Campanhas Publicitárias"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
                         <div class="p-5">
-                            <h3 class="text-lg font-semibold mb-2 text-white">Sistema
-                                de Gestão de Campanhas
-                                Publicitárias</h3>
+                            <h3 class="text-lg font-semibold mb-2 text-white">
+                                Sistema de Gestão de Campanhas Publicitárias
+                            </h3>
                             <p class="text-sm text-gray-300 mb-4">Aplicação web interativa para uma empresa de
                                 marketing, desenvolvida com HTML, CSS e JavaScript puro. O sistema consome dados de
                                 rotas de ônibus de Salvador diretamente de planilhas no Google Sheets, utilizando a API
@@ -498,11 +595,15 @@
 
                     <!-- Projeto 2 (Placeholder) -->
                     <div class="project-card">
-                        <img src="assets/historiasVivasPrint.png" alt="Novo Projeto"
-                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="relative overflow-hidden">
+                            <img src="assets/historiasVivasPrint.png" alt="Novo Projeto"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
                         <div class="p-5">
                             <h3 class="text-lg font-semibold mb-2 text-white">
-                                Historias Vivas</h3>
+                                Historias Vivas
+                            </h3>
                             <p class="text-sm text-gray-300 mb-4">Sistema desenvolvido para auxiliar no cuidado de
                                 pessoas com Alzheimer, permitindo registrar e apresentar memórias essenciais — em texto,
                                 áudio, foto e vídeo — para fortalecer a identidade e vínculos afetivos do paciente.
@@ -518,15 +619,49 @@
                         </div>
                     </div>
 
-                    <!-- Projeto 3 (do PDF) -->
+                    <!-- Projeto 3 - Pesquisa Blockchain -->
                     <div class="project-card">
-                        <img src="https://placehold.co/600x400/1e293b/60a5fa?text=An%C3%A1lise+de+Portf%C3%B3lio"
-                            alt="Análise de Fronteira Eficiente de Markowitz"
-                            class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="relative overflow-hidden">
+                            <div class="w-full h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center">
+                                <i class="fab fa-ethereum text-6xl text-blue-400/50"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
                         <div class="p-5">
-                            <h3 class="text-lg font-semibold mb-2 text-white">Análise
-                                de Fronteira Eficiente de
-                                Markowitz</h3>
+                            <h3 class="text-lg font-semibold mb-2 text-white">
+                                Pesquisa: Blockchain em Auditoria Governamental
+                            </h3>
+                            <p class="text-sm text-gray-300 mb-4">
+                                Plano de trabalho científico desenvolvido como bolsista de iniciação científica na UNIFACS, 
+                                explorando a aplicação de arquitetura Zero-Trust com Blockchain e Smart Contracts para 
+                                aprimorar processos de auditoria governamental. A pesquisa inclui revisão sistemática da literatura, 
+                                análise de casos internacionais e proposta de soluções para aumentar transparência e combater corrupção.
+                            </p>
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Pesquisa Científica</span>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Blockchain</span>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Smart Contracts</span>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <span class="text-xs text-gray-500 px-5 py-3">
+                                <i class="fas fa-university mr-2"></i>UNIFACS - Iniciação Científica
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 4 (do PDF) -->
+                    <div class="project-card">
+                        <div class="relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/1e293b/60a5fa?text=An%C3%A1lise+de+Portf%C3%B3lio"
+                                alt="Análise de Fronteira Eficiente de Markowitz"
+                                class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-white">
+                                Análise de Fronteira Eficiente de Markowitz
+                            </h3>
                             <p class="text-sm text-gray-300 mb-4">Sistema de análise de
                                 investimentos para otimização de
                                 portfólio, calculando risco, retorno e índice de Sharpe para ações brasileiras (Python,
@@ -544,30 +679,116 @@
             </section>
 
             <!-- ======================= -->
+            <!--   SEÇÃO BLOCKCHAIN/WEB3 -->
+            <!-- ======================= -->
+            <section id="blockchain"
+                class="bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 rounded-3xl p-6 md:p-8 section-fade border border-slate-700/50 hover:border-blue-500/30 transition-all duration-500">
+                <h2 class="text-2xl font-bold mb-6 text-white relative inline-block">
+                    Blockchain & Web3
+                    <span class="absolute -bottom-2 left-0 w-16 h-1 bg-blue-400 rounded-full"></span>
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                <i class="fab fa-ethereum text-blue-400 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-2">Desenvolvimento Web3</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Tenho interesse e experiência em desenvolvimento Web3, com foco em Smart Contracts e aplicações descentralizadas. 
+                                    Desenvolvo soluções blockchain utilizando Solidity na rede Ethereum, criando contratos inteligentes seguros e eficientes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                <i class="fas fa-university text-blue-400 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-2">Pesquisa Acadêmica em Blockchain</h3>
+                                <p class="text-gray-300 leading-relaxed mb-3">
+                                    Como bolsista de iniciação científica na UNIFACS, desenvolvi um plano de trabalho completo sobre 
+                                    <strong class="text-blue-400">"Aplicação da Arquitetura Zero-Trust em Auditoria Governamental através de Blockchain e Smart Contracts"</strong>. 
+                                    A pesquisa explorou soluções para aumentar transparência, eficiência e integridade nos processos de auditoria governamental, 
+                                    utilizando revisão sistemática da literatura e análise de casos de sucesso internacionais.
+                                </p>
+                                <div class="mt-4 p-4 bg-slate-800/50 rounded-lg border-l-4 border-blue-500">
+                                    <p class="text-sm text-gray-300 mb-2"><strong class="text-white">Objetivos da Pesquisa:</strong></p>
+                                    <ul class="text-sm text-gray-400 space-y-1 ml-4 list-disc">
+                                        <li>Explorar soluções de Blockchain e Smart Contracts para auditoria governamental</li>
+                                        <li>Propor arquitetura Zero-Trust para garantir segurança e transparência</li>
+                                        <li>Identificar aplicações em licitações públicas, monitoramento de gastos e detecção de fraudes</li>
+                                        <li>Contribuir para combater corrupção e aumentar confiança nas instituições públicas</li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mt-4">
+                                    <span class="skill-tag"><span>Solidity</span></span>
+                                    <span class="skill-tag"><span>Ethereum</span></span>
+                                    <span class="skill-tag"><span>Smart Contracts</span></span>
+                                    <span class="skill-tag"><span>Web3.js</span></span>
+                                    <span class="skill-tag"><span>Zero-Trust Architecture</span></span>
+                                    <span class="skill-tag"><span>Pesquisa Científica</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-blue-400 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-2">Visão e Futuro</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Acredito que a tecnologia blockchain tem potencial transformador para diversos setores, especialmente 
+                                    em transparência governamental, rastreabilidade de cadeias de suprimentos e sistemas de identidade descentralizados. 
+                                    Estou sempre explorando novas possibilidades e mantendo-me atualizado com as tendências do ecossistema Web3.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================= -->
             <!--    SEÇÃO FORMAÇÃO       -->
             <!-- ======================= -->
             <section id="formacao"
-                class="bg-slate-800/80 backdrop-blur-lg shadow-lg rounded-2xl p-6 md:p-8 section-fade">
-                <h2 class="text-2xl font-bold mb-6 text-white">Formação Acadêmica</h2>
+                class="bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 rounded-3xl p-6 md:p-8 section-fade border border-slate-700/50 hover:border-blue-500/30 transition-all duration-500">
+                <h2 class="text-2xl font-bold mb-6 text-white relative inline-block">
+                    Formação Acadêmica
+                    <span class="absolute -bottom-2 left-0 w-16 h-1 bg-blue-400 rounded-full"></span>
+                </h2>
                 <div class="space-y-6">
 
                     <div class="education-item">
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-                            <h3 class="text-lg font-semibold text-white">
-                                Bacharelado em Engenharia de Software</h3>
+                            <h3 class="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                Bacharelado em Engenharia de Software
+                            </h3>
                             <span class="date-tag mt-2 sm:mt-0">06/2023 – 06/2027</span>
                         </div>
-                        <p class="text-md font-medium text-blue-400">UNIFACS -
-                            Universidade de Salvador</p>
+                        <p class="text-md font-medium text-blue-400">
+                            UNIFACS - Universidade de Salvador
+                        </p>
                     </div>
 
                     <div class="education-item">
                         <div class="flex justify-between items-start mb-1 flex-wrap">
-                            <h3 class="text-lg font-semibold text-white">Técnico
-                                em Desenvolvimento de Sistemas</h3>
+                            <h3 class="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                Técnico em Desenvolvimento de Sistemas
+                            </h3>
                             <span class="date-tag mt-2 sm:mt-0">01/2023 – 07/2023</span>
                         </div>
-                        <p class="text-md font-medium text-blue-400">SENAI</p>
+                        <p class="text-md font-medium text-blue-400">
+                            SENAI
+                        </p>
                     </div>
 
                 </div>
@@ -576,8 +797,14 @@
         </main>
 
         <!-- === RODAPÉ === -->
-        <footer class="text-center mt-12 mb-6 text-gray-500 text-sm">
-            <p>&copy; 2025 João Curcino. Todos os direitos reservados.</p>
+        <footer class="text-center mt-12 mb-6 text-gray-500 text-sm relative">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+            <p class="mt-4">
+                &copy; <span id="current-year">2025</span> <span class="text-blue-400 font-semibold">João Curcino</span>. Todos os direitos reservados.
+            </p>
+            <p class="mt-2 text-xs text-gray-600">
+                Desenvolvido com <span class="text-red-500 animate-pulse">❤️</span> e muita <span class="text-blue-400">café</span>
+            </p>
         </footer>
     </div>
 
@@ -616,19 +843,81 @@
     <!-- CSS EMBLUTIDO PARA COMPONENTES (fácil manutenção) -->
     <style>
         .skill-tag {
-            /* Tags com fundo escuro e texto claro */
-            @apply bg-slate-700 text-slate-100 text-sm font-medium px-3 py-1 rounded-full;
+            /* Tags com fundo escuro e texto claro melhoradas */
+            @apply bg-gradient-to-r from-slate-700 to-slate-600 text-slate-100 text-sm font-medium px-4 py-2 rounded-full;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(59, 130, 246, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .skill-tag:hover::before {
+            opacity: 1;
+        }
+
+        .skill-tag span {
+            position: relative;
+            z-index: 1;
         }
 
         .date-tag {
-            /* Tags de data com fundo escuro sutil */
-            @apply bg-slate-700 text-gray-300 text-xs font-medium px-2.5 py-1 rounded-full whitespace-nowrap;
+            /* Tags de data com fundo escuro sutil melhoradas */
+            @apply bg-gradient-to-r from-slate-700 to-slate-600 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .date-tag:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
         }
 
         .experience-item,
         .education-item {
-            /* Bordas mais escuras */
-            @apply border-b border-slate-700 pb-6;
+            /* Bordas mais escuras com efeito hover */
+            @apply border-b border-slate-700 pb-6 relative;
+            transition: all 0.3s ease;
+            padding-left: 1.5rem;
+        }
+
+        .experience-item::before,
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-item:hover::before,
+        .education-item:hover::before {
+            opacity: 1;
+        }
+
+        .experience-item:hover,
+        .education-item:hover {
+            transform: translateX(5px);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .experience-item:last-child,
@@ -637,8 +926,35 @@
         }
 
         .project-card {
-            /* Card com fundo escuro e animação de hover */
-            @apply bg-slate-900 border border-slate-700 rounded-lg shadow-sm hover:shadow-lg hover:shadow-blue-500/10 hover:border-slate-600 transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-1 hover:scale-[1.02];
+            /* Card com fundo escuro e animação de hover melhorada */
+            @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50 transition-all duration-500 overflow-hidden flex flex-col hover:-translate-y-2 hover:scale-[1.03] relative group;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(59, 130, 246, 0.08);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card img {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
         }
 
         .project-card .p-5 {
@@ -652,8 +968,27 @@
         }
 
         .project-link {
-            /* Links com cor de destaque */
-            @apply text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors;
+            /* Links com cor de destaque melhorados */
+            @apply text-sm font-medium text-blue-400 hover:text-blue-300 transition-all duration-300 relative group/link;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        .project-link:hover {
+            transform: translateX(3px);
         }
     </style>
 
@@ -704,6 +1039,12 @@
                 fadeSections.forEach(section => {
                     fadeInObserver.observe(section);
                 });
+            }
+
+            // === ATUALIZAR ANO NO FOOTER ===
+            const currentYearEl = document.getElementById('current-year');
+            if (currentYearEl) {
+                currentYearEl.textContent = new Date().getFullYear();
             }
 
             // === LÓGICA DO EASTER EGG (NOVO) ===
