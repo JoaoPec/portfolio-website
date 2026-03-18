@@ -659,15 +659,8 @@
 
                     clickCount = 0
 
-                    profileWrapper.classList.remove("easter-pop")
-                    // Força reflow para reiniciar animação
-                    profileWrapper.offsetWidth
-                    profileWrapper.classList.add("easter-pop")
-
-                    easterBox.classList.remove("hidden")
-                    easterBox.classList.remove("easter-reveal")
-                    easterBox.offsetWidth
-                    easterBox.classList.add("easter-reveal")
+                    // Ao acertar: redireciona para a página do amor.
+                    window.location.href = "momo-love.html"
                 })
             }
 
