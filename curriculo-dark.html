@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Currículo (Modo Escuro) - João Curcino</title>
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+        <style>
+            :root {
+                --bg: #0f172a;
+                --panel: rgba(15, 23, 42, 0.92);
+                --text: #e2e8f0;
+                --muted: #94a3b8;
+                --line: rgba(148, 163, 184, 0.25);
+                --accent: #3b82f6;
+                --accent2: #a78bfa;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+                    "Apple Color Emoji", "Segoe UI Emoji";
+                background: var(--bg);
+                color: var(--text);
+            }
+
+            .page {
+                width: 860px;
+                margin: 0 auto;
+                padding: 28px;
+            }
+
+            .card {
+                border: 1px solid var(--line);
+                background: var(--panel);
+                border-radius: 18px;
+                overflow: hidden;
+            }
+
+            .header {
+                padding: 22px 24px;
+                border-bottom: 1px solid var(--line);
+                display: grid;
+                grid-template-columns: 1fr 260px;
+                gap: 16px;
+                align-items: start;
+            }
+
+            .name {
+                font-size: 30px;
+                font-weight: 800;
+                margin: 0;
+                letter-spacing: 0.2px;
+            }
+
+            .role {
+                margin-top: 6px;
+                color: var(--accent);
+                font-weight: 700;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .role i {
+                font-size: 14px;
+                color: rgba(59, 130, 246, 0.95);
+            }
+
+            .bio {
+                margin: 12px 0 0;
+                color: var(--muted);
+                line-height: 1.45;
+                font-size: 13.5px;
+            }
+
+            .rightTop {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                justify-content: flex-start;
+            }
+
+            .avatar {
+                width: 88px;
+                height: 88px;
+                border-radius: 999px;
+                border: 1px solid rgba(59, 130, 246, 0.35);
+                overflow: hidden;
+                position: relative;
+                background: rgba(59, 130, 246, 0.08);
+            }
+
+            .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .contact {
+                display: grid;
+                gap: 8px;
+                margin-top: 8px;
+                color: var(--muted);
+                font-size: 12.5px;
+            }
+
+            .contact a {
+                color: var(--muted);
+                text-decoration: none;
+            }
+
+            .contact a:hover {
+                color: #cbd5e1;
+                text-decoration: underline;
+            }
+
+            .contact .item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .contact .icon {
+                width: 28px;
+                height: 28px;
+                border-radius: 10px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(59, 130, 246, 0.12);
+                border: 1px solid rgba(59, 130, 246, 0.25);
+                color: var(--accent);
+                flex: 0 0 auto;
+            }
+
+            .main {
+                display: grid;
+                grid-template-columns: 280px 1fr;
+                gap: 0;
+            }
+
+            .left {
+                border-right: 1px solid var(--line);
+                padding: 18px 18px 22px;
+            }
+
+            .right {
+                padding: 18px 22px 24px;
+            }
+
+            .sectionTitle {
+                font-size: 13px;
+                letter-spacing: 0.2px;
+                color: #dbeafe;
+                margin: 0 0 10px;
+                font-weight: 800;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .sectionTitle i {
+                color: var(--accent);
+            }
+
+            .divider {
+                height: 1px;
+                background: var(--line);
+                margin: 14px 0;
+            }
+
+            .chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .chip {
+                border-radius: 999px;
+                padding: 8px 10px;
+                font-size: 12px;
+                color: #e5e7eb;
+                border: 1px solid rgba(148, 163, 184, 0.25);
+                background: rgba(148, 163, 184, 0.07);
+                display: inline-flex;
+                gap: 8px;
+                align-items: center;
+                white-space: nowrap;
+            }
+
+            .chip i {
+                font-size: 12px;
+            }
+
+            .chip.go {
+                border-color: rgba(0, 173, 216, 0.35);
+                background: rgba(0, 173, 216, 0.12);
+            }
+            .chip.go i {
+                color: #00add8;
+            }
+
+            .chip.nest {
+                border-color: rgba(224, 35, 244, 0.35);
+                background: rgba(224, 35, 244, 0.12);
+            }
+            .chip.nest i {
+                color: #e023f4;
+            }
+
+            .chip.kafka {
+                border-color: rgba(234, 179, 8, 0.35);
+                background: rgba(234, 179, 8, 0.12);
+            }
+            .chip.kafka i {
+                color: #eab308;
+            }
+
+            .chip.laravel i {
+                color: #ff2d5f;
+            }
+            .chip.laravel {
+                border-color: rgba(255, 45, 95, 0.35);
+                background: rgba(255, 45, 95, 0.12);
+            }
+
+            .chip.ts i {
+                color: #007acc;
+            }
+            .chip.ts {
+                border-color: rgba(0, 122, 204, 0.35);
+                background: rgba(0, 122, 204, 0.12);
+            }
+
+            .chip.react i {
+                color: #61dafb;
+            }
+            .chip.react {
+                border-color: rgba(97, 218, 251, 0.35);
+                background: rgba(97, 218, 251, 0.12);
+            }
+
+            .chip.db i {
+                color: #60a5fa;
+            }
+            .chip.db {
+                border-color: rgba(96, 165, 250, 0.35);
+                background: rgba(96, 165, 250, 0.12);
+            }
+
+            .chip.html i {
+                color: #ef4444;
+            }
+            .chip.html {
+                border-color: rgba(239, 68, 68, 0.35);
+                background: rgba(239, 68, 68, 0.12);
+            }
+
+            .chip.python i {
+                color: #3572a5;
+            }
+            .chip.python {
+                border-color: rgba(53, 114, 165, 0.35);
+                background: rgba(53, 114, 165, 0.12);
+            }
+
+            .textMuted {
+                color: var(--muted);
+            }
+
+            .list {
+                margin: 10px 0 0;
+                padding-left: 18px;
+                color: var(--text);
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            .list li {
+                margin: 7px 0;
+                color: var(--text);
+            }
+
+            .itemBlock {
+                padding: 12px 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .itemBlock:last-child {
+                border-bottom: 0;
+            }
+
+            .itemTop {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .itemTitle {
+                font-weight: 800;
+                font-size: 14px;
+                color: #e5e7eb;
+            }
+
+            .itemCompany {
+                margin-top: 4px;
+                color: var(--accent);
+                font-weight: 700;
+                font-size: 12.5px;
+            }
+
+            .itemDate {
+                color: var(--muted);
+                font-size: 12.5px;
+                white-space: nowrap;
+            }
+
+            .para {
+                margin: 10px 0 0;
+                color: var(--muted);
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            /* Print */
+            @media print {
+                body {
+                    background: #fff;
+                }
+
+                .page {
+                    width: auto;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .card {
+                    border: 0;
+                    border-radius: 0;
+                    background: #0f172a;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+
+                a {
+                    color: inherit !important;
+                    text-decoration: none !important;
+                }
+
+                .chip {
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page">
+            <div class="card">
+                <div class="header">
+                    <div>
+                        <h1 class="name">João Curcino</h1>
+                        <div class="role">
+                            <i class="fa-solid fa-microchip"></i>
+                            Engenheiro de Backend
+                        </div>
+                        <p class="bio">
+                            Backend Engineer focado em construir APIs web, sistemas distribuídos e arquiteturas escaláveis.
+                            Trabalho principalmente com <strong>NestJS</strong>, <strong>Go</strong>, <strong>Laravel</strong> e <strong>Kafka</strong>,
+                            desenvolvendo módulos para sistemas de gestão educacional e financeira, integrações com APIs bancárias e aplicações orientadas a eventos.
+                        </p>
+                        <p class="bio">
+                            Atualmente cursando Engenharia de Software na UNIFACS, com formação técnica em Desenvolvimento de Sistemas pelo SENAI.
+                        </p>
+                    </div>
+
+                    <div class="rightTop">
+                        <div class="avatar">
+                            <img src="assets/pfp_elevador.png" alt="Foto do João" />
+                        </div>
+
+                        <div class="contact">
+                            <div class="item">
+                                <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <span>Salvador, Bahia, Brasil</span>
+                            </div>
+                            <div class="item">
+                                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                                <a href="mailto:joaopecurcino.dev@gmail.com">joaopecurcino.dev@gmail.com</a>
+                            </div>
+                            <div class="item">
+                                <span class="icon"><i class="fa-brands fa-linkedin"></i></span>
+                                <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank" rel="noreferrer">LinkedIn</a>
+                            </div>
+                            <div class="item">
+                                <span class="icon"><i class="fa-brands fa-github"></i></span>
+                                <a href="https://github.com/JoaoPec" target="_blank" rel="noreferrer">GitHub</a>
+                            </div>
+                            <div class="item">
+                                <span class="icon"><i class="fa-brands fa-whatsapp"></i></span>
+                                <a href="https://wa.me/5571984313715" target="_blank" rel="noreferrer">WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main">
+                    <aside class="left">
+                        <h3 class="sectionTitle"><i class="fa-solid fa-sliders"></i> Skills</h3>
+                        <div class="divider"></div>
+
+                        <div style="margin-bottom: 12px;">
+                            <div class="textMuted" style="font-weight: 800; font-size: 12px; margin-bottom: 8px;">
+                                Main Stack
+                            </div>
+                            <div class="chips">
+                                <span class="chip go"><i class="fa-brands fa-golang"></i> Go</span>
+                                <span class="chip ts"><i class="fa-solid fa-code"></i> TypeScript</span>
+                                <span class="chip nest"><i class="fa-solid fa-diagram-project"></i> NestJS</span>
+                                <span class="chip laravel"><i class="fa-brands fa-laravel"></i> Laravel</span>
+                                <span class="chip kafka"><i class="fa-solid fa-bolt"></i> Kafka</span>
+                                <span class="chip react"><i class="fa-brands fa-react"></i> React</span>
+                                <span class="chip db"><i class="fa-brands fa-git-alt"></i> Git</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 12px;">
+                            <div class="textMuted" style="font-weight: 800; font-size: 12px; margin-bottom: 8px;">
+                                Bancos de Dados
+                            </div>
+                            <div class="chips">
+                                <span class="chip db"><i class="fa-solid fa-database"></i> PostgreSQL</span>
+                                <span class="chip db"><i class="fa-solid fa-database"></i> MongoDB</span>
+                                <span class="chip db"><i class="fa-solid fa-database"></i> SQLite</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="textMuted" style="font-weight: 800; font-size: 12px; margin-bottom: 8px;">
+                                Linguagens & Ferramentas
+                            </div>
+                            <div class="chips">
+                                <span class="chip html"><i class="fa-brands fa-html5"></i> HTML</span>
+                                <span class="chip html"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                                <span class="chip html"><i class="fa-brands fa-js"></i> JavaScript</span>
+                                <span class="chip python"><i class="fa-brands fa-python"></i> Python</span>
+                                <span class="chip db"><i class="fa-brands fa-linux"></i> Linux</span>
+                                <span class="chip db"><i class="fa-solid fa-terminal"></i> NeoVim</span>
+                                <span class="chip db"><i class="fa-solid fa-code"></i> VSCode</span>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <h3 class="sectionTitle" style="margin-top: 0;"><i class="fa-solid fa-language"></i> Idiomas</h3>
+                        <p class="para" style="margin-top: 6px;">
+                            Inglês intermediário
+                            <br />
+                            Português fluente
+                        </p>
+                    </aside>
+
+                    <section class="right">
+                        <h3 class="sectionTitle"><i class="fa-solid fa-briefcase"></i> Experiência</h3>
+                        <div class="divider"></div>
+
+                        <div class="itemBlock">
+                            <div class="itemTop">
+                                <div>
+                                    <div class="itemTitle">Desenvolvedor de Software Júnior</div>
+                                    <div class="itemCompany">Infocraft Consultoria, Tecnologia e Inovação</div>
+                                </div>
+                                <div class="itemDate">07/2025 – Atualmente</div>
+                            </div>
+                            <ul class="list">
+                                <li>Desenvolvimento de novas funcionalidades e melhorias em módulos do sistema utilizando NestJS no backend e React no frontend.</li>
+                                <li>Integração do módulo financeiro com APIs bancárias para pagamentos (boletos, PIX e cartão) e fluxo de assinatura digital.</li>
+                                <li>Otimização da geração de relatórios com JasperReports (30s -> 10s).</li>
+                                <li>Construção de módulos para Filantropia e AEE.</li>
+                            </ul>
+                        </div>
+
+                        <div class="itemBlock">
+                            <div class="itemTop">
+                                <div>
+                                    <div class="itemTitle">Estagiário de Desenvolvimento PHP</div>
+                                    <div class="itemCompany">Infocraft Consultoria, Tecnologia e Inovação</div>
+                                </div>
+                                <div class="itemDate">07/2024 – 07/2025</div>
+                            </div>
+                            <ul class="list">
+                                <li>Desenvolvimento backend no sistema E-Grafite com Laravel e PHP.</li>
+                                <li>Manutenção de funcionalidades existentes e suporte a novos módulos do sistema.</li>
+                            </ul>
+                        </div>
+
+                        <div class="itemBlock">
+                            <div class="itemTop">
+                                <div>
+                                    <div class="itemTitle">Iniciação Científica - Blockchain</div>
+                                    <div class="itemCompany">Universidade Salvador</div>
+                                </div>
+                                <div class="itemDate">04/2024 – 07/2024</div>
+                            </div>
+                            <ul class="list">
+                                <li>Pesquisa aplicada sobre Blockchain e Smart Contracts em auditorias governamentais.</li>
+                                <li>Revisões sistemáticas e análise crítica de estudos acadêmicos.</li>
+                                <li>Coautoria de artigos científicos.</li>
+                            </ul>
+                        </div>
+
+                        <div class="itemBlock">
+                            <div class="itemTop">
+                                <div>
+                                    <div class="itemTitle">Desenvolvedor Freelancer</div>
+                                    <div class="itemCompany">Freelancer</div>
+                                </div>
+                                <div class="itemDate">09/2023 – 07/2024</div>
+                            </div>
+                            <ul class="list">
+                                <li>Transformação de planilhas Excel em sistema interativo para empresa de marketing (dados de rotas de Salvador).</li>
+                                <li>Desenvolvimento de análise de fronteira eficiente de Markowitz para otimização de portfólio com Python.</li>
+                            </ul>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <h3 class="sectionTitle"><i class="fa-solid fa-graduation-cap"></i> Formação Acadêmica</h3>
+                        <div class="divider"></div>
+
+                        <div class="itemBlock" style="border-bottom: 0; padding-bottom: 0;">
+                            <div class="itemTop">
+                                <div>
+                                    <div class="itemTitle">Bacharelado, Engenharia de Software</div>
+                                    <div class="itemCompany">UNIFACS - Universidade de Salvador</div>
+                                </div>
+                                <div class="itemDate">06/2023 – 06/2027</div>
+                            </div>
+                            <div class="para">
+                                Foco em desenvolvimento de software e fundamentos de engenharia para construção de sistemas escaláveis.
+                            </div>
+                        </div>
+
+                        <div class="itemBlock" style="padding-top: 8px;">
+                            <div class="itemTop">
+                                <div>
+                                    <div class="itemTitle">Ensino Técnico, Desenvolvimento de Software</div>
+                                    <div class="itemCompany">SENAI CIMATEC</div>
+                                </div>
+                                <div class="itemDate">01/2023 – 06/2025</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
