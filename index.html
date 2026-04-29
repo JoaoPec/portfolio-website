@@ -1,720 +1,304 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>João Curcino | Backend Engineer</title>
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>João Curcino | Backend Engineer</title>
+  <meta name="description" content="Backend Engineer focado em APIs escaláveis, integrações e arquitetura para produtos reais." />
+  <link rel="icon" type="image/svg+xml"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Inter,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ["Poppins", "sans-serif"], body: ["Inter", "sans-serif"] },
+          colors: {
+            bg: "#0B0F14",
+            panel: "#0F172A",
+            brand: "#6366F1",
+            cyanx: "#06B6D4",
+            greenx: "#22C55E",
+            amberx: "#F59E0B"
+          },
+          boxShadow: {
+            glow: "0 0 0 1px rgba(99,102,241,.35), 0 20px 60px rgba(99,102,241,.22)",
+            glowCyan: "0 0 0 1px rgba(6,182,212,.35), 0 20px 60px rgba(6,182,212,.20)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: "Inter", sans-serif; background: #0B0F14; }
+    h1,h2,h3,h4 { font-family: "Poppins", sans-serif; }
+    .glass { background: rgba(15,23,42,.55); border: 1px solid rgba(148,163,184,.2); backdrop-filter: blur(10px); }
+    .reveal { opacity: 0; transform: translateY(16px); animation: up .65s ease forwards; }
+    @keyframes up { to { opacity: 1; transform: translateY(0); } }
+    .featured:hover { transform: translateY(-4px) scale(1.01); }
+  </style>
+</head>
+<body class="text-slate-100 antialiased">
+  <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-bg/85 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="text-2xl font-display font-bold tracking-tight">João<span class="text-brand">.</span></a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300">
+        <a href="#sobre" class="hover:text-white">Sobre</a>
+        <a href="#skills" class="hover:text-white">Skills</a>
+        <a href="#projetos" class="hover:text-white">Projetos</a>
+        <a href="#experiencia" class="hover:text-white">Experiência</a>
+        <a href="#contato" class="hover:text-white">Contato</a>
+      </nav>
+      <a href="assets/curriculo_new.pdf" target="_blank" class="inline-flex items-center rounded-full bg-gradient-to-r from-brand to-cyanx text-white px-4 py-2 text-sm font-semibold shadow-glow hover:opacity-95">
+        Ver currículo
+      </a>
+    </div>
+  </header>
 
-        <link rel="icon" type="image/svg+xml"
-            href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><rect x="16" y="16" width="96" height="96" rx="24" fill="%230f172a"/><text x="64" y="78" font-family="Inter, sans-serif" font-size="52" font-weight="700" fill="%233b82f6" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
-
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-        />
-
-        <style>
-            body {
-                font-family: "Inter", sans-serif;
-            }
-
-            .glass {
-                background: rgba(15, 23, 42, 0.55);
-                border: 1px solid rgba(148, 163, 184, 0.2);
-                backdrop-filter: blur(10px);
-            }
-
-            /* Chips estilo badges */
-            .skill-tag {
-                display: inline-flex;
-                align-items: center;
-                padding: 0.35rem 0.75rem;
-                border-radius: 9999px;
-                font-size: 0.85rem;
-                font-weight: 500;
-                color: rgb(var(--chip-rgb, 59, 130, 246));
-                background: linear-gradient(
-                    90deg,
-                    rgba(var(--chip-rgb, 59, 130, 246), 0.28),
-                    rgba(var(--chip-rgb, 59, 130, 246), 0.12)
-                );
-                border: 1px solid rgba(var(--chip-rgb, 59, 130, 246), 0.35);
-                transition:
-                    transform 150ms ease,
-                    box-shadow 150ms ease,
-                    border-color 150ms ease,
-                    filter 150ms ease;
-                white-space: nowrap;
-            }
-
-            .skill-tag:hover {
-                transform: translateY(-2px) scale(1.03);
-                border-color: rgba(var(--chip-rgb, 59, 130, 246), 0.65);
-                box-shadow: 0 10px 24px rgba(var(--chip-rgb, 59, 130, 246), 0.22);
-                filter: saturate(1.1);
-            }
-
-            .chip-icon {
-                margin-right: 0.45rem;
-                font-size: 0.95em;
-                line-height: 1;
-            }
-
-            .chip-label {
-                line-height: 1;
-            }
-
-            @keyframes easterPop {
-                0% {
-                    transform: scale(1);
-                }
-                20% {
-                    transform: scale(1.1) rotate(-6deg);
-                }
-                40% {
-                    transform: scale(1.06) rotate(6deg);
-                }
-                60% {
-                    transform: scale(1.12);
-                }
-                100% {
-                    transform: scale(1);
-                }
-            }
-
-            @keyframes easterReveal {
-                from {
-                    opacity: 0;
-                    transform: translateY(6px) scale(0.98);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-
-            .easter-pop {
-                animation: easterPop 900ms ease-in-out;
-                box-shadow:
-                    0 0 0 4px rgba(59, 130, 246, 0.25),
-                    0 0 40px rgba(59, 130, 246, 0.28);
-            }
-
-            .easter-reveal {
-                animation: easterReveal 450ms ease forwards;
-            }
-
-            /* Fundo com gradiente animado (leve) */
-            .bg-anim {
-                background-size: 200% 200%;
-                animation: bgMove 14s ease-in-out infinite;
-            }
-
-            @keyframes bgMove {
-                0%,
-                100% {
-                    background-position: 0% 50%;
-                }
-                50% {
-                    background-position: 100% 50%;
-                }
-            }
-        </style>
-    </head>
-
-    <body class="min-h-screen bg-slate-950 text-slate-200 overflow-x-hidden">
-        <!-- NAV -->
-        <nav class="fixed inset-x-0 top-0 z-50">
-            <div class="mx-auto max-w-5xl px-4 py-4">
-                <div class="glass rounded-2xl px-4 py-3 flex items-center justify-between">
-                    <a href="#top" class="flex items-center gap-3 font-semibold text-slate-100">
-                        <span
-                            class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300"
-                        >
-                            <i class="fa-solid fa-code"></i>
-                        </span>
-                        <span class="hidden sm:inline">João Curcino</span>
-                    </a>
-
-                    <div class="hidden sm:flex items-center gap-4 text-sm text-slate-300">
-                        <a href="#about" class="hover:text-blue-300 transition-colors">Sobre</a>
-                        <a href="#skills" class="hover:text-blue-300 transition-colors">Habilidades</a>
-                        <a href="#experience" class="hover:text-blue-300 transition-colors">Experiência</a>
-                        <a href="#projects" class="hover:text-blue-300 transition-colors">Projetos</a>
-                        <a
-                            href="#contact"
-                            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-500/15 border border-blue-500/30 hover:bg-blue-500/20 transition-colors"
-                        >
-                            <i class="fa-solid fa-paper-plane text-blue-300"></i>
-                            Contato
-                        </a>
-                    </div>
-
-                    <button
-                        id="mobileMenuBtn"
-                        class="sm:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl glass hover:bg-white/5 transition-colors"
-                        aria-label="Menu"
-                    >
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                </div>
-
-                <div id="mobileMenu" class="hidden sm:hidden mt-3 glass rounded-2xl p-4">
-                    <div class="flex flex-col gap-3">
-                        <a href="#about" class="hover:text-blue-300 transition-colors">Sobre</a>
-                        <a href="#skills" class="hover:text-blue-300 transition-colors">Habilidades</a>
-                        <a href="#experience" class="hover:text-blue-300 transition-colors">Experiência</a>
-                        <a href="#projects" class="hover:text-blue-300 transition-colors">Projetos</a>
-                        <a href="#contact" class="hover:text-blue-300 transition-colors">Contato</a>
-                    </div>
-                </div>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,.22),transparent_30%),radial-gradient(circle_at_85%_25%,rgba(6,182,212,.20),transparent_28%)]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-14 md:py-18">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6 reveal">
+          <span class="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-slate-300">
+            <i class="fa-solid fa-circle text-cyanx text-[8px]"></i> Backend Engineering
+          </span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            Backend Engineer focado em <span class="text-brand">sistemas escaláveis</span>
+          </h1>
+          <p class="text-slate-300 text-lg leading-relaxed max-w-xl">
+            APIs robustas, integrações bancárias, arquitetura orientada a eventos e foco total em performance de produto.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 text-xs rounded-full border border-brand/40 bg-brand/15 text-indigo-200">NestJS</span>
+            <span class="px-3 py-1 text-xs rounded-full border border-cyanx/40 bg-cyanx/15 text-cyan-200">Kafka</span>
+            <span class="px-3 py-1 text-xs rounded-full border border-greenx/40 bg-greenx/15 text-green-200">APIs bancárias</span>
+          </div>
+          <div class="pt-2">
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#projetos" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-cyanx px-7 py-3 font-semibold shadow-glow">
+              <i class="fa-solid fa-rocket"></i> Ver projetos
+              </a>
+              <a href="https://wa.me/5571984313715" target="_blank" class="inline-flex items-center justify-center gap-2 rounded-xl border border-brand/45 px-7 py-3 font-semibold text-slate-200 hover:bg-brand/10">
+                <i class="fa-brands fa-whatsapp"></i> Fale comigo
+              </a>
             </div>
-        </nav>
+            <a href="assets/curriculo_new.pdf" target="_blank" class="mt-3 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-cyanx/45 bg-cyanx/10 px-9 py-4 text-base font-semibold text-cyan-200 hover:bg-cyanx/20">
+              <i class="fa-solid fa-file-arrow-down"></i> Ver currículo
+            </a>
+          </div>
+        </div>
+        <div class="reveal flex justify-center" style="animation-delay:.08s">
+          <div class="w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full overflow-hidden border border-brand/40 shadow-glow">
+            <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- HERO -->
-        <header id="top" class="pt-24 pb-10">
-            <div class="mx-auto max-w-5xl px-4">
-                <div class="glass rounded-3xl p-6 md:p-10 bg-anim"
-                    style="background-image: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(2,6,23,0.0) 55%);">
-                    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-                        <div id="profileWrapper" class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border border-slate-700 shadow-lg">
-                            <img src="assets/pfp_elevador.png" alt="Foto do João" class="w-full h-full object-cover" />
-                        </div>
+  <section id="sobre" class="py-10 md:py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="glass rounded-3xl p-8 md:p-10 reveal">
+        <h2 class="text-3xl font-bold mb-4">Sobre</h2>
+        <p class="text-slate-300 leading-relaxed max-w-4xl">
+          Backend Engineer especializado no desenvolvimento de APIs robustas e sistemas web de alto impacto voltados a aplicações de negócio. Trabalho com NestJS, Node.js e Laravel para construir soluções escaláveis, integrações críticas e automações que aumentam eficiência operacional e reduzem custos.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-brand/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-brand/10">
+            <i class="fa-brands fa-linkedin text-brand"></i> LinkedIn
+          </a>
+          <a href="https://github.com/JoaoPec" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-cyanx/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-cyanx/10">
+            <i class="fa-brands fa-github text-cyan-300"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                        <div class="flex-1">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-200">
-                                <i class="fa-solid fa-database"></i>
-                                Engenheiro de Backend
-                            </div>
+  <section id="skills" class="py-10 md:py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-5 reveal">Skills</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="glass rounded-2xl p-5 reveal">
+          <h3 class="font-semibold mb-3 text-slate-200">Backend</h3>
+          <div class="flex flex-wrap gap-2">
+            <img alt="Go" src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="NestJS" src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Laravel" src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" class="h-7 w-auto rounded-full" />
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.05s">
+          <h3 class="font-semibold mb-3 text-slate-200">Infra</h3>
+          <div class="flex flex-wrap gap-2">
+            <img alt="Kafka" src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Linux" src="https://img.shields.io/badge/Linux-1793D1?style=for-the-badge&logo=linux&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Git" src="https://img.shields.io/badge/Git-E44C30?style=for-the-badge&logo=git&logoColor=white" class="h-7 w-auto rounded-full" />
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.1s">
+          <h3 class="font-semibold mb-3 text-slate-200">Database</h3>
+          <div class="flex flex-wrap gap-2">
+            <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="SQLite" src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" class="h-7 w-auto rounded-full" />
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.15s">
+          <h3 class="font-semibold mb-3 text-slate-200">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" class="h-7 w-auto rounded-full" />
+            <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="TailwindCSS" src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" class="h-7 w-auto rounded-full" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                            <h1 class="mt-4 text-3xl md:text-5xl font-bold text-slate-100">
-                                Olá, eu sou João Curcino
-                            </h1>
+  <section id="projetos" class="py-10 md:py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 reveal">Projetos</h2>
 
-                            <p class="mt-4 text-slate-300 leading-relaxed max-w-2xl">
-                                Engenheiro de Backend focado em construir APIs web, sistemas distribuídos e arquiteturas escaláveis.
-                                Trabalho principalmente com <strong>NestJS</strong>, <strong>Go</strong>, <strong>Laravel</strong> e <strong>Kafka</strong>,
-                                desenvolvendo módulos para sistemas de gestão educacional e financeira, integrações com APIs bancárias e
-                                aplicações orientadas a eventos.
-                            </p>
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <article class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-brand/50 shadow-glow reveal">
+          <div class="px-4 py-2 text-xs font-semibold bg-brand/20 text-indigo-200 border-b border-brand/30">Featured</div>
+          <img src="https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?w=900&q=80" alt="Vistta app" class="w-full h-52 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Vistta</h3>
+            <p class="mt-2 text-slate-300 text-sm leading-relaxed">
+              <strong>Problema:</strong> compra e venda de peças usadas com fricção alta.
+              <strong> Solução:</strong> landing/app com jornada simples, responsiva e otimizada.
+              <strong> Resultado:</strong> proposta clara de produto e melhor conversão de instalação.
+            </p>
+          </div>
+        </article>
 
-                            <p class="mt-3 text-slate-300 leading-relaxed max-w-2xl">
-                                Atualmente cursando Engenharia de Software na UNIFACS, com formação técnica em Desenvolvimento de Sistemas pelo SENAI.
-                            </p>
-
-                            <p class="mt-4 text-slate-300 leading-relaxed max-w-2xl">
-                                <i class="fa-solid fa-music mr-2 text-blue-300"></i>
-                                Além do código, sou apaixonado por música e atuo como DJ.
-                            </p>
-
-                            <div class="mt-7 flex flex-col sm:flex-row gap-3">
-                                <a
-                                    href="#projects"
-                                    class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 transition-colors text-white font-semibold shadow-lg"
-                                >
-                                    <i class="fa-solid fa-bolt"></i>
-                                    Ver Projetos
-                                </a>
-
-                                <a
-                                    href="https://wa.me/5571984313715"
-                                    target="_blank"
-                                    class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-slate-200 font-semibold"
-                                >
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                    Agendar uma conversa (WhatsApp)
-                                </a>
-                            </div>
-
-                            <div class="mt-8 grid grid-cols-1 gap-3">
-                                <div class="glass rounded-2xl p-4">
-                                    <div class="text-xs text-slate-400">Anos de experiência</div>
-                                    <div class="mt-1 text-2xl font-bold text-slate-100">3+ anos</div>
-                                </div>
-                            </div>
-
-                            <!-- Surpresa (leve) - acionada ao clicar 9x na foto -->
-                            <div id="easterBox" class="hidden mt-6 rounded-2xl glass p-4 text-sm text-slate-300">
-                                <div class="flex items-start gap-3">
-                                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300">
-                                        <i class="fa-solid fa-heart"></i>
-                                    </span>
-                                    <div>
-                                        Você achou! Aproveite para ver os projetos e as tecnologias em chips.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <article class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-cyanx/50 shadow-glowCyan reveal" style="animation-delay:.06s">
+          <div class="px-4 py-2 text-xs font-semibold bg-cyanx/20 text-cyan-200 border-b border-cyanx/30">Featured</div>
+          <img src="https://placehold.co/900x500/0F172A/94a3b8?text=Markowitz" alt="Markowitz" class="w-full h-52 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Sistema de Markowitz</h3>
+            <p class="mt-2 text-slate-300 text-sm leading-relaxed">
+              <strong>Problema:</strong> avaliação manual de risco/retorno.
+              <strong> Solução:</strong> motor em Python para fronteira eficiente e índice de Sharpe.
+              <strong> Resultado:</strong> análise mais rápida e decisões de portfólio com base quantitativa.
+            </p>
+            <div class="mt-4">
+              <a href="https://github.com/JoaoPec/Fronteira-de-Markowitz" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
             </div>
-        </header>
+          </div>
+        </article>
+      </div>
 
-        <main class="pb-20">
-            <!-- ABOUT -->
-            <section id="about" class="pb-12">
-                <div class="mx-auto max-w-5xl px-4">
-                    <div class="glass rounded-3xl p-6 md:p-10">
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Sobre mim</h2>
-                        <p class="mt-3 text-slate-300 leading-relaxed max-w-3xl">
-                            Além de engenharia de software, eu gosto de construir soluções que sejam claras, escaláveis e com boas
-                            práticas. Trabalho com integração de APIs, arquiteturas distribuídas e mensageria/event-driven,
-                            entregando módulos completos para sistemas de gestão educacional e financeira.
-                        </p>
-                        <div class="mt-6 flex flex-wrap gap-2">
-                            <span class="skill-tag">APIs</span>
-                            <span class="skill-tag">Sistemas Distribuídos</span>
-                            <span class="skill-tag">Orientado a Eventos</span>
-                            <span class="skill-tag">Integração</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="glass rounded-2xl overflow-hidden reveal" style="animation-delay:.1s">
+          <img src="assets/Screenshot 2026-03-18 at 16-31-41 3KAP - Auditoria TI RH.png" alt="3KAP" class="w-full h-52 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">3KAP</h3>
+            <p class="mt-2 text-slate-300 text-sm">Site institucional para auditoria, RH e TI com foco em posicionamento e geração de contato.</p>
+            <a href="https://3kap.com.br" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
+            </a>
+          </div>
+        </article>
 
-            <!-- SKILLS -->
-            <section id="skills" class="pb-12">
-                <div class="mx-auto max-w-5xl px-4">
-                    <div class="glass rounded-3xl p-6 md:p-10">
-                        <div class="flex items-end justify-between gap-4 flex-wrap">
-                            <div>
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-100">My Skills</h2>
-                                <p class="mt-2 text-slate-400 text-sm">Stack principal e ferramentas no formato de chips.</p>
-                            </div>
-                        </div>
+        <article class="glass rounded-2xl overflow-hidden reveal" style="animation-delay:.14s">
+          <img src="assets/historiasVivasPrint.png" alt="Historias Vivas" class="w-full h-52 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Historias Vivas</h3>
+            <p class="mt-2 text-slate-300 text-sm">Plataforma para apoio ao cuidado de pessoas com Alzheimer com memória multimídia.</p>
+            <div class="mt-4 flex items-center gap-3 flex-wrap">
+              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
+              </a>
+              <a href="https://github.com/JoaoPec/historiasVivas" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-                        <div class="mt-8 grid md:grid-cols-3 gap-6">
-                            <div class="glass rounded-2xl p-5">
-                                <h3 class="font-semibold text-slate-100 mb-3">Main Stack</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="skill-tag">Go</span>
-                                    <span class="skill-tag">TypeScript</span>
-                                    <span class="skill-tag">Node.js</span>
-                                    <span class="skill-tag">NestJS</span>
-                                    <span class="skill-tag">Laravel</span>
-                                    <span class="skill-tag">Apache Kafka</span>
-                                    <span class="skill-tag">React</span>
-                                    <span class="skill-tag">Git</span>
-                                </div>
-                            </div>
+  <section id="experiencia" class="py-10 md:py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-5 reveal">Experiência</h2>
+      <div class="glass rounded-2xl p-6 md:p-7 reveal">
+        <div class="mb-5 pb-4 border-b border-slate-700/70">
+          <h3 class="text-xl font-semibold">Infocraft</h3>
+          <p class="text-brand text-sm">07/2024 — Atual</p>
+        </div>
+        <div class="space-y-6">
+          <article class="relative pl-5 border-l-2 border-brand/40">
+            <span class="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-brand"></span>
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <h4 class="font-semibold text-lg">Desenvolvedor de Software Júnior</h4>
+              <span class="text-slate-400 text-sm">07/2025 — Atual</span>
+            </div>
+            <ul class="mt-3 text-slate-300 list-disc ml-5 space-y-1 text-sm">
+              <li>NestJS + React em módulos de produção</li>
+              <li>APIs bancárias, PIX e assinatura digital</li>
+              <li>Relatórios JasperReports com ganho de performance</li>
+            </ul>
+          </article>
+          <article class="relative pl-5 border-l-2 border-slate-700">
+            <span class="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-slate-500"></span>
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+              <h4 class="font-semibold text-lg">Estagiário de Desenvolvimento PHP</h4>
+              <span class="text-slate-400 text-sm">07/2024 — 07/2025</span>
+            </div>
+            <ul class="mt-3 text-slate-300 list-disc ml-5 space-y-1 text-sm">
+              <li>Backend no E-Grafite com Laravel/PHP</li>
+              <li>Evolução e manutenção de módulos de negócio</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                            <div class="glass rounded-2xl p-5">
-                                <h3 class="font-semibold text-slate-100 mb-3">Databases</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="skill-tag">PostgreSQL</span>
-                                    <span class="skill-tag">MongoDB</span>
-                                    <span class="skill-tag">SQLite</span>
-                                </div>
-                            </div>
+  <section id="contato" class="py-10 md:py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="glass rounded-3xl p-8 md:p-10 reveal">
+        <h2 class="text-3xl font-bold mb-3">Contato</h2>
+        <p class="text-slate-300 mb-7">Vamos conversar sobre backend, APIs e produto.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="mailto:joaopecurcino.dev@gmail.com" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+            <div class="font-medium"><i class="fa-solid fa-envelope mr-2 text-brand"></i>E-mail</div>
+            <p class="text-slate-300 text-sm mt-1">joaopecurcino.dev@gmail.com</p>
+          </a>
+          <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+            <div class="font-medium"><i class="fa-brands fa-linkedin mr-2 text-brand"></i>LinkedIn</div>
+            <p class="text-slate-300 text-sm mt-1">Perfil profissional</p>
+          </a>
+          <a href="https://github.com/JoaoPec" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+            <div class="font-medium"><i class="fa-brands fa-github mr-2 text-brand"></i>GitHub</div>
+            <p class="text-slate-300 text-sm mt-1">Repositórios</p>
+          </a>
+          <a href="https://wa.me/5571984313715" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+            <div class="font-medium"><i class="fa-brands fa-whatsapp mr-2 text-brand"></i>WhatsApp</div>
+            <p class="text-slate-300 text-sm mt-1">Falar agora</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                            <div class="glass rounded-2xl p-5">
-                                <h3 class="font-semibold text-slate-100 mb-3">Workstation Tools</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="skill-tag">VSCode</span>
-                                    <span class="skill-tag">Notion</span>
-                                    <span class="skill-tag">Arch Linux</span>
-                                    <span class="skill-tag">NeoVim</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <footer class="border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4 text-center text-slate-400 text-sm">
+      © <span id="year"></span> João Curcino. Todos os direitos reservados.
+    </div>
+  </footer>
 
-            <!-- EXPERIENCE -->
-            <section id="experience" class="pb-12">
-                <div class="mx-auto max-w-5xl px-4">
-                    <div class="glass rounded-3xl p-6 md:p-10">
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Experiência</h2>
-                        <p class="mt-2 text-slate-400 text-sm">Foco em backend, integrações e sistemas escaláveis.</p>
-
-                        <div class="mt-8 space-y-5">
-                            <article class="glass rounded-2xl p-6">
-                                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                                    <div>
-                                        <div class="text-slate-100 font-semibold text-lg">Desenvolvedor de Software Júnior</div>
-                                        <div class="text-blue-300 mt-1">Infocraft</div>
-                                    </div>
-                                    <div class="text-slate-400 text-sm">07/2025 – Atualmente</div>
-                                </div>
-                                <ul class="mt-4 space-y-2 text-slate-300 text-sm list-disc list-inside">
-                                    <li>Desenvolvimento de novas funcionalidades e melhorias (NestJS/React).</li>
-                                    <li>Integração do módulo financeiro com APIs bancárias (boletos, PIX e cartão) e assinatura digital.</li>
-                                    <li>Otimização de relatórios com JasperReports (30s -> 10s).</li>
-                                    <li>Construção de módulos para Filantropia e AEE.</li>
-                                </ul>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="skill-tag">NestJS</span>
-                                    <span class="skill-tag">React</span>
-                                    <span class="skill-tag">APIs bancárias</span>
-                                    <span class="skill-tag">JasperReports</span>
-                                    <span class="skill-tag">PIX</span>
-                                </div>
-                            </article>
-
-                            <article class="glass rounded-2xl p-6">
-                                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                                    <div>
-                                        <div class="text-slate-100 font-semibold text-lg">Estagiário de Desenvolvimento PHP</div>
-                                        <div class="text-blue-300 mt-1">Infocraft</div>
-                                    </div>
-                                    <div class="text-slate-400 text-sm">07/2024 – 07/2025</div>
-                                </div>
-                                <ul class="mt-4 space-y-2 text-slate-300 text-sm list-disc list-inside">
-                                    <li>Desenvolvimento backend no E-Grafite com Laravel e PHP.</li>
-                                    <li>Manutenção e suporte a novos módulos do sistema.</li>
-                                </ul>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="skill-tag">Laravel</span>
-                                    <span class="skill-tag">PHP</span>
-                                </div>
-                            </article>
-
-                            <article class="glass rounded-2xl p-6">
-                                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                                    <div>
-                                        <div class="text-slate-100 font-semibold text-lg">Iniciação Científica - Blockchain</div>
-                                        <div class="text-blue-300 mt-1">Universidade Salvador</div>
-                                    </div>
-                                    <div class="text-slate-400 text-sm">04/2024 – 07/2024</div>
-                                </div>
-                                <ul class="mt-4 space-y-2 text-slate-300 text-sm list-disc list-inside">
-                                    <li>Pesquisa aplicada sobre Blockchain e Smart Contracts em auditorias governamentais.</li>
-                                    <li>Revisões sistemáticas e análise crítica.</li>
-                                    <li>Coautoria de artigos científicos.</li>
-                                </ul>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="skill-tag">Blockchain</span>
-                                    <span class="skill-tag">Smart Contracts</span>
-                                    <span class="skill-tag">Zero-Trust</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PROJECTS -->
-            <section id="projects" class="pb-12">
-                <div class="mx-auto max-w-5xl px-4">
-                    <div class="glass rounded-3xl p-6 md:p-10">
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Projetos</h2>
-                        <p class="mt-2 text-slate-400 text-sm">Cards com tags de tecnologia.</p>
-
-                        <div class="mt-8 grid md:grid-cols-2 gap-6">
-                            <div class="glass rounded-2xl overflow-hidden">
-                                <img
-                                    src="assets/Screenshot%202026-03-18%20at%2016-31-41%203KAP%20-%20Auditoria%20TI%20RH.png"
-                                    alt="3kap.com.br"
-                                    class="h-52 w-full object-cover"
-                                />
-                                <div class="p-6">
-                                    <div class="font-semibold text-slate-100 text-lg">3kap.com.br</div>
-                                    <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-                                        Site institucional que integra <strong>Auditoria</strong>, <strong>RH</strong> e <strong>TI</strong>,
-                                        destacando governança, conformidade e a 3KAP Academy.
-                                    </p>
-                                    <div class="mt-4 flex flex-wrap gap-2">
-                                        <span class="skill-tag">Tailwind</span>
-                                        <span class="skill-tag">Vue.js</span>
-                                        <span class="skill-tag">LGPD</span>
-                                    </div>
-                                    <a
-                                        href="https://3kap.com.br"
-                                        target="_blank"
-                                        class="mt-5 inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors text-sm font-semibold"
-                                    >
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                        Visitar
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="glass rounded-2xl overflow-hidden">
-                                <img src="assets/print_kallas.png" alt="Sistema de Gestão de Campanhas" class="h-52 w-full object-cover" />
-                                <div class="p-6">
-                                    <div class="font-semibold text-slate-100 text-lg">Sistema de Gestão de Campanhas</div>
-                                    <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-                                        Aplicação web interativa para gerenciar campanhas com dados de rotas vindos de planilhas no Google Sheets.
-                                    </p>
-                                    <div class="mt-4 flex flex-wrap gap-2">
-                                        <span class="skill-tag">HTML</span>
-                                        <span class="skill-tag">CSS</span>
-                                        <span class="skill-tag">JavaScript</span>
-                                        <span class="skill-tag">Google Sheets</span>
-                                    </div>
-                                    <a
-                                        href="https://rotaskallas.onrender.com/"
-                                        target="_blank"
-                                        class="mt-5 inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors text-sm font-semibold"
-                                    >
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                        Visitar
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="glass rounded-2xl overflow-hidden">
-                                <img src="assets/historiasVivasPrint.png" alt="Historias Vivas" class="h-52 w-full object-cover" />
-                                <div class="p-6">
-                                    <div class="font-semibold text-slate-100 text-lg">Historias Vivas</div>
-                                    <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-                                        Sistema para registrar e apresentar memórias essenciais (texto, áudio, foto e vídeo).
-                                    </p>
-                                    <div class="mt-4 flex flex-wrap gap-2">
-                                        <span class="skill-tag">Laravel</span>
-                                        <span class="skill-tag">SQLite</span>
-                                        <span class="skill-tag">Blade</span>
-                                        <span class="skill-tag">Tailwind</span>
-                                    </div>
-                                    <a
-                                        href="https://github.com/JoaoPec/historiasVivas"
-                                        target="_blank"
-                                        class="mt-5 inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors text-sm font-semibold"
-                                    >
-                                        <i class="fa-brands fa-github"></i>
-                                        GitHub
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="glass rounded-2xl overflow-hidden">
-                                <div class="h-52 w-full bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center">
-                                    <i class="fa-brands fa-ethereum text-6xl text-blue-400/60"></i>
-                                </div>
-                                <div class="p-6">
-                                    <div class="font-semibold text-slate-100 text-lg">Blockchain em Auditoria Governamental</div>
-                                    <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-                                        Pesquisa com foco em arquitetura Zero-Trust e uso de Smart Contracts para aumentar transparência.
-                                    </p>
-                                    <div class="mt-4 flex flex-wrap gap-2">
-                                        <span class="skill-tag">Blockchain</span>
-                                        <span class="skill-tag">Smart Contracts</span>
-                                        <span class="skill-tag">Zero-Trust</span>
-                                    </div>
-                                    <div class="mt-5 text-xs text-slate-400 inline-flex items-center gap-2">
-                                        <i class="fa-solid fa-graduation-cap text-blue-300"></i>
-                                        UNIFACS
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Projeto - Análise de Fronteira Eficiente de Markowitz -->
-                            <div class="glass rounded-2xl overflow-hidden md:col-span-2">
-                                <div class="relative overflow-hidden">
-                                    <img
-                                        src="https://placehold.co/600x400/1e293b/60a5fa?text=An%C3%A1lise+de+Portf%C3%B3lio"
-                                        alt="Análise de Fronteira Eficiente de Markowitz"
-                                        class="w-full h-52 object-cover"
-                                    />
-                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                </div>
-                                <div class="p-6">
-                                    <div class="font-semibold text-slate-100 text-lg">
-                                        Análise de Fronteira Eficiente de Markowitz
-                                    </div>
-                                    <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-                                        Sistema de análise de investimentos para otimização de portfólio, calculando risco, retorno e índice de Sharpe
-                                        para ações brasileiras (Python, Pandas, NumPy, SciPy).
-                                    </p>
-                                    <div class="mt-4 flex flex-wrap gap-2">
-                                        <span class="skill-tag">Python</span>
-                                        <span class="skill-tag">Pandas</span>
-                                        <span class="skill-tag">NumPy</span>
-                                        <span class="skill-tag">SciPy</span>
-                                        <span class="skill-tag">Matplotlib</span>
-                                        <span class="skill-tag">Excel</span>
-                                    </div>
-                                    <div class="mt-5">
-                                        <a
-                                            href="https://github.com/JoaoPec/Fronteira-de-Markowitz"
-                                            target="_blank"
-                                            class="inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors text-sm font-semibold"
-                                        >
-                                            <i class="fa-brands fa-github"></i>
-                                            GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CONTACT -->
-            <section id="contact" class="pb-6">
-                <div class="mx-auto max-w-5xl px-4">
-                    <div class="glass rounded-3xl p-6 md:p-10">
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Contato</h2>
-                        <p class="mt-2 text-slate-400 text-sm">Vamos conversar sobre APIs, integrações e arquitetura?</p>
-
-                        <div class="mt-8 grid sm:grid-cols-2 gap-4">
-                            <a href="mailto:joaopecurcino.dev@gmail.com" class="glass rounded-2xl p-6 hover:border-blue-500/50 transition-colors group">
-                                <div class="flex items-start gap-3">
-                                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </span>
-                                    <div>
-                                        <div class="font-semibold text-slate-100">E-mail</div>
-                                        <div class="text-sm text-slate-300 group-hover:text-blue-200 transition-colors">joaopecurcino.dev@gmail.com</div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank" class="glass rounded-2xl p-6 hover:border-blue-500/50 transition-colors group">
-                                <div class="flex items-start gap-3">
-                                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300">
-                                        <i class="fa-brands fa-linkedin"></i>
-                                    </span>
-                                    <div>
-                                        <div class="font-semibold text-slate-100">LinkedIn</div>
-                                        <div class="text-sm text-slate-300 group-hover:text-blue-200 transition-colors">Conectar no LinkedIn</div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="https://github.com/JoaoPec" target="_blank" class="glass rounded-2xl p-6 hover:border-blue-500/50 transition-colors group">
-                                <div class="flex items-start gap-3">
-                                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300">
-                                        <i class="fa-brands fa-github"></i>
-                                    </span>
-                                    <div>
-                                        <div class="font-semibold text-slate-100">GitHub</div>
-                                        <div class="text-sm text-slate-300 group-hover:text-blue-200 transition-colors">Ver repositórios</div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="https://wa.me/5571984313715" target="_blank" class="glass rounded-2xl p-6 hover:border-blue-500/50 transition-colors group">
-                                <div class="flex items-start gap-3">
-                                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300">
-                                        <i class="fa-brands fa-whatsapp"></i>
-                                    </span>
-                                    <div>
-                                        <div class="font-semibold text-slate-100">WhatsApp</div>
-                                        <div class="text-sm text-slate-300 group-hover:text-blue-200 transition-colors">71 98431-3715</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="mt-6 text-xs text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-clock text-blue-300"></i>
-                            <span>Atualmente trabalhando em tempo integral e evoluindo projetos de backend.</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="py-10 text-center text-slate-500 text-sm">
-            © <span id="year"></span> João Curcino. Todos os direitos reservados.
-        </footer>
-
-        <script>
-            const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-            const mobileMenu = document.getElementById("mobileMenu")
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener("click", () => {
-                    mobileMenu.classList.toggle("hidden")
-                })
-            }
-
-            const easterBox = document.getElementById("easterBox")
-
-            // Decora chips de tecnologias com ícones e cor (por texto do chip).
-            // Ex.: <span class="skill-tag">Go</span> vira <i ...></i><span>Go</span>
-            const SKILL_DECORATION_MAP = {
-                "Go": { icon: "fa-brands fa-golang", rgb: [0, 173, 216] },
-                "TypeScript": { icon: "fa-solid fa-code", rgb: [0, 122, 204] },
-                "Node.js": { icon: "fa-brands fa-node-js", rgb: [51, 192, 50] },
-                "NestJS": { icon: "fa-solid fa-diagram-project", rgb: [224, 35, 244] },
-                "Laravel": { icon: "fa-brands fa-laravel", rgb: [255, 45, 95] },
-                "Apache Kafka": { icon: "fa-solid fa-bolt", rgb: [234, 179, 8] },
-                "React": { icon: "fa-brands fa-react", rgb: [97, 218, 251] },
-                "Git": { icon: "fa-solid fa-code-branch", rgb: [244, 67, 54] },
-                "PostgreSQL": { icon: "fa-solid fa-database", rgb: [49, 130, 189] },
-                "MongoDB": { icon: "fa-solid fa-database", rgb: [74, 222, 128] },
-                "SQLite": { icon: "fa-solid fa-database", rgb: [0, 168, 160] },
-                "VSCode": { icon: "fa-solid fa-terminal", rgb: [36, 99, 235] },
-                "Notion": { icon: "fa-solid fa-pen-to-square", rgb: [2, 132, 199] },
-                "Arch Linux": { icon: "fa-brands fa-linux", rgb: [24, 162, 184] },
-                "NeoVim": { icon: "fa-solid fa-code", rgb: [87, 161, 67] },
-
-                "APIs": { icon: "fa-solid fa-plug", rgb: [59, 130, 246] },
-                "Sistemas Distribuídos": { icon: "fa-solid fa-network-wired", rgb: [14, 165, 233] },
-                "Orientado a Eventos": { icon: "fa-solid fa-broadcast-tower", rgb: [245, 158, 11] },
-                "Integração": { icon: "fa-solid fa-link", rgb: [59, 130, 246] },
-
-                "APIs bancárias": { icon: "fa-solid fa-building-columns", rgb: [56, 189, 248] },
-                "JasperReports": { icon: "fa-solid fa-file-lines", rgb: [37, 99, 235] },
-                "PIX": { icon: "fa-solid fa-money-bill-transfer", rgb: [34, 197, 94] },
-
-                "Blockchain": { icon: "fa-solid fa-cubes", rgb: [99, 102, 241] },
-                "Smart Contracts": { icon: "fa-solid fa-file-signature", rgb: [129, 140, 248] },
-                "Zero-Trust": { icon: "fa-solid fa-shield-halved", rgb: [56, 189, 248] },
-
-                "Tailwind": { icon: "fa-brands fa-tailwindcss", rgb: [56, 189, 248] },
-                "Vue.js": { icon: "fa-brands fa-vuejs", rgb: [66, 185, 131] },
-                "LGPD": { icon: "fa-solid fa-shield-heart", rgb: [59, 130, 246] },
-
-                "HTML": { icon: "fa-brands fa-html5", rgb: [239, 68, 68] },
-                "CSS": { icon: "fa-brands fa-css3-alt", rgb: [59, 130, 246] },
-                "JavaScript": { icon: "fa-brands fa-js", rgb: [245, 158, 11] },
-                "Google Sheets": { icon: "fa-brands fa-google", rgb: [34, 197, 94] },
-                "Blade": { icon: "fa-solid fa-layer-group", rgb: [99, 102, 241] },
-
-                "Python": { icon: "fa-brands fa-python", rgb: [53, 114, 165] },
-                "Pandas": { icon: "fa-solid fa-table", rgb: [15, 118, 110] },
-                "NumPy": { icon: "fa-solid fa-square-root-alt", rgb: [35, 77, 166] },
-                "SciPy": { icon: "fa-solid fa-flask", rgb: [16, 185, 129] },
-                "Matplotlib": { icon: "fa-solid fa-chart-area", rgb: [239, 68, 68] },
-                "Excel": { icon: "fa-solid fa-file-excel", rgb: [18, 126, 87] },
-            }
-
-            const defaultDecoration = { icon: "fa-solid fa-code", rgb: [59, 130, 246] }
-            document.querySelectorAll(".skill-tag").forEach((tag) => {
-                const label = tag.textContent.trim()
-                const conf = SKILL_DECORATION_MAP[label] ?? defaultDecoration
-
-                tag.style.setProperty("--chip-rgb", conf.rgb.join(","))
-
-                const iconEl = document.createElement("i")
-                iconEl.className = `${conf.icon} chip-icon`
-                iconEl.setAttribute("aria-hidden", "true")
-
-                const labelEl = document.createElement("span")
-                labelEl.className = "chip-label"
-                labelEl.textContent = label
-
-                tag.innerHTML = ""
-                tag.appendChild(iconEl)
-                tag.appendChild(labelEl)
-            })
-
-            // Easter egg: clicar 9 vezes na foto.
-            const profileWrapper = document.getElementById("profileWrapper")
-            let clickCount = 0
-            if (profileWrapper) {
-                profileWrapper.addEventListener("click", () => {
-                    clickCount += 1
-                    if (!easterBox) return
-                    if (clickCount < 9) return
-
-                    clickCount = 0
-
-                    // Ao acertar: redireciona para a página do amor.
-                    window.location.href = "momo-love.html"
-                })
-            }
-
-            document.getElementById("year").textContent = new Date().getFullYear()
-        </script>
-    </body>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
-
