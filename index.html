@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>João Curcino | Software Engineer</title>
-  <meta name="description" content="Software Engineer full-stack focado em produtos escaláveis — APIs, mobile e web." />
+  <title>João Curcino | Sites e Sistemas para Empresas</title>
+  <meta name="description" content="Criação de sites, landing pages e sistemas web para empresas que querem vender mais, automatizar processos e parecer mais profissionais online." />
   <link rel="icon" type="image/svg+xml"
     href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Inter,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -33,293 +33,346 @@
   </script>
   <style>
     body { font-family: "Inter", sans-serif; background: #0B0F14; }
-    h1,h2,h3,h4 { font-family: "Poppins", sans-serif; }
-    .glass { background: rgba(15,23,42,.65); border: 1px solid rgba(148,163,184,.2); backdrop-filter: blur(12px); }
+    h1,h2,h3,h4 { font-family: "Poppins", sans-serif; letter-spacing: 0; }
+    .glass { background: rgba(15,23,42,.68); border: 1px solid rgba(148,163,184,.2); backdrop-filter: blur(12px); }
     .reveal { opacity: 0; transform: translateY(16px); animation: up .65s ease forwards; }
     @keyframes up { to { opacity: 1; transform: translateY(0); } }
-    .featured:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 25px 50px -12px rgba(99,102,241, 0.4); }
     .bg-grid { background-image: radial-gradient(rgba(148,163,184,0.1) 1px, transparent 0); background-size: 40px 40px; }
+    .service:hover, .case-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,.55); box-shadow: 0 25px 50px -18px rgba(99,102,241,.45); }
+    .timeline-line { background: linear-gradient(180deg, rgba(99,102,241,.8), rgba(6,182,212,.25)); }
   </style>
 </head>
 <body class="text-slate-100 antialiased bg-grid">
   <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-bg/85 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="#" class="text-2xl font-display font-bold tracking-tight">João<span class="text-brand">.</span></a>
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+      <a href="#" class="text-2xl font-display font-bold tracking-tight">joaopec<span class="text-brand">.dev</span></a>
       <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300">
+        <a href="#servicos" class="hover:text-white">Serviços</a>
+        <a href="#cases" class="hover:text-white">Cases</a>
+        <a href="#processo" class="hover:text-white">Processo</a>
         <a href="#sobre" class="hover:text-white">Sobre</a>
-        <a href="#skills" class="hover:text-white">Skills</a>
-        <a href="#projetos" class="hover:text-white">Projetos</a>
-        <a href="#experiencia" class="hover:text-white">Experiência</a>
         <a href="#contato" class="hover:text-white">Contato</a>
       </nav>
-      <a href="assets/Joao_Curcino_Software_Engineer.pdf" target="_blank" class="inline-flex items-center rounded-full bg-gradient-to-r from-brand to-cyanx text-white px-4 py-2 text-sm font-semibold shadow-glow hover:opacity-95">
-        Ver currículo
+      <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="inline-flex items-center rounded-full bg-gradient-to-r from-brand to-cyanx text-white px-4 py-2 text-sm font-semibold shadow-glow hover:opacity-95">
+        Orçamento
       </a>
     </div>
   </header>
 
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,.22),transparent_30%),radial-gradient(circle_at_85%_25%,rgba(6,182,212,.20),transparent_28%)]"></div>
-    <div class="relative max-w-6xl mx-auto px-4 py-14 md:py-18">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6 reveal">
-          <span class="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-slate-300">
-            <i class="fa-solid fa-circle text-cyanx text-[8px]"></i> Software Engineering
-          </span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-            Software Engineer focado em <span class="text-brand">produtos escaláveis</span>
-          </h1>
-          <p class="text-slate-300 text-lg leading-relaxed max-w-xl">
-            Full-stack: APIs robustas, apps mobile com Flutter, interfaces web modernas e arquitetura orientada a eventos.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 text-xs rounded-full border border-brand/40 bg-brand/15 text-indigo-200">NestJS</span>
-            <span class="px-3 py-1 text-xs rounded-full border border-cyanx/40 bg-cyanx/15 text-cyan-200">Flutter</span>
-            <span class="px-3 py-1 text-xs rounded-full border border-greenx/40 bg-greenx/15 text-green-200">Next.js</span>
-            <span class="px-3 py-1 text-xs rounded-full border border-amberx/40 bg-amberx/15 text-amber-200">Kafka</span>
-          </div>
-          <div class="pt-2">
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,.22),transparent_30%),radial-gradient(circle_at_85%_25%,rgba(6,182,212,.20),transparent_28%)]"></div>
+      <div class="relative max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <div class="grid lg:grid-cols-[1.08fr_.92fr] gap-10 items-center">
+          <div class="space-y-6 reveal">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+              Sites e sistemas que ajudam sua empresa a <span class="text-brand">fechar mais negócios</span>
+            </h1>
+            <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
+              Eu crio landing pages, sites institucionais e plataformas web com foco em conversão, performance e uma presença digital que passa confiança desde o primeiro clique.
+            </p>
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="#projetos" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-cyanx px-7 py-3 font-semibold shadow-glow">
-              <i class="fa-solid fa-rocket"></i> Ver projetos
+              <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-cyanx px-7 py-3 font-semibold shadow-glow">
+                <i class="fa-brands fa-whatsapp"></i> Pedir orçamento
               </a>
-              <a href="https://wa.me/5571984313715" target="_blank" class="inline-flex items-center justify-center gap-2 rounded-xl border border-brand/45 px-7 py-3 font-semibold text-slate-200 hover:bg-brand/10">
-                <i class="fa-brands fa-whatsapp"></i> Fale comigo
-              </a>
-            </div>
-            <a href="assets/Joao_Curcino_Software_Engineer.pdf" target="_blank" class="mt-3 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-cyanx/45 bg-cyanx/10 px-9 py-4 text-base font-semibold text-cyan-200 hover:bg-cyanx/20">
-              <i class="fa-solid fa-file-arrow-down"></i> Ver currículo
-            </a>
-          </div>
-        </div>
-        <div class="reveal flex justify-center" style="animation-delay:.08s">
-          <div class="w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full overflow-hidden border border-brand/40 shadow-glow">
-            <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sobre" class="py-10 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="glass rounded-3xl p-8 md:p-10 reveal">
-        <h2 class="text-3xl font-bold mb-4">Sobre</h2>
-        <p class="text-slate-300 leading-relaxed max-w-4xl">
-          Software Engineer full-stack com experiência em backend (NestJS, Laravel), mobile (Flutter) e frontend (Next.js, React). Construo produtos do zero ao deploy — APIs escaláveis, apps nativos, integrações bancárias e arquiteturas que performam em produção.
-        </p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-brand/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-brand/10">
-            <i class="fa-brands fa-linkedin text-brand"></i> LinkedIn
-          </a>
-          <a href="https://github.com/JoaoPec" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-cyanx/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-cyanx/10">
-            <i class="fa-brands fa-github text-cyan-300"></i> GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="py-10 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-5 reveal">Skills</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="glass rounded-2xl p-5 reveal">
-          <h3 class="font-semibold mb-3 text-slate-200">Backend</h3>
-          <div class="flex flex-wrap gap-2">
-            <img alt="Go" src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="NestJS" src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="Laravel" src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" class="h-7 w-auto rounded-full" />
-          </div>
-        </div>
-        <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.05s">
-          <h3 class="font-semibold mb-3 text-slate-200">Infra</h3>
-          <div class="flex flex-wrap gap-2">
-            <img alt="Kafka" src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="Linux" src="https://img.shields.io/badge/Linux-1793D1?style=for-the-badge&logo=linux&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="Git" src="https://img.shields.io/badge/Git-E44C30?style=for-the-badge&logo=git&logoColor=white" class="h-7 w-auto rounded-full" />
-          </div>
-        </div>
-        <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.1s">
-          <h3 class="font-semibold mb-3 text-slate-200">Database</h3>
-          <div class="flex flex-wrap gap-2">
-            <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="SQLite" src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" class="h-7 w-auto rounded-full" />
-          </div>
-        </div>
-        <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.15s">
-          <h3 class="font-semibold mb-3 text-slate-200">Frontend & Mobile</h3>
-          <div class="flex flex-wrap gap-2">
-            <img alt="Flutter" src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" class="h-7 w-auto rounded-full" />
-            <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" class="h-7 w-auto rounded-full" />
-            <img alt="TailwindCSS" src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" class="h-7 w-auto rounded-full" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="github" class="py-10 md:py-12 relative">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 blur-[120px] rounded-full -z-10"></div>
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 reveal">GitHub Activity</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="glass rounded-3xl p-4 reveal flex flex-col justify-center items-center" style="animation-delay:.05s">
-          <h3 class="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">Tecnologias Core (Backend)</h3>
-          <img src="https://github-readme-stats-bice-iota-27.vercel.app/api/top-langs/?username=JoaoPec&layout=compact&theme=tokyonight&hide=javascript,blade,vue,html,css,scss,lua,shell&count_private=true&bg_color=0D111700&title_color=6366F1&text_color=cbd5e1" alt="Top Langs" class="w-full h-auto" />
-        </div>
-        <div class="glass rounded-3xl p-4 reveal flex flex-col justify-center items-center" style="animation-delay:.1s">
-          <h3 class="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">Contribuições e Streak</h3>
-          <img src="https://github-readme-streak-stats.herokuapp.com/?user=JoaoPec&theme=tokyonight&mode=weekly&background=0D111700&ring=6366F1&fire=6366F1&currStreakNum=6366F1&sideLabels=cbd5e1&stroke=cbd5e1" alt="Streak Stats" class="w-full h-auto" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projetos" class="py-10 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-6 reveal">Projetos</h2>
-
-      <div class="grid md:grid-cols-2 gap-6 mb-6">
-        <article class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-brand/50 shadow-glow reveal">
-          <div class="px-4 py-2 text-xs font-semibold bg-brand/20 text-indigo-200 border-b border-brand/30">Featured</div>
-          <img src="https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?w=900&q=80" alt="Vistta app" class="w-full h-52 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">Vistta</h3>
-            <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-              <strong>Problema:</strong> marketplace de peças usadas com jornada fragmentada e baixa conversão.
-              <strong> Solução:</strong> API em NestJS + app Flutter com chat em tempo real (WebSocket/Socket.IO), push com Firebase (FCM) e fluxo de pagamento/assinatura via Stripe.
-              <strong> Resultado:</strong> operação mais integrada, comunicação instantânea entre usuários e base pronta para escalar produto e monetização.
-            </p>
-            <div class="mt-4 flex gap-3">
-              <a href="https://vistta.app" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-300 hover:text-indigo-200">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
+              <a href="#cases" class="inline-flex items-center justify-center gap-2 rounded-xl border border-brand/45 px-7 py-3 font-semibold text-slate-200 hover:bg-brand/10">
+                <i class="fa-solid fa-arrow-trend-up"></i> Ver cases
               </a>
             </div>
-          </div>
-        </article>
-
-        <article class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-cyanx/50 shadow-glowCyan reveal" style="animation-delay:.06s">
-          <div class="px-4 py-2 text-xs font-semibold bg-cyanx/20 text-cyan-200 border-b border-cyanx/30">Featured</div>
-          <img src="https://placehold.co/900x500/0F172A/94a3b8?text=Markowitz" alt="Markowitz" class="w-full h-52 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">Sistema de Markowitz</h3>
-            <p class="mt-2 text-slate-300 text-sm leading-relaxed">
-              <strong>Problema:</strong> avaliação manual de risco/retorno.
-              <strong> Solução:</strong> motor em Python para fronteira eficiente e índice de Sharpe.
-              <strong> Resultado:</strong> análise mais rápida e decisões de portfólio com base quantitativa.
-            </p>
-            <div class="mt-4">
-              <a href="https://github.com/JoaoPec/Fronteira-de-Markowitz" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200">
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
+            <div class="grid sm:grid-cols-3 gap-3 pt-2">
+              <div class="glass rounded-2xl p-4">
+                <div class="text-2xl font-bold text-white">Web</div>
+                <p class="text-xs text-slate-400 mt-1">sites rápidos, responsivos e profissionais</p>
+              </div>
+              <div class="glass rounded-2xl p-4">
+                <div class="text-2xl font-bold text-white">UX</div>
+                <p class="text-xs text-slate-400 mt-1">jornada clara para contato e orçamento</p>
+              </div>
+              <div class="glass rounded-2xl p-4">
+                <div class="text-2xl font-bold text-white">Tech</div>
+                <p class="text-xs text-slate-400 mt-1">estrutura pronta para crescer</p>
+              </div>
             </div>
           </div>
-        </article>
-      </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        <article class="glass rounded-2xl overflow-hidden reveal" style="animation-delay:.1s">
-          <img src="assets/Screenshot 2026-03-18 at 16-31-41 3KAP - Auditoria TI RH.png" alt="3KAP" class="w-full h-52 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">3KAP</h3>
-            <p class="mt-2 text-slate-300 text-sm">Site institucional para auditoria, RH e TI com foco em posicionamento e geração de contato.</p>
-            <a href="https://3kap.com.br" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
-            </a>
-          </div>
-        </article>
-
-        <article class="glass rounded-2xl overflow-hidden reveal" style="animation-delay:.14s">
-          <img src="assets/historiasVivasPrint.png" alt="Historias Vivas" class="w-full h-52 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">Historias Vivas</h3>
-            <p class="mt-2 text-slate-300 text-sm">Plataforma para apoio ao cuidado de pessoas com Alzheimer com memória multimídia.</p>
-            <div class="mt-4 flex items-center gap-3 flex-wrap">
-              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
-              </a>
-              <a href="https://github.com/JoaoPec/historiasVivas" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
+          <div class="reveal" style="animation-delay:.08s">
+            <div class="glass rounded-[2rem] p-5 md:p-6 shadow-glow">
+              <div class="flex items-center gap-4">
+                <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-brand/40 shrink-0">
+                  <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p class="text-sm text-slate-400">João Curcino</p>
+                  <h2 class="text-2xl font-bold">Sites & Sistemas</h2>
+                  <p class="text-sm text-cyan-200 mt-1">Engenharia de software para empresas</p>
+                </div>
+              </div>
+              <div class="mt-6 grid gap-3">
+                <div class="rounded-2xl border border-slate-700/80 bg-bg/55 p-4 flex items-start gap-3">
+                  <i class="fa-solid fa-bullseye text-brand mt-1"></i>
+                  <div>
+                    <h3 class="font-semibold">Foco em venda</h3>
+                    <p class="text-sm text-slate-400 mt-1">Copy, layout e CTA pensados para transformar visita em conversa.</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl border border-slate-700/80 bg-bg/55 p-4 flex items-start gap-3">
+                  <i class="fa-solid fa-gauge-high text-cyanx mt-1"></i>
+                  <div>
+                    <h3 class="font-semibold">Performance real</h3>
+                    <p class="text-sm text-slate-400 mt-1">Carregamento rápido, SEO básico e experiência boa no celular.</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl border border-slate-700/80 bg-bg/55 p-4 flex items-start gap-3">
+                  <i class="fa-solid fa-code-branch text-greenx mt-1"></i>
+                  <div>
+                    <h3 class="font-semibold">Do site ao sistema</h3>
+                    <p class="text-sm text-slate-400 mt-1">Quando sua operação precisar evoluir, a base técnica acompanha.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="experiencia" class="py-10 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-5 reveal">Experiência</h2>
-      <div class="glass rounded-2xl p-6 md:p-7 reveal">
-        <div class="mb-5 pb-4 border-b border-slate-700/70">
-          <h3 class="text-xl font-semibold">Infocraft</h3>
-          <p class="text-brand text-sm">07/2024 — Atual</p>
         </div>
-        <div class="space-y-6">
-          <article class="relative pl-5 border-l-2 border-brand/40">
-            <span class="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-brand"></span>
-            <div class="flex items-start justify-between gap-4 flex-wrap">
-              <h4 class="font-semibold text-lg">Desenvolvedor de Software Júnior</h4>
-              <span class="text-slate-400 text-sm">07/2025 — Atual</span>
-            </div>
-            <ul class="mt-3 text-slate-300 list-disc ml-5 space-y-1 text-sm">
-              <li>NestJS + React em módulos de produção</li>
-              <li>APIs bancárias, PIX e assinatura digital</li>
-              <li>Relatórios JasperReports com ganho de performance</li>
+      </div>
+    </section>
+
+    <section id="servicos" class="py-10 md:py-14">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-3xl mb-7 reveal">
+          <h2 class="text-3xl md:text-4xl font-bold">O que eu posso construir para você</h2>
+          <p class="text-slate-300 mt-3">Pacotes claros para quem precisa sair do improviso e vender com uma presença digital mais forte.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <article class="service transition-all duration-300 glass rounded-2xl p-6 reveal">
+            <div class="w-11 h-11 rounded-xl bg-brand/15 text-brand grid place-items-center mb-5"><i class="fa-solid fa-window-maximize"></i></div>
+            <h3 class="text-xl font-semibold">Landing page de venda</h3>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Página direta para campanha, tráfego pago, lançamento ou serviço específico, com CTA forte e narrativa persuasiva.</p>
+            <ul class="mt-5 space-y-2 text-sm text-slate-400">
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>Copy e estrutura de conversão</li>
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>WhatsApp, formulário ou agenda</li>
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>Entrega rápida e responsiva</li>
             </ul>
           </article>
-          <article class="relative pl-5 border-l-2 border-slate-700">
-            <span class="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-slate-500"></span>
-            <div class="flex items-start justify-between gap-4 flex-wrap">
-              <h4 class="font-semibold text-lg">Estagiário de Desenvolvimento PHP</h4>
-              <span class="text-slate-400 text-sm">07/2024 — 07/2025</span>
-            </div>
-            <ul class="mt-3 text-slate-300 list-disc ml-5 space-y-1 text-sm">
-              <li>Backend no E-Grafite com Laravel/PHP</li>
-              <li>Evolução e manutenção de módulos de negócio</li>
+          <article class="service transition-all duration-300 glass rounded-2xl p-6 reveal border-brand/45 shadow-glow" style="animation-delay:.05s">
+            <div class="w-11 h-11 rounded-xl bg-cyanx/15 text-cyanx grid place-items-center mb-5"><i class="fa-solid fa-building"></i></div>
+            <h3 class="text-xl font-semibold">Site institucional</h3>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Presença profissional para empresas que precisam gerar confiança, explicar serviços e receber contatos qualificados.</p>
+            <ul class="mt-5 space-y-2 text-sm text-slate-400">
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>Home, serviços, sobre e contato</li>
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>SEO técnico básico</li>
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>Design alinhado à sua marca</li>
+            </ul>
+          </article>
+          <article class="service transition-all duration-300 glass rounded-2xl p-6 reveal" style="animation-delay:.1s">
+            <div class="w-11 h-11 rounded-xl bg-amberx/15 text-amberx grid place-items-center mb-5"><i class="fa-solid fa-gears"></i></div>
+            <h3 class="text-xl font-semibold">Sistema sob medida</h3>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Plataformas, dashboards e automações para reduzir trabalho manual e organizar processos importantes da empresa.</p>
+            <ul class="mt-5 space-y-2 text-sm text-slate-400">
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>Painéis administrativos</li>
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>APIs e integrações</li>
+              <li><i class="fa-solid fa-check text-greenx mr-2"></i>Arquitetura escalável</li>
             </ul>
           </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contato" class="py-10 md:py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="glass rounded-3xl p-8 md:p-10 reveal">
-        <h2 class="text-3xl font-bold mb-3">Contato</h2>
-        <p class="text-slate-300 mb-7">Vamos conversar sobre produto, APIs, mobile e web.</p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="mailto:joaopecurcino.dev@gmail.com" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
-            <div class="font-medium"><i class="fa-solid fa-envelope mr-2 text-brand"></i>E-mail</div>
-            <p class="text-slate-300 text-sm mt-1">joaopecurcino.dev@gmail.com</p>
-          </a>
-          <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
-            <div class="font-medium"><i class="fa-brands fa-linkedin mr-2 text-brand"></i>LinkedIn</div>
-            <p class="text-slate-300 text-sm mt-1">Perfil profissional</p>
-          </a>
-          <a href="https://github.com/JoaoPec" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
-            <div class="font-medium"><i class="fa-brands fa-github mr-2 text-brand"></i>GitHub</div>
-            <p class="text-slate-300 text-sm mt-1">Repositórios</p>
-          </a>
-          <a href="https://wa.me/5571984313715" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
-            <div class="font-medium"><i class="fa-brands fa-whatsapp mr-2 text-brand"></i>WhatsApp</div>
-            <p class="text-slate-300 text-sm mt-1">Falar agora</p>
+    <section id="cases" class="py-10 md:py-14 relative">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-brand/5 blur-[120px] rounded-full -z-10"></div>
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex items-end justify-between gap-6 flex-wrap mb-7">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-4xl font-bold">Projetos com cara de negócio</h2>
+            <p class="text-slate-300 mt-3">Alguns exemplos de como eu transformo necessidade técnica em uma experiência mais clara para o cliente final.</p>
+          </div>
+          <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Vi%20seus%20cases%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" class="inline-flex items-center justify-center gap-2 rounded-xl border border-cyanx/45 px-5 py-3 font-semibold text-cyan-200 hover:bg-cyanx/10">
+            <i class="fa-brands fa-whatsapp"></i> Quero algo assim
           </a>
         </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <article class="case-card transition-all duration-300 glass rounded-2xl overflow-hidden border border-brand/45 reveal">
+            <img src="assets/Screenshot 2026-03-18 at 16-31-41 3KAP - Auditoria TI RH.png" alt="Site 3KAP" class="w-full h-56 object-cover object-top" />
+            <div class="p-6">
+              <div class="text-xs font-semibold uppercase tracking-widest text-indigo-200">Site institucional</div>
+              <h3 class="text-xl font-semibold mt-2">3KAP</h3>
+              <p class="mt-3 text-slate-300 text-sm leading-relaxed">Site para auditoria, RH e TI com comunicação mais profissional, páginas de serviço e caminho direto para contato comercial.</p>
+              <a href="https://3kap.com.br" target="_blank" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-indigo-300 hover:text-indigo-200">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar projeto
+              </a>
+            </div>
+          </article>
+
+          <article class="case-card transition-all duration-300 glass rounded-2xl overflow-hidden border border-cyanx/45 reveal" style="animation-delay:.05s">
+            <img src="https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?w=900&q=80" alt="Vistta app" class="w-full h-56 object-cover" />
+            <div class="p-6">
+              <div class="text-xs font-semibold uppercase tracking-widest text-cyan-200">Marketplace + app</div>
+              <h3 class="text-xl font-semibold mt-2">Vistta</h3>
+              <p class="mt-3 text-slate-300 text-sm leading-relaxed">Produto com API, app Flutter, chat em tempo real, notificações e pagamentos. Um exemplo de evolução além do site quando a operação cresce.</p>
+              <a href="https://vistta.app" target="_blank" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar projeto
+              </a>
+            </div>
+          </article>
+
+          <article class="case-card transition-all duration-300 glass rounded-2xl overflow-hidden reveal" style="animation-delay:.1s">
+            <img src="assets/historiasVivasPrint.png" alt="Historias Vivas" class="w-full h-56 object-cover object-top" />
+            <div class="p-6">
+              <div class="text-xs font-semibold uppercase tracking-widest text-green-200">Plataforma web</div>
+              <h3 class="text-xl font-semibold mt-2">Histórias Vivas</h3>
+              <p class="mt-3 text-slate-300 text-sm leading-relaxed">Plataforma de apoio ao cuidado de pessoas com Alzheimer, com experiência clara para organização de memórias multimídia.</p>
+              <div class="mt-5 flex items-center gap-4 flex-wrap">
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
+                </a>
+                <a href="https://github.com/JoaoPec/historiasVivas" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card transition-all duration-300 glass rounded-2xl overflow-hidden reveal" style="animation-delay:.15s">
+            <img src="https://placehold.co/900x500/0F172A/94a3b8?text=Sistema+de+An%C3%A1lise" alt="Sistema de Markowitz" class="w-full h-56 object-cover" />
+            <div class="p-6">
+              <div class="text-xs font-semibold uppercase tracking-widest text-amber-200">Sistema técnico</div>
+              <h3 class="text-xl font-semibold mt-2">Sistema de Markowitz</h3>
+              <p class="mt-3 text-slate-300 text-sm leading-relaxed">Motor em Python para análise de risco e retorno, mostrando capacidade de construir lógica de negócio além da interface.</p>
+              <a href="https://github.com/JoaoPec/Fronteira-de-Markowitz" target="_blank" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="processo" class="py-10 md:py-14">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-8 items-start">
+          <div class="reveal">
+            <h2 class="text-3xl md:text-4xl font-bold">Como o projeto sai do papel</h2>
+            <p class="text-slate-300 mt-3 leading-relaxed">Você não precisa chegar com tudo pronto. Eu ajudo a transformar a ideia em escopo, prioridade e uma primeira versão que já pode gerar contato.</p>
+            <div class="mt-6 glass rounded-2xl p-5">
+              <p class="text-sm text-slate-400">Ideal para</p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="px-3 py-1 text-xs rounded-full border border-brand/40 bg-brand/15 text-indigo-200">prestadores de serviço</span>
+                <span class="px-3 py-1 text-xs rounded-full border border-cyanx/40 bg-cyanx/15 text-cyan-200">empresas locais</span>
+                <span class="px-3 py-1 text-xs rounded-full border border-greenx/40 bg-greenx/15 text-green-200">startups</span>
+                <span class="px-3 py-1 text-xs rounded-full border border-amberx/40 bg-amberx/15 text-amber-200">operações internas</span>
+              </div>
+            </div>
+          </div>
+          <div class="glass rounded-3xl p-6 md:p-8 reveal" style="animation-delay:.06s">
+            <div class="space-y-6">
+              <div class="relative pl-8">
+                <span class="timeline-line absolute left-2 top-2 bottom-[-26px] w-px"></span>
+                <span class="absolute left-0 top-1 h-4 w-4 rounded-full bg-brand"></span>
+                <h3 class="font-semibold text-lg">1. Diagnóstico rápido</h3>
+                <p class="text-sm text-slate-400 mt-1">Entendo objetivo, público, oferta, referências e o que precisa acontecer depois que a pessoa entra no site.</p>
+              </div>
+              <div class="relative pl-8">
+                <span class="timeline-line absolute left-2 top-2 bottom-[-26px] w-px"></span>
+                <span class="absolute left-0 top-1 h-4 w-4 rounded-full bg-cyanx"></span>
+                <h3 class="font-semibold text-lg">2. Estrutura e design</h3>
+                <p class="text-sm text-slate-400 mt-1">Monto a narrativa da página, as seções, CTAs e o visual para deixar sua empresa mais confiável.</p>
+              </div>
+              <div class="relative pl-8">
+                <span class="timeline-line absolute left-2 top-2 bottom-[-26px] w-px"></span>
+                <span class="absolute left-0 top-1 h-4 w-4 rounded-full bg-greenx"></span>
+                <h3 class="font-semibold text-lg">3. Desenvolvimento</h3>
+                <p class="text-sm text-slate-400 mt-1">Construo a versão responsiva, rápida e preparada para integração com WhatsApp, formulário, analytics ou sistemas.</p>
+              </div>
+              <div class="relative pl-8">
+                <span class="absolute left-0 top-1 h-4 w-4 rounded-full bg-amberx"></span>
+                <h3 class="font-semibold text-lg">4. Publicação e ajustes</h3>
+                <p class="text-sm text-slate-400 mt-1">Coloco no ar, reviso no celular e deixo o caminho de contato funcionando para começar a captar oportunidades.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="py-10 md:py-14">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="glass rounded-3xl p-8 md:p-10 reveal">
+          <div class="grid lg:grid-cols-[1fr_.9fr] gap-8 items-center">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold">Engenharia de software com mentalidade comercial</h2>
+              <p class="text-slate-300 leading-relaxed mt-4">
+                Sou João Curcino, desenvolvedor full-stack. Minha diferença é unir execução técnica com visão de negócio: não entrego só uma tela bonita, entrego uma experiência pensada para explicar sua oferta, gerar confiança e abrir conversa com clientes.
+              </p>
+              <p class="text-slate-300 leading-relaxed mt-3">
+                Trabalho com Next.js, React, NestJS, Laravel, Flutter, integrações, APIs e automações. Isso permite começar com um site bem feito e evoluir para sistemas quando sua operação pedir mais.
+              </p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="rounded-2xl border border-slate-700 bg-bg/50 p-4">
+                <i class="fa-solid fa-mobile-screen-button text-cyanx"></i>
+                <h3 class="font-semibold mt-3">Mobile first</h3>
+                <p class="text-sm text-slate-400 mt-1">A maior parte dos clientes vai chegar pelo celular.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-700 bg-bg/50 p-4">
+                <i class="fa-solid fa-magnifying-glass-chart text-brand"></i>
+                <h3 class="font-semibold mt-3">SEO básico</h3>
+                <p class="text-sm text-slate-400 mt-1">Estrutura mais preparada para buscadores.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-700 bg-bg/50 p-4">
+                <i class="fa-solid fa-shield-halved text-greenx"></i>
+                <h3 class="font-semibold mt-3">Confiança</h3>
+                <p class="text-sm text-slate-400 mt-1">Visual profissional, textos claros e prova de trabalho.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-700 bg-bg/50 p-4">
+                <i class="fa-solid fa-plug-circle-bolt text-amberx"></i>
+                <h3 class="font-semibold mt-3">Integrações</h3>
+                <p class="text-sm text-slate-400 mt-1">WhatsApp, formulários, pagamentos, APIs e automações.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-10 md:py-14">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="relative overflow-hidden rounded-3xl border border-brand/40 bg-gradient-to-br from-brand/20 via-panel to-cyanx/10 p-8 md:p-10 reveal shadow-glow">
+          <div class="absolute right-[-80px] top-[-90px] h-64 w-64 rounded-full bg-cyanx/20 blur-3xl"></div>
+          <div class="relative grid lg:grid-cols-[1fr_.75fr] gap-8 items-center">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-bold">Vamos transformar sua presença digital em uma máquina de oportunidades?</h2>
+              <p class="text-slate-300 mt-4 leading-relaxed max-w-2xl">Me chama no WhatsApp com uma ideia geral do que você precisa. Eu te ajudo a entender o melhor caminho: landing page, site institucional ou sistema sob medida.</p>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-cyanx px-7 py-3 font-semibold shadow-glow">
+                  <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp
+                </a>
+                <a href="mailto:joaopecurcino.dev@gmail.com" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-7 py-3 font-semibold text-slate-200 hover:bg-white/5">
+                  <i class="fa-solid fa-envelope"></i> Enviar e-mail
+                </a>
+              </div>
+            </div>
+            <div class="glass rounded-2xl p-5">
+              <h3 class="font-semibold text-lg">Para agilizar, envie:</h3>
+              <ul class="mt-4 space-y-3 text-sm text-slate-300">
+                <li class="flex gap-3"><i class="fa-solid fa-check text-greenx mt-1"></i><span>Qual serviço ou produto você quer vender melhor</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-check text-greenx mt-1"></i><span>Se já existe site, Instagram ou referência visual</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-check text-greenx mt-1"></i><span>Prazo desejado e funcionalidades essenciais</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="border-t border-slate-800 py-10">
-    <div class="max-w-6xl mx-auto px-4 text-center text-slate-400 text-sm">
-      © <span id="year"></span> João Curcino. Todos os direitos reservados.
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
+      <span>© <span id="year"></span> João Curcino. Sites e sistemas para empresas.</span>
+      <div class="flex items-center gap-4">
+        <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="hover:text-white"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/JoaoPec" target="_blank" class="hover:text-white"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.instagram.com/joaopec.dev" target="_blank" class="hover:text-white"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
     </div>
   </footer>
 
