@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,9 +9,7 @@
     href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Inter,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
@@ -35,49 +32,15 @@
     };
   </script>
   <style>
-    body {
-      font-family: "Inter", sans-serif;
-      background: #0B0F14;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: "Poppins", sans-serif;
-    }
-
-    .glass {
-      background: rgba(15, 23, 42, .65);
-      border: 1px solid rgba(148, 163, 184, .2);
-      backdrop-filter: blur(12px);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      animation: up .65s ease forwards;
-    }
-
-    @keyframes up {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .featured:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.4);
-    }
-
-    .bg-grid {
-      background-image: radial-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 0);
-      background-size: 40px 40px;
-    }
+    body { font-family: "Inter", sans-serif; background: #0B0F14; }
+    h1,h2,h3,h4 { font-family: "Poppins", sans-serif; }
+    .glass { background: rgba(15,23,42,.65); border: 1px solid rgba(148,163,184,.2); backdrop-filter: blur(12px); }
+    .reveal { opacity: 0; transform: translateY(16px); animation: up .65s ease forwards; }
+    @keyframes up { to { opacity: 1; transform: translateY(0); } }
+    .featured:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 25px 50px -12px rgba(99,102,241, 0.4); }
+    .bg-grid { background-image: radial-gradient(rgba(148,163,184,0.1) 1px, transparent 0); background-size: 40px 40px; }
   </style>
 </head>
-
 <body class="text-slate-100 antialiased bg-grid">
   <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-bg/85 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -89,17 +52,14 @@
         <a href="#experiencia" class="hover:text-white">Experiência</a>
         <a href="#contato" class="hover:text-white">Contato</a>
       </nav>
-      <a href="assets/Joao_Curcino_Software_Engineer.pdf" target="_blank"
-        class="inline-flex items-center rounded-full bg-gradient-to-r from-brand to-cyanx text-white px-4 py-2 text-sm font-semibold shadow-glow hover:opacity-95">
+      <a href="assets/Joao_Curcino_Software_Engineer.pdf" target="_blank" class="inline-flex items-center rounded-full bg-gradient-to-r from-brand to-cyanx text-white px-4 py-2 text-sm font-semibold shadow-glow hover:opacity-95">
         Ver currículo
       </a>
     </div>
   </header>
 
   <section class="relative overflow-hidden">
-    <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,.22),transparent_30%),radial-gradient(circle_at_85%_25%,rgba(6,182,212,.20),transparent_28%)]">
-    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,.22),transparent_30%),radial-gradient(circle_at_85%_25%,rgba(6,182,212,.20),transparent_28%)]"></div>
     <div class="relative max-w-6xl mx-auto px-4 py-14 md:py-18">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="space-y-6 reveal">
@@ -110,38 +70,30 @@
             Software Engineer focado em <span class="text-brand">produtos escaláveis</span>
           </h1>
           <p class="text-slate-300 text-lg leading-relaxed max-w-xl">
-            Full-stack: APIs robustas, apps mobile com Flutter, interfaces web modernas e arquitetura orientada a
-            eventos.
+            Full-stack: APIs robustas, apps mobile com Flutter, interfaces web modernas e arquitetura orientada a eventos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span
-              class="px-3 py-1 text-xs rounded-full border border-brand/40 bg-brand/15 text-indigo-200">NestJS</span>
+            <span class="px-3 py-1 text-xs rounded-full border border-brand/40 bg-brand/15 text-indigo-200">NestJS</span>
             <span class="px-3 py-1 text-xs rounded-full border border-cyanx/40 bg-cyanx/15 text-cyan-200">Flutter</span>
-            <span
-              class="px-3 py-1 text-xs rounded-full border border-greenx/40 bg-greenx/15 text-green-200">Next.js</span>
-            <span
-              class="px-3 py-1 text-xs rounded-full border border-amberx/40 bg-amberx/15 text-amber-200">Kafka</span>
+            <span class="px-3 py-1 text-xs rounded-full border border-greenx/40 bg-greenx/15 text-green-200">Next.js</span>
+            <span class="px-3 py-1 text-xs rounded-full border border-amberx/40 bg-amberx/15 text-amber-200">Kafka</span>
           </div>
           <div class="pt-2">
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="#projetos"
-                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-cyanx px-7 py-3 font-semibold shadow-glow">
-                <i class="fa-solid fa-rocket"></i> Ver projetos
+              <a href="#projetos" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand to-cyanx px-7 py-3 font-semibold shadow-glow">
+              <i class="fa-solid fa-rocket"></i> Ver projetos
               </a>
-              <a href="https://wa.me/5571984313715" target="_blank"
-                class="inline-flex items-center justify-center gap-2 rounded-xl border border-brand/45 px-7 py-3 font-semibold text-slate-200 hover:bg-brand/10">
+              <a href="https://wa.me/5571984313715" target="_blank" class="inline-flex items-center justify-center gap-2 rounded-xl border border-brand/45 px-7 py-3 font-semibold text-slate-200 hover:bg-brand/10">
                 <i class="fa-brands fa-whatsapp"></i> Fale comigo
               </a>
             </div>
-            <a href="assets/Joao_Curcino_Software_Engineer.pdf" target="_blank"
-              class="mt-3 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-cyanx/45 bg-cyanx/10 px-9 py-4 text-base font-semibold text-cyan-200 hover:bg-cyanx/20">
+            <a href="assets/f" target="_blank" class="mt-3 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-cyanx/45 bg-cyanx/10 px-9 py-4 text-base font-semibold text-cyan-200 hover:bg-cyanx/20">
               <i class="fa-solid fa-file-arrow-down"></i> Ver currículo
             </a>
           </div>
         </div>
         <div class="reveal flex justify-center" style="animation-delay:.08s">
-          <div
-            class="w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full overflow-hidden border border-brand/40 shadow-glow">
+          <div class="w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full overflow-hidden border border-brand/40 shadow-glow">
             <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
           </div>
         </div>
@@ -154,17 +106,13 @@
       <div class="glass rounded-3xl p-8 md:p-10 reveal">
         <h2 class="text-3xl font-bold mb-4">Sobre</h2>
         <p class="text-slate-300 leading-relaxed max-w-4xl">
-          Software Engineer full-stack com experiência em backend (NestJS, Laravel), mobile (Flutter) e frontend
-          (Next.js, React). Construo produtos do zero ao deploy — APIs escaláveis, apps nativos, integrações bancárias e
-          arquiteturas que performam em produção.
+          Software Engineer full-stack com experiência em backend (NestJS, Laravel), mobile (Flutter) e frontend (Next.js, React). Construo produtos do zero ao deploy — APIs escaláveis, apps nativos, integrações bancárias e arquiteturas que performam em produção.
         </p>
         <div class="mt-5 flex flex-wrap gap-3">
-          <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank"
-            class="inline-flex items-center gap-2 rounded-xl border border-brand/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-brand/10">
+          <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-brand/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-brand/10">
             <i class="fa-brands fa-linkedin text-brand"></i> LinkedIn
           </a>
-          <a href="https://github.com/JoaoPec" target="_blank"
-            class="inline-flex items-center gap-2 rounded-xl border border-cyanx/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-cyanx/10">
+          <a href="https://github.com/JoaoPec" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-cyanx/45 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:bg-cyanx/10">
             <i class="fa-brands fa-github text-cyan-300"></i> GitHub
           </a>
         </div>
@@ -179,64 +127,36 @@
         <div class="glass rounded-2xl p-5 reveal">
           <h3 class="font-semibold mb-3 text-slate-200">Backend</h3>
           <div class="flex flex-wrap gap-2">
-            <img alt="Go" src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="NestJS"
-              src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="Laravel"
-              src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="Node.js"
-              src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"
-              class="h-7 w-auto rounded-full" />
+            <img alt="Go" src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="NestJS" src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Laravel" src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" class="h-7 w-auto rounded-full" />
           </div>
         </div>
         <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.05s">
           <h3 class="font-semibold mb-3 text-slate-200">Infra</h3>
           <div class="flex flex-wrap gap-2">
-            <img alt="Kafka"
-              src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="Linux"
-              src="https://img.shields.io/badge/Linux-1793D1?style=for-the-badge&logo=linux&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="Git" src="https://img.shields.io/badge/Git-E44C30?style=for-the-badge&logo=git&logoColor=white"
-              class="h-7 w-auto rounded-full" />
+            <img alt="Kafka" src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Linux" src="https://img.shields.io/badge/Linux-1793D1?style=for-the-badge&logo=linux&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Git" src="https://img.shields.io/badge/Git-E44C30?style=for-the-badge&logo=git&logoColor=white" class="h-7 w-auto rounded-full" />
           </div>
         </div>
         <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.1s">
           <h3 class="font-semibold mb-3 text-slate-200">Database</h3>
           <div class="flex flex-wrap gap-2">
-            <img alt="PostgreSQL"
-              src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="MongoDB"
-              src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="SQLite"
-              src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"
-              class="h-7 w-auto rounded-full" />
+            <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="SQLite" src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" class="h-7 w-auto rounded-full" />
           </div>
         </div>
         <div class="glass rounded-2xl p-5 reveal" style="animation-delay:.15s">
           <h3 class="font-semibold mb-3 text-slate-200">Frontend & Mobile</h3>
           <div class="flex flex-wrap gap-2">
-            <img alt="Flutter"
-              src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="Next.js"
-              src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="React"
-              src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-              class="h-7 w-auto rounded-full" />
-            <img alt="TypeScript"
-              src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"
-              class="h-7 w-auto rounded-full" />
-            <img alt="TailwindCSS"
-              src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"
-              class="h-7 w-auto rounded-full" />
+            <img alt="Flutter" src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" class="h-7 w-auto rounded-full" />
+            <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" class="h-7 w-auto rounded-full" />
+            <img alt="TailwindCSS" src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" class="h-7 w-auto rounded-full" />
           </div>
         </div>
       </div>
@@ -244,25 +164,17 @@
   </section>
 
   <section id="github" class="py-10 md:py-12 relative">
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 blur-[120px] rounded-full -z-10">
-    </div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/5 blur-[120px] rounded-full -z-10"></div>
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold mb-8 reveal">GitHub Activity</h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="glass rounded-3xl p-4 reveal flex flex-col justify-center items-center"
-          style="animation-delay:.05s">
-          <h3 class="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">Tecnologias Core (Backend)
-          </h3>
-          <img
-            src="https://github-readme-stats-bice-iota-27.vercel.app/api/top-langs/?username=JoaoPec&layout=compact&theme=tokyonight&hide=javascript,blade,vue,html,css,scss,lua,shell&count_private=true&bg_color=0D111700&title_color=6366F1&text_color=cbd5e1"
-            alt="Top Langs" class="w-full h-auto" />
+        <div class="glass rounded-3xl p-4 reveal flex flex-col justify-center items-center" style="animation-delay:.05s">
+          <h3 class="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">Tecnologias Core (Backend)</h3>
+          <img src="https://github-readme-stats-bice-iota-27.vercel.app/api/top-langs/?username=JoaoPec&layout=compact&theme=tokyonight&hide=javascript,blade,vue,html,css,scss,lua,shell&count_private=true&bg_color=0D111700&title_color=6366F1&text_color=cbd5e1" alt="Top Langs" class="w-full h-auto" />
         </div>
         <div class="glass rounded-3xl p-4 reveal flex flex-col justify-center items-center" style="animation-delay:.1s">
           <h3 class="text-xs font-semibold text-slate-400 mb-4 uppercase tracking-widest">Contribuições e Streak</h3>
-          <img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=JoaoPec&theme=tokyonight&mode=weekly&background=0D111700&ring=6366F1&fire=6366F1&currStreakNum=6366F1&sideLabels=cbd5e1&stroke=cbd5e1"
-            alt="Streak Stats" class="w-full h-auto" />
+          <img src="https://github-readme-streak-stats.herokuapp.com/?user=JoaoPec&theme=tokyonight&mode=weekly&background=0D111700&ring=6366F1&fire=6366F1&currStreakNum=6366F1&sideLabels=cbd5e1&stroke=cbd5e1" alt="Streak Stats" class="w-full h-auto" />
         </div>
       </div>
     </div>
@@ -273,36 +185,27 @@
       <h2 class="text-3xl font-bold mb-6 reveal">Projetos</h2>
 
       <div class="grid md:grid-cols-2 gap-6 mb-6">
-        <article
-          class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-brand/50 shadow-glow reveal">
-          <div class="px-4 py-2 text-xs font-semibold bg-brand/20 text-indigo-200 border-b border-brand/30">Featured
-          </div>
-          <img src="https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?w=900&q=80" alt="Vistta app"
-            class="w-full h-52 object-cover" />
+        <article class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-brand/50 shadow-glow reveal">
+          <div class="px-4 py-2 text-xs font-semibold bg-brand/20 text-indigo-200 border-b border-brand/30">Featured</div>
+          <img src="https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?w=900&q=80" alt="Vistta app" class="w-full h-52 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-semibold">Vistta</h3>
             <p class="mt-2 text-slate-300 text-sm leading-relaxed">
               <strong>Problema:</strong> marketplace de peças usadas com jornada fragmentada e baixa conversão.
-              <strong> Solução:</strong> API em NestJS + app Flutter com chat em tempo real (WebSocket/Socket.IO), push
-              com Firebase (FCM) e fluxo de pagamento/assinatura via Stripe.
-              <strong> Resultado:</strong> operação mais integrada, comunicação instantânea entre usuários e base pronta
-              para escalar produto e monetização.
+              <strong> Solução:</strong> API em NestJS + app Flutter com chat em tempo real (WebSocket/Socket.IO), push com Firebase (FCM) e fluxo de pagamento/assinatura via Stripe.
+              <strong> Resultado:</strong> operação mais integrada, comunicação instantânea entre usuários e base pronta para escalar produto e monetização.
             </p>
             <div class="mt-4 flex gap-3">
-              <a href="https://vistta.app" target="_blank"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-300 hover:text-indigo-200">
+              <a href="https://vistta.app" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-300 hover:text-indigo-200">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
               </a>
             </div>
           </div>
         </article>
 
-        <article
-          class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-cyanx/50 shadow-glowCyan reveal"
-          style="animation-delay:.06s">
+        <article class="featured transition-all duration-300 glass rounded-2xl overflow-hidden border border-cyanx/50 shadow-glowCyan reveal" style="animation-delay:.06s">
           <div class="px-4 py-2 text-xs font-semibold bg-cyanx/20 text-cyan-200 border-b border-cyanx/30">Featured</div>
-          <img src="https://placehold.co/900x500/0F172A/94a3b8?text=Markowitz" alt="Markowitz"
-            class="w-full h-52 object-cover" />
+          <img src="https://placehold.co/900x500/0F172A/94a3b8?text=Markowitz" alt="Markowitz" class="w-full h-52 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-semibold">Sistema de Markowitz</h3>
             <p class="mt-2 text-slate-300 text-sm leading-relaxed">
@@ -311,8 +214,7 @@
               <strong> Resultado:</strong> análise mais rápida e decisões de portfólio com base quantitativa.
             </p>
             <div class="mt-4">
-              <a href="https://github.com/JoaoPec/Fronteira-de-Markowitz" target="_blank"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200">
+              <a href="https://github.com/JoaoPec/Fronteira-de-Markowitz" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
             </div>
@@ -322,14 +224,11 @@
 
       <div class="grid md:grid-cols-2 gap-6">
         <article class="glass rounded-2xl overflow-hidden reveal" style="animation-delay:.1s">
-          <img src="assets/Screenshot 2026-03-18 at 16-31-41 3KAP - Auditoria TI RH.png" alt="3KAP"
-            class="w-full h-52 object-cover" />
+          <img src="assets/Screenshot 2026-03-18 at 16-31-41 3KAP - Auditoria TI RH.png" alt="3KAP" class="w-full h-52 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-semibold">3KAP</h3>
-            <p class="mt-2 text-slate-300 text-sm">Site institucional para auditoria, RH e TI com foco em posicionamento
-              e geração de contato.</p>
-            <a href="https://3kap.com.br" target="_blank"
-              class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+            <p class="mt-2 text-slate-300 text-sm">Site institucional para auditoria, RH e TI com foco em posicionamento e geração de contato.</p>
+            <a href="https://3kap.com.br" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
             </a>
           </div>
@@ -339,16 +238,12 @@
           <img src="assets/historiasVivasPrint.png" alt="Historias Vivas" class="w-full h-52 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-semibold">Historias Vivas</h3>
-            <p class="mt-2 text-slate-300 text-sm">Plataforma para apoio ao cuidado de pessoas com Alzheimer com memória
-              multimídia.</p>
+            <p class="mt-2 text-slate-300 text-sm">Plataforma para apoio ao cuidado de pessoas com Alzheimer com memória multimídia.</p>
             <div class="mt-4 flex items-center gap-3 flex-wrap">
-              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D"
-                target="_blank"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizar
               </a>
-              <a href="https://github.com/JoaoPec/historiasVivas" target="_blank"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
+              <a href="https://github.com/JoaoPec/historiasVivas" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
             </div>
@@ -401,23 +296,19 @@
         <h2 class="text-3xl font-bold mb-3">Contato</h2>
         <p class="text-slate-300 mb-7">Vamos conversar sobre produto, APIs, mobile e web.</p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="mailto:joaopecurcino.dev@gmail.com"
-            class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+          <a href="mailto:joaopecurcino.dev@gmail.com" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
             <div class="font-medium"><i class="fa-solid fa-envelope mr-2 text-brand"></i>E-mail</div>
             <p class="text-slate-300 text-sm mt-1">joaopecurcino.dev@gmail.com</p>
           </a>
-          <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank"
-            class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+          <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
             <div class="font-medium"><i class="fa-brands fa-linkedin mr-2 text-brand"></i>LinkedIn</div>
             <p class="text-slate-300 text-sm mt-1">Perfil profissional</p>
           </a>
-          <a href="https://github.com/JoaoPec" target="_blank"
-            class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+          <a href="https://github.com/JoaoPec" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
             <div class="font-medium"><i class="fa-brands fa-github mr-2 text-brand"></i>GitHub</div>
             <p class="text-slate-300 text-sm mt-1">Repositórios</p>
           </a>
-          <a href="https://wa.me/5571984313715" target="_blank"
-            class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
+          <a href="https://wa.me/5571984313715" target="_blank" class="rounded-xl border border-slate-700 p-4 hover:border-brand/60 hover:bg-brand/10 transition">
             <div class="font-medium"><i class="fa-brands fa-whatsapp mr-2 text-brand"></i>WhatsApp</div>
             <p class="text-slate-300 text-sm mt-1">Falar agora</p>
           </a>
@@ -436,5 +327,4 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
-
 </html>
