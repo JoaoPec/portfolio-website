@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Links | João Curcino</title>
+  <meta name="description" content="Links importantes de João Curcino: portfólio, projetos, currículo, redes sociais e contato." />
+  <link rel="icon" type="image/svg+xml"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Inter,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { display: ["Poppins", "sans-serif"], body: ["Inter", "sans-serif"] },
+          colors: {
+            bg: "#0B0F14",
+            panel: "#0F172A",
+            brand: "#6366F1",
+            cyanx: "#06B6D4",
+            greenx: "#22C55E"
+          },
+          boxShadow: {
+            glow: "0 0 0 1px rgba(99,102,241,.34), 0 24px 70px rgba(99,102,241,.22)",
+            glowCyan: "0 0 0 1px rgba(6,182,212,.25), 0 20px 60px rgba(6,182,212,.15)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: "Inter", sans-serif; background: #0B0F14; }
+    h1,h2,h3 { font-family: "Poppins", sans-serif; letter-spacing: 0; }
+    .bg-grid { background-image: radial-gradient(rgba(148,163,184,0.10) 1px, transparent 0); background-size: 40px 40px; }
+    .glass { background: rgba(15,23,42,.68); border: 1px solid rgba(148,163,184,.20); backdrop-filter: blur(14px); }
+    .link-row { border-top: 1px solid rgba(148,163,184,.16); }
+    .link-row:last-child { border-bottom: 1px solid rgba(148,163,184,.16); }
+    .links-list:hover .link-row { opacity: .42; }
+    .links-list .link-row:hover, .links-list .link-row:focus-visible { opacity: 1; border-color: rgba(99,102,241,.45); }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100 antialiased bg-grid">
+  <main class="relative min-h-screen overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_12%,rgba(99,102,241,.20),transparent_28%),radial-gradient(circle_at_88%_18%,rgba(6,182,212,.18),transparent_30%),radial-gradient(circle_at_50%_95%,rgba(34,197,94,.08),transparent_28%)]"></div>
+    <div class="relative mx-auto flex min-h-screen w-full max-w-3xl flex-col px-5 py-8 sm:px-7 md:py-10">
+      <header class="flex items-center justify-between gap-4">
+        <a href="/" class="text-xl font-display font-bold tracking-tight">joaopec<span class="text-brand">.dev</span></a>
+        <a href="/" class="text-sm font-medium text-slate-400 underline decoration-slate-700 underline-offset-4 transition hover:text-white">Voltar ao site</a>
+      </header>
+
+      <section class="flex flex-1 flex-col justify-center py-10">
+        <div class="mb-10 flex items-center gap-5">
+          <div class="h-20 w-20 shrink-0 overflow-hidden rounded-full border border-brand/45 shadow-glow sm:h-24 sm:w-24">
+            <img src="/assets/pfp_new.png" alt="Foto de João Curcino" class="h-full w-full object-cover" />
+          </div>
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[.24em] text-cyan-200">Links</p>
+            <h1 class="mt-2 text-4xl font-extrabold leading-tight text-white sm:text-5xl">João Curcino</h1>
+            <p class="mt-2 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">Desenvolvedor full-stack. Sites, sistemas web, APIs e soluções digitais para empresas.</p>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl px-5 py-4 shadow-glowCyan sm:px-7">
+          <div class="links-list">
+            <a href="/" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-solid fa-house mr-3 text-brand"></i>Portfolio</p>
+              <p class="text-sm leading-6 text-slate-300">Serviços, cases e formas de trabalhar comigo.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="https://github.com/JoaoPec" target="_blank" rel="noreferrer" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-brands fa-github mr-3 text-brand"></i>GitHub</p>
+              <p class="text-sm leading-6 text-slate-300">Repositórios, experimentos e projetos públicos.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/jo%C3%A3o-curcino-490601262/" target="_blank" rel="noreferrer" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-brands fa-linkedin mr-3 text-brand"></i>LinkedIn</p>
+              <p class="text-sm leading-6 text-slate-300">Experiência profissional, histórico e contexto de trabalho.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="https://x.com/joaopec_" target="_blank" rel="noreferrer" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-brands fa-x-twitter mr-3 text-brand"></i>X / Twitter</p>
+              <p class="text-sm leading-6 text-slate-300">Ideias curtas, bastidores e atualizações rápidas.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="https://www.instagram.com/joaopec.dev" target="_blank" rel="noreferrer" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-brands fa-instagram mr-3 text-brand"></i>Instagram</p>
+              <p class="text-sm leading-6 text-slate-300">Conteúdo sobre sites, sistemas e desenvolvimento web.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="/assets/joao-curcino-cv.pdf" target="_blank" rel="noreferrer" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-solid fa-file-lines mr-3 text-brand"></i>Currículo</p>
+              <p class="text-sm leading-6 text-slate-300">Versão em PDF para conhecer minha experiência rapidamente.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Vim%20pela%20sua%20p%C3%A1gina%20de%20links." target="_blank" rel="noreferrer" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-brands fa-whatsapp mr-3 text-greenx"></i>WhatsApp</p>
+              <p class="text-sm leading-6 text-slate-300">Contato direto para projetos, orçamentos e conversas rápidas.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+
+            <a href="mailto:joaopecurcino.dev@gmail.com" class="link-row group grid gap-2 py-5 transition duration-200 sm:grid-cols-[160px_minmax(0,1fr)_auto] sm:items-start sm:gap-5">
+              <p class="font-semibold text-white"><i class="fa-solid fa-envelope mr-3 text-brand"></i>Email</p>
+              <p class="text-sm leading-6 text-slate-300">Para propostas, parcerias e assuntos profissionais.</p>
+              <span class="text-sm font-semibold text-cyan-200 transition group-hover:text-white">Abrir</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="flex flex-col gap-2 pb-2 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <span>&copy; <span id="year"></span> João Curcino</span>
+        <span>Salvador, Brasil</span>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
