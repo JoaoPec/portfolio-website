@@ -255,44 +255,62 @@
         <div class="absolute -top-20 left-1/4 w-[480px] h-[480px] bg-brand/10 rounded-full blur-[130px]"></div>
         <div class="absolute top-10 right-1/5 w-96 h-96 bg-cyanx/8 rounded-full blur-[130px]"></div>
       </div>
-      <div class="relative max-w-5xl mx-auto px-5">
-        <div class="space-y-8 reveal text-center md:text-left">
-          <div class="flex items-center gap-4 justify-center md:justify-start">
-            <div class="w-12 h-12 rounded-full overflow-hidden border border-brand/40 shrink-0">
-              <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
+      <div class="relative max-w-6xl mx-auto px-5">
+        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-center">
+
+          <!-- Coluna esquerda: copy -->
+          <div class="space-y-7 reveal">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full overflow-hidden border border-brand/40 shrink-0">
+                <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
+              </div>
+              <div class="section-label !mb-0">JOÃO CURCINO · FULL-STACK ENGINEER</div>
             </div>
-            <div class="section-label !mb-0">JOÃO CURCINO · FULL-STACK ENGINEER</div>
-          </div>
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
-            Sites e sistemas que ajudam sua empresa a <span class="text-brand">fechar mais negócios</span>
-          </h1>
-          <p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto md:mx-0">
-            Crio landing pages, sites institucionais e plataformas web com foco em conversão, performance e uma presença digital que passa confiança desde o primeiro clique.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 pt-1 justify-center md:justify-start">
-            <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="btn-primary !px-7 !py-3.5 !text-sm">
-              <i class="fa-brands fa-whatsapp"></i> Pedir orçamento
-            </a>
-            <a href="#cases" class="btn-outline !px-7 !py-3.5 !text-sm">
-              Ver projetos <span>→</span>
-            </a>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.06] tracking-tight">
+              Sites e sistemas que ajudam sua empresa a <span class="text-brand">fechar mais negócios</span>
+            </h1>
+            <p class="text-slate-400 text-lg leading-relaxed">
+              Crio landing pages, sites institucionais e plataformas web com foco em conversão, performance e uma presença digital que passa confiança desde o primeiro clique.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="btn-primary !px-7 !py-3.5 !text-sm">
+                <i class="fa-brands fa-whatsapp"></i> Pedir orçamento
+              </a>
+              <a href="#cases" class="btn-outline !px-7 !py-3.5 !text-sm">
+                Ver projetos <span>→</span>
+              </a>
+            </div>
           </div>
 
-          <!-- Mini stats -->
-          <div class="grid sm:grid-cols-3 gap-3 pt-6 max-w-3xl mx-auto md:mx-0">
-            <div class="border border-slate-800 rounded-xl p-5 text-left hover:border-brand/30 transition-colors">
-              <p class="text-2xl font-bold text-white font-display">Web</p>
-              <p class="text-sm text-slate-500 mt-1 leading-snug">sites rápidos e profissionais</p>
+          <!-- Coluna direita: stats + destaques -->
+          <div class="reveal space-y-4" style="animation-delay:.1s">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="border border-slate-800 rounded-xl p-5 hover:border-brand/30 transition-colors">
+                <p class="text-2xl font-bold text-white font-display">Web</p>
+                <p class="text-sm text-slate-500 mt-1 leading-snug">sites rápidos e profissionais</p>
+              </div>
+              <div class="border border-slate-800 rounded-xl p-5 hover:border-cyanx/30 transition-colors">
+                <p class="text-2xl font-bold text-white font-display">UX</p>
+                <p class="text-sm text-slate-500 mt-1 leading-snug">jornada clara para orçamento</p>
+              </div>
             </div>
-            <div class="border border-slate-800 rounded-xl p-5 text-left hover:border-cyanx/30 transition-colors">
-              <p class="text-2xl font-bold text-white font-display">UX</p>
-              <p class="text-sm text-slate-500 mt-1 leading-snug">jornada clara para orçamento</p>
-            </div>
-            <div class="border border-slate-800 rounded-xl p-5 text-left hover:border-greenx/30 transition-colors">
+            <div class="border border-slate-800 rounded-xl p-5 hover:border-greenx/30 transition-colors">
               <p class="text-2xl font-bold text-white font-display">Tech</p>
-              <p class="text-sm text-slate-500 mt-1 leading-snug">estrutura pronta para crescer</p>
+              <p class="text-sm text-slate-500 mt-1">estrutura pronta para crescer</p>
+            </div>
+            <div class="border border-slate-800/60 rounded-xl p-5 bg-panel/40">
+              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">Stack</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">APIs</span>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
