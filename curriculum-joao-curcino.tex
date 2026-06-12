@@ -1,0 +1,203 @@
+%-------------------------
+% Currículo em LaTeX (v3 PT-BR)
+% João Curcino — Desenvolvedor de Software (Backend & Integrações)
+% Otimizado para 1-2 páginas
+%------------------------
+
+\documentclass[a4paper,10pt]{article}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\setlength{\multicolsep}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.1cm, top=0.6cm, right=1.0cm, bottom=0.6cm}
+\usepackage[most]{tcolorbox}
+\tcbset{
+	frame code={}
+	center title,
+	left=0pt,
+	right=0pt,
+	top=0pt,
+	bottom=0pt,
+	colback=gray!20,
+	colframe=white,
+	width=\dimexpr\textwidth\relax,
+	enlarge left by=-1mm,
+	boxsep=4pt,
+	arc=0pt,outer arc=0pt,
+}
+
+\urlstyle{same}
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-1 mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}}
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
+\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+\newcommand{\name}{João Curcino}
+\newcommand{\roll}{Salvador, Brasil}
+\newcommand{\phone}{71 98431-3715}
+\newcommand{\emaila}{joaopecurcino.dev@gmail.com}
+
+\begin{document}
+
+{
+\begin{tabularx}{\linewidth}{L r} \\
+  \textbf{\Large \name} & {\raisebox{0.0\height}{\footnotesize \faPhone}\ +55-\phone}\\
+  {Desenvolvedor Backend Node.js (NestJS/TypeScript) \textbar\ Full Stack} & \href{mailto:\emaila}{\raisebox{0.0\height}{\footnotesize \faEnvelope}\ {\emaila}} \\
+  {\roll \ (Remoto)} & \href{https://joaopec.com/links}{\raisebox{0.0\height}{\footnotesize \faGlobe}\ {joaopec.com/links}} \ \textbar\ \href{https://www.linkedin.com/in/jo\%C3\%A3o-curcino-490601262/}{\raisebox{0.0\height}{\footnotesize \faLinkedin}\ {LinkedIn}} \\
+\end{tabularx}
+}
+
+\section{\textbf{Resumo Profissional}}
+\vspace{2mm}
+\small{Desenvolvedor Backend com experiência em Node.js, NestJS e TypeScript, atuando desde 2022 no desenvolvimento de APIs REST, integrações financeiras e sistemas web escaláveis. Experiência sólida em integrações com APIs bancárias (boleto, PIX e cartão de crédito), assinatura digital de documentos e automação de processos, usando PostgreSQL, Docker e Linux em produção. Atuo também como Full Stack com Vue.js e React, além de Laravel (PHP) em sistemas de gestão educacional. Inglês avançado.}
+\vspace{-2mm}
+
+\section{\textbf{Experiência Profissional}}
+\vspace{2mm}
+  \resumeSubHeadingListStart
+
+  \resumeSubheading
+  {Desenvolvedor de Software Júnior}{Salvador, Brasil}
+  {INFOCRAFT}{Jan 2025 -- Atual}
+  \resumeItemListStart
+    \item{Desenvolvimento de APIs REST e novas funcionalidades em Node.js com NestJS e TypeScript no backend, e Vue.js no frontend, sobre banco de dados PostgreSQL.}
+    \item{Construção e manutenção de integrações financeiras seguras com APIs bancárias, processando mais de 5.000 pagamentos mensais via boleto, PIX e cartão de crédito, além da implementação de assinatura digital de documentos.}
+    \item{Deploy e configuração de ambientes de aplicação em servidores Linux, utilizando Docker, Nginx e controle de versão com Git.}
+  \resumeItemListEnd
+
+  \resumeSubheading
+  {Estagiário em Desenvolvimento de Software}{Salvador, Brasil}
+  {INFOCRAFT}{Jul 2024 -- Dez 2024}
+  \resumeItemListStart
+    \item{Desenvolvimento e manutenção do sistema E-Grafite (Laravel e Vue.js), com criação de módulos como Filantropia (mais de 1.000 inscrições) e AEE (gestão de 454 alunos), automatizando processos e apoiando a tomada de decisão educacional.}
+    \item{Implementação de APIs REST, integrações com serviços externos e assinatura digital de documentos, além da otimização de fluxos dentro do sistema.}
+    \item{Desenvolvimento e otimização de consultas SQL e relatórios gerenciais, reduzindo o tempo de processamento de rotinas críticas e melhorando a análise de dados da equipe administrativa.}
+  \resumeItemListEnd
+
+  \resumeSubheading
+  {Desenvolvedor Freelancer}{Salvador, Brasil $\cdot$ Remoto}
+  {Autônomo}{Jan 2022 -- Atual}
+  \resumeItemListStart
+    \item{Plataforma institucional para empresa de auditoria em PHP, com sistema de blog e aplicação de boas práticas de SEO técnico, responsividade e otimização de performance.}
+    \item{Aplicação web para automação de dados (Excel para banco de dados) em HTML, CSS e JavaScript, voltada à gestão de campanhas publicitárias.}
+    \item{Sistema de otimização de carteiras de investimento em Python, aplicando o modelo de Markowitz para análise de risco, cálculo de retorno esperado e geração da fronteira eficiente.}
+  \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+\vspace{-5.5mm}
+
+\section{\textbf{Projetos Pessoais}}
+\vspace{2mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+  {Vistta — Plataforma de Moda Circular (SaaS)}{\href{https://www.vistta.app}{vistta.app}}
+  {Projeto pessoal}{Em desenvolvimento}
+  \resumeItemListStart
+    \item{Marketplace de brechó online com anúncios gratuitos, chat, favoritos e fila de interessadas, construído de ponta a ponta.}
+    \item{Backend em NestJS com API REST, autenticação e integrações; web em Next.js para landing e admin; app mobile em Flutter.}
+  \resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-5.5mm}
+
+\section{\textbf{Habilidades Técnicas}}
+ \begin{itemize}[leftmargin=0.05in, label={}]
+    \small{\item{
+     \textbf{Backend}{: Node.js, NestJS, TypeScript, APIs REST, GraphQL, Laravel (PHP), Django (Python), mensageria (Kafka).} \\
+     \textbf{Linguagens}{: TypeScript, JavaScript, PHP, Python, Go, SQL, HTML, CSS.} \\
+     \textbf{Banco de Dados}{: PostgreSQL, MySQL, MongoDB.} \\
+     \textbf{Frontend}{: Vue.js, React.} \\
+     \textbf{Infraestrutura \& DevOps}{: Docker, Linux, Nginx, Git, CI/CD.} \\
+     \textbf{Domínios}{: integrações com APIs bancárias (boleto, PIX, cartão de crédito), assinatura digital, automação de processos, relatórios gerenciais.} \\
+     \textbf{Idiomas}{: Português (nativo), Inglês (avançado), Francês (básico).} \\
+    }}
+ \end{itemize}
+ \vspace{-10pt}
+
+\section{\textbf{Certificações}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+    % Para adicionar o link de verificação, envolva o texto em \href{URL}{...}
+    \resumePOR {}
+        {Building with the Claude API -- Anthropic}
+        {2026}
+    \resumePOR {}
+        {Claude Code 101 -- Anthropic}
+        {2026}
+    \resumePOR {}
+        {AI Fluency: Framework \& Foundations -- Anthropic}
+        {2026}
+\resumeSubHeadingListEnd
+\vspace{-5mm}
+
+\section{\textbf{Formação Acadêmica}}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Bacharelado em Engenharia de Software}{}
+      {Universidade Salvador (UNIFACS), Brasil}{2023 -- 2027}
+
+    \resumeSubheading
+      {Técnico em Desenvolvimento de Sistemas}{}
+      {SENAI, Salvador, Brasil}{2023 -- 2025}
+  \resumeSubHeadingListEnd
+\vspace{-5.5mm}
+
+\end{document}
