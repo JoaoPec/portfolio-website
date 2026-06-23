@@ -207,6 +207,16 @@
     .brow .bp{flex:0 0 40px; text-align:right; color:var(--dim)}
     @media(max-width:560px){ .brow .bl{flex-basis:92px} .brow .bp{display:none} }
 
+    /* skill chips (no percentages, just a clean list) */
+    .skills{display:flex; flex-wrap:wrap; gap:9px}
+    .skill{
+      display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--txt);
+      border:1px solid var(--line); border-radius:8px; padding:7px 12px;
+      background:rgba(15,23,42,.4); transition:border-color .15s, background .15s, transform .12s;
+    }
+    .skill::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--acc,var(--brand)); flex-shrink:0; box-shadow:0 0 8px -1px var(--acc,var(--brand))}
+    .skill:hover{border-color:color-mix(in srgb,var(--acc,var(--brand)) 55%, transparent); background:color-mix(in srgb,var(--acc,var(--brand)) 9%, transparent); transform:translateY(-1px)}
+
     /* ── git log graph ───────────────────────────── */
     .glog{font-size:13px; line-height:1.55}
     .commit{display:grid; grid-template-columns:18px 1fr; }
@@ -278,7 +288,6 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="hint"><i class="fa-solid fa-lightbulb"></i> <span>Este site é um <b>“computador”</b> — cada janela abaixo é uma seção do portfólio. É só rolar a página. <span class="dim">(quis dar uma cara de dev — mas tá tudo em português 🙂)</span></span></div>
           <div style="margin-bottom:14px"><span class="usr">joao@arch</span><span class="at">:</span><span class="pth">~</span><span class="dim">$ </span><span class="muted">neofetch <span class="dim"># meu “cartão de visita”</span></span></div>
           <div class="neo">
             <pre>      <span class="accent">██</span>   <span class="c2">██████</span>
@@ -565,7 +574,8 @@
     <section id="stack" class="row">
       <div class="win cyan col-7" style="animation-delay:.04s">
         <div class="tb">
-          <div class="tb-l"><span class="cls">btop</span><span class="ttl">~/stack — uso por categoria</span></div>
+          <div class="tb-l"><span class="cls">btop</span><span class="ttl">~/stack</span></div>
+
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
@@ -574,31 +584,44 @@
             <h2>Habilidades &amp; tecnologias</h2>
             <p class="sub">As ferramentas que eu uso no dia a dia para construir e manter os projetos.</p>
           </div>
-          <div class="btgrp brand" style="--acc:var(--brand)">
+          <div class="btgrp" style="--acc:var(--brand)">
             <div class="gl"><i class="fa-solid fa-server"></i> backend &amp; dados</div>
-            <div class="brow"><span class="bl">NestJS / Node.js</span><span class="track"><span class="fill" style="--w:95%; --bc:var(--brand)"></span></span><span class="bp">95%</span></div>
-            <div class="brow"><span class="bl">TypeScript</span><span class="track"><span class="fill" style="--w:92%; --bc:var(--brand)"></span></span><span class="bp">92%</span></div>
-            <div class="brow"><span class="bl">Laravel (PHP)</span><span class="track"><span class="fill" style="--w:85%; --bc:var(--brand)"></span></span><span class="bp">85%</span></div>
-            <div class="brow"><span class="bl">PostgreSQL / SQL</span><span class="track"><span class="fill" style="--w:88%; --bc:var(--brand)"></span></span><span class="bp">88%</span></div>
-            <div class="brow"><span class="bl">Python</span><span class="track"><span class="fill" style="--w:70%; --bc:var(--brand)"></span></span><span class="bp">70%</span></div>
+            <div class="skills">
+              <span class="skill">NestJS / Node.js</span>
+              <span class="skill">TypeScript</span>
+              <span class="skill">Laravel (PHP)</span>
+              <span class="skill">PostgreSQL / SQL</span>
+              <span class="skill">Python</span>
+              <span class="skill">APIs REST</span>
+            </div>
           </div>
           <div class="btgrp" style="--acc:var(--cyan)">
             <div class="gl"><i class="fa-solid fa-laptop-code"></i> frontend &amp; mobile</div>
-            <div class="brow"><span class="bl">Next.js / React</span><span class="track"><span class="fill" style="--w:86%; --bc:var(--cyan)"></span></span><span class="bp">86%</span></div>
-            <div class="brow"><span class="bl">Vue.js</span><span class="track"><span class="fill" style="--w:82%; --bc:var(--cyan)"></span></span><span class="bp">82%</span></div>
-            <div class="brow"><span class="bl">Flutter</span><span class="track"><span class="fill" style="--w:74%; --bc:var(--cyan)"></span></span><span class="bp">74%</span></div>
-            <div class="brow"><span class="bl">Tailwind / CSS</span><span class="track"><span class="fill" style="--w:84%; --bc:var(--cyan)"></span></span><span class="bp">84%</span></div>
+            <div class="skills">
+              <span class="skill">Next.js / React</span>
+              <span class="skill">Vue.js</span>
+              <span class="skill">Flutter</span>
+              <span class="skill">Tailwind</span>
+              <span class="skill">HTML &amp; CSS</span>
+            </div>
           </div>
           <div class="btgrp" style="--acc:var(--amber)">
             <div class="gl"><i class="fa-solid fa-screwdriver-wrench"></i> devops &amp; ferramentas</div>
-            <div class="brow"><span class="bl">Docker / Linux</span><span class="track"><span class="fill" style="--w:83%; --bc:var(--amber)"></span></span><span class="bp">83%</span></div>
-            <div class="brow"><span class="bl">Git / CI/CD</span><span class="track"><span class="fill" style="--w:88%; --bc:var(--amber)"></span></span><span class="bp">88%</span></div>
-            <div class="brow"><span class="bl">Nginx</span><span class="track"><span class="fill" style="--w:76%; --bc:var(--amber)"></span></span><span class="bp">76%</span></div>
+            <div class="skills">
+              <span class="skill">Docker</span>
+              <span class="skill">Linux</span>
+              <span class="skill">Git / CI/CD</span>
+              <span class="skill">Nginx</span>
+              <span class="skill">Vercel</span>
+            </div>
           </div>
           <div class="btgrp" style="--acc:var(--green)">
             <div class="gl"><i class="fa-solid fa-robot"></i> workflow IA</div>
-            <div class="brow"><span class="bl">Claude Code</span><span class="track"><span class="fill" style="--w:90%; --bc:var(--green)"></span></span><span class="bp">90%</span></div>
-            <div class="brow"><span class="bl">Cursor / Codex</span><span class="track"><span class="fill" style="--w:85%; --bc:var(--green)"></span></span><span class="bp">85%</span></div>
+            <div class="skills">
+              <span class="skill">Claude Code</span>
+              <span class="skill">Cursor</span>
+              <span class="skill">Codex</span>
+            </div>
           </div>
         </div>
       </div>
