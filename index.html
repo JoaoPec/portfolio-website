@@ -149,6 +149,22 @@
     .cmdline{font-size:14px; margin-bottom:16px}
     .cmdline .out{color:var(--mut)}
 
+    /* human-readable section header (clear for non-tech visitors) */
+    .shead{margin-bottom:18px}
+    .shead .fl{font-size:12px; color:var(--dim); margin-bottom:7px}
+    .shead h2{font-size:21px; line-height:1.25}
+    .shead .sub{color:var(--mut); font-size:13.5px; margin-top:6px; max-width:62ch}
+
+    /* orientation hint */
+    .hint{
+      display:flex; align-items:center; gap:9px; flex-wrap:wrap;
+      border:1px dashed rgba(148,163,184,.3); border-radius:8px;
+      padding:9px 13px; margin-bottom:14px; font-size:12.5px; color:var(--mut);
+      background:rgba(15,23,42,.3);
+    }
+    .hint i{color:var(--amber)}
+    .hint b{color:var(--txt); font-weight:700}
+
     /* ── cards grid ──────────────────────────────── */
     .grid{display:grid; gap:14px}
     .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
@@ -262,7 +278,8 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div style="margin-bottom:14px"><span class="usr">joao@arch</span><span class="at">:</span><span class="pth">~</span><span class="dim">$ </span><span class="muted">neofetch</span></div>
+          <div class="hint"><i class="fa-solid fa-lightbulb"></i> <span>Este site é um <b>“computador”</b> — cada janela abaixo é uma seção do portfólio. É só rolar a página. <span class="dim">(quis dar uma cara de dev — mas tá tudo em português 🙂)</span></span></div>
+          <div style="margin-bottom:14px"><span class="usr">joao@arch</span><span class="at">:</span><span class="pth">~</span><span class="dim">$ </span><span class="muted">neofetch <span class="dim"># meu “cartão de visita”</span></span></div>
           <div class="neo">
             <pre>      <span class="accent">██</span>   <span class="c2">██████</span>
       <span class="accent">██</span>  <span class="c2">██</span>
@@ -294,16 +311,16 @@
 
           <div style="margin-top:20px; border-top:1px solid var(--line); padding-top:16px">
             <div><span class="usr">joao@arch</span><span class="at">:</span><span class="pth">~</span><span class="dim">$ </span><span class="muted">echo $TAGLINE</span></div>
-            <div style="font-size:17px; margin-top:6px; line-height:1.4">
-              Construo soluções que unem <span class="accent">lógica</span> e <span class="c2">design</span><span class="cursor"></span>
+            <div style="font-size:19px; margin-top:6px; line-height:1.35; font-weight:700">
+              Crio <span class="accent">sites</span> e <span class="c2">sistemas</span> que ajudam sua empresa a vender mais<span class="cursor"></span>
             </div>
-            <p class="muted" style="margin:10px 0 0; font-size:13px">
-              Dev full-stack focado em backend. Transformo ideia em produto: sites que vendem, plataformas que escalam e integrações que automatizam o que antes era manual.
+            <p class="muted" style="margin:10px 0 0; font-size:14px; line-height:1.6">
+              Sou desenvolvedor full-stack. Faço desde landing pages e sites profissionais até plataformas, aplicativos e integrações que automatizam tarefas — tudo pensado para gerar mais clientes e passar mais credibilidade.
             </p>
             <div class="tbtns">
-              <a href="#projetos" class="tbtn c">./ver_projetos<span class="dim">.sh</span></a>
-              <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" class="tbtn g"><i class="fa-brands fa-whatsapp"></i> falar_comigo</a>
-              <a href="assets/joao-curcino-cv.pdf" target="_blank" class="tbtn a"><i class="fa-solid fa-download"></i> wget cv.pdf</a>
+              <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" class="tbtn g"><i class="fa-brands fa-whatsapp"></i> Pedir um orçamento</a>
+              <a href="#projetos" class="tbtn c">Ver projetos</a>
+              <a href="assets/joao-curcino-cv.pdf" target="_blank" class="tbtn a"><i class="fa-solid fa-download"></i> Baixar currículo</a>
             </div>
           </div>
         </div>
@@ -342,7 +359,11 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="cmdline"><span class="dollar">$ </span><span class="muted">pacman -Ss </span><span class="str">joao/servicos</span> <span class="out">› o que eu construo pra você</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">pacman -Ss</span> <span class="str">servicos</span></div>
+            <h2>O que eu faço por você</h2>
+            <p class="sub">Não sabe por onde começar? Escolha o pacote mais perto da sua necessidade — dá pra começar simples e crescer depois.</p>
+          </div>
           <div class="grid g3">
             <div class="card">
               <div class="lang" style="justify-content:space-between"><span class="c4" style="font-weight:700">[01]</span><i class="fa-solid fa-window-maximize accent"></i></div>
@@ -387,7 +408,11 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="cmdline"><span class="dollar">$ </span><span class="muted">ls -la </span><span class="pth">~/projetos</span> <span class="out">› trabalho real no ar</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">ls -la</span> <span class="pth">~/projetos</span></div>
+            <h2>Projetos em destaque</h2>
+            <p class="sub">Trabalhos reais que já estão no ar — sites, aplicativos e sistemas. Clique para visitar.</p>
+          </div>
           <div class="grid g2">
 
             <article class="pcard">
@@ -419,9 +444,29 @@
             </article>
 
             <article class="pcard">
+              <div class="shot" style="background:linear-gradient(160deg,#10141b 0%,#0D1117 55%,rgba(245,158,11,.10) 100%); display:flex; align-items:center; justify-content:center">
+                <div style="text-align:center; padding:0 22px">
+                  <div style="display:inline-flex; gap:14px; align-items:center; color:rgba(245,158,11,.7)">
+                    <i class="fa-solid fa-mobile-screen-button" style="font-size:30px"></i>
+                    <i class="fa-solid fa-magnifying-glass" style="font-size:24px; color:rgba(239,68,68,.7)"></i>
+                  </div>
+                  <p class="dim" style="font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin:12px 0 0">Flutter · thriller investigativo</p>
+                </div>
+                <span class="badge l">drwx 03 · app mobile / jogo</span>
+                <span class="badge r" style="color:var(--amber);border:1px solid rgba(245,158,11,.35);background:rgba(245,158,11,.12)">flutter</span>
+              </div>
+              <div class="pb">
+                <h3 style="font-size:18px">Toque Duplo</h3>
+                <p class="muted" style="font-size:13px; margin:6px 0 0">Jogo de investigação para celular: você vasculha o celular apreendido de um suspeito — com apps simulados (mensagens, fotos, mapas, banco), junta as pistas e desvenda o caso, com dois finais possíveis. Mistura programação mobile, design de interface e narrativa.</p>
+                <div style="margin-top:12px"><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">Game / UX</span></div>
+                <a href="https://github.com/JoaoPec/toque-duplo" target="_blank" class="c4" style="display:inline-flex; gap:7px; margin-top:12px; font-size:12px; font-weight:700"><i class="fa-brands fa-github"></i> ver no GitHub</a>
+              </div>
+            </article>
+
+            <article class="pcard">
               <div class="shot">
                 <img src="assets/historiasVivasPrint.png" alt="Histórias Vivas" />
-                <span class="badge l">drwx 03 · plataforma</span>
+                <span class="badge l">drwx 04 · plataforma</span>
                 <span class="badge r" style="color:var(--green);border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.12)">open source</span>
               </div>
               <div class="pb">
@@ -438,7 +483,7 @@
                   <i class="fa-solid fa-chart-line" style="font-size:34px; color:rgba(245,158,11,.45)"></i>
                   <p class="dim" style="font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin:10px 0 0">Python · análise quantitativa</p>
                 </div>
-                <span class="badge l">drwx 04 · sistema técnico</span>
+                <span class="badge l">drwx 05 · sistema técnico</span>
                 <span class="badge r" style="color:var(--amber);border:1px solid rgba(245,158,11,.35);background:rgba(245,158,11,.12)">python</span>
               </div>
               <div class="pb">
@@ -462,7 +507,11 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="cmdline"><span class="dollar">$ </span><span class="muted">git remote </span><span class="flag">-v</span> <span class="out">› open source + sistemas privados em produção</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">git remote</span> <span class="flag">-v</span></div>
+            <h2>Mais projetos &amp; código</h2>
+            <p class="sub">Pra quem é da área: projetos de código aberto e alguns sistemas privados que rodam em produção.</p>
+          </div>
           <div class="grid g3">
 
             <div class="card">
@@ -520,6 +569,11 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">btop</span></div>
+            <h2>Habilidades &amp; tecnologias</h2>
+            <p class="sub">As ferramentas que eu uso no dia a dia para construir e manter os projetos.</p>
+          </div>
           <div class="btgrp brand" style="--acc:var(--brand)">
             <div class="gl"><i class="fa-solid fa-server"></i> backend &amp; dados</div>
             <div class="brow"><span class="bl">NestJS / Node.js</span><span class="track"><span class="fill" style="--w:95%; --bc:var(--brand)"></span></span><span class="bp">95%</span></div>
@@ -556,7 +610,10 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="cmdline" style="font-size:13px"><span class="dollar">$ </span><span class="muted">onde eu sou forte</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">htop</span></div>
+            <h2 style="font-size:17px">Onde eu sou forte</h2>
+          </div>
           <div style="display:flex; flex-direction:column; gap:14px">
             <div style="display:flex; gap:12px">
               <i class="fa-solid fa-credit-card c3" style="margin-top:3px"></i>
@@ -593,7 +650,11 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb glog">
-          <div class="cmdline" style="font-size:13px"><span class="dollar">$ </span><span class="muted">git log </span><span class="flag">--graph --oneline</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">git log</span> <span class="flag">--graph</span></div>
+            <h2>Minha experiência</h2>
+            <p class="sub">Onde eu trabalhei e o que entreguei — do mais recente ao começo.</p>
+          </div>
 
           <div class="commit">
             <div class="graph"><span class="star">*</span></div>
@@ -635,7 +696,10 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="cmdline" style="font-size:13px"><span class="dollar">$ </span><span class="muted">git tag </span><span class="flag">-l</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">git tag</span></div>
+            <h2 style="font-size:17px">Formação</h2>
+          </div>
           <div style="display:flex; flex-direction:column; gap:14px; margin-top:4px">
             <div style="display:flex; gap:12px">
               <i class="fa-solid fa-graduation-cap accent" style="margin-top:3px"></i>
@@ -671,11 +735,13 @@
           <div class="tb-btns">_ □ ✕</div>
         </div>
         <div class="wb">
-          <div class="cmdline" style="font-size:13px"><span class="dollar">$ </span><span class="muted">cat </span><span class="pth">~/sobre.md</span></div>
+          <div class="shead">
+            <div class="fl"><span class="dollar">$</span> <span class="muted">cat</span> <span class="pth">~/sobre.md</span></div>
+            <h2>Sobre mim</h2>
+          </div>
           <div class="row" style="margin:0">
             <div style="flex:1.2">
-              <h2 style="font-size:18px"><span class="dim">## </span>quem sou eu</h2>
-              <div style="display:flex; gap:16px; margin-top:12px">
+              <div style="display:flex; gap:16px">
                 <img src="assets/pfp_new.png" alt="João Curcino" style="width:96px; height:96px; border-radius:10px; object-fit:cover; border:1px solid var(--line); flex-shrink:0; box-shadow:0 0 0 1px rgba(6,182,212,.3), 0 16px 40px -18px rgba(6,182,212,.5)" />
                 <p class="muted" style="font-size:13px; margin:0">
                   Sou João Curcino, dev full-stack focado em backend. Minha diferença é unir execução técnica com visão de negócio: não entrego só uma tela bonita, entrego uma solução pensada pra explicar sua oferta, gerar confiança e funcionar em produção.
