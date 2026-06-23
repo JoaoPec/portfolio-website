@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>João Curcino | Sites e Sistemas para Empresas</title>
-  <meta name="description" content="Criação de sites, landing pages e sistemas web para empresas que querem vender mais, automatizar processos e parecer mais profissionais online." />
+  <title>João Curcino | Software Engineer — Sites e Sistemas para Empresas</title>
+  <meta name="description" content="Software engineer full-stack (NestJS, Next.js, Laravel, Flutter). Crio sites, plataformas e integrações que unem lógica e design para empresas venderem mais e automatizarem processos." />
   <link rel="icon" type="image/svg+xml"
     href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Inter,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { display: ["Poppins", "sans-serif"], body: ["Inter", "sans-serif"] },
+          fontFamily: {
+            display: ["Poppins", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          },
           colors: {
             bg: "#0B0F14",
             panel: "#0F172A",
@@ -43,6 +47,22 @@
     .reveal { opacity: 0; transform: translateY(18px); animation: up .7s ease forwards; }
     @keyframes up { to { opacity: 1; transform: translateY(0); } }
 
+    /* Availability pulse */
+    .pulse-dot {
+      position: relative;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22C55E;
+    }
+    .pulse-dot::after {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      border: 1px solid rgba(34,197,94,.5);
+      animation: pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(.7); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+
     /* Project card */
     .project-card {
       background: #0D1117;
@@ -54,6 +74,21 @@
     .project-card:hover {
       border-color: rgba(99,102,241,.45);
       transform: translateY(-3px);
+    }
+
+    /* Repo card (open source) */
+    .repo-card {
+      background: rgba(13,17,23,.6);
+      border: 1px solid rgba(148,163,184,.1);
+      border-radius: 12px;
+      padding: 22px;
+      transition: border-color .2s, transform .2s, background .2s;
+      display: flex; flex-direction: column;
+    }
+    .repo-card:hover {
+      border-color: rgba(99,102,241,.4);
+      background: rgba(15,23,42,.7);
+      transform: translateY(-2px);
     }
 
     /* Service card */
@@ -148,6 +183,23 @@
       border-radius: 4px;
     }
 
+    /* Stack pill */
+    .stack-pill {
+      font-size: 12px;
+      font-weight: 500;
+      color: #cbd5e1;
+      padding: 6px 12px;
+      border: 1px solid rgba(148,163,184,.16);
+      border-radius: 7px;
+      background: rgba(15,23,42,.4);
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .stack-pill:hover {
+      border-color: rgba(99,102,241,.45);
+      color: #fff;
+      background: rgba(99,102,241,.08);
+    }
+
     /* Device indicator */
     .device-tag {
       display: inline-flex;
@@ -160,7 +212,7 @@
       color: #475569;
     }
 
-    /* Process step number */
+    /* Process / step number */
     .step-num {
       font-family: "Poppins", sans-serif;
       font-size: 13px;
@@ -214,6 +266,57 @@
 
     /* Divider line */
     .h-divider { height: 1px; background: rgba(148,163,184,.08); }
+
+    /* Code identity card */
+    .code-card {
+      background: #0A0E13;
+      border: 1px solid rgba(148,163,184,.12);
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: "JetBrains Mono", monospace;
+    }
+    .code-head {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(148,163,184,.1);
+      background: rgba(15,23,42,.5);
+    }
+    .code-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .code-body {
+      padding: 18px 16px;
+      font-size: 13px;
+      line-height: 1.85;
+      overflow-x: auto;
+    }
+    .code-body .ln { display: inline-block; width: 1.6em; color: #334155; user-select: none; }
+    .c-kw { color: #6366F1; }
+    .c-var { color: #e2e8f0; }
+    .c-prop { color: #06B6D4; }
+    .c-str { color: #22C55E; }
+    .c-num { color: #F59E0B; }
+    .c-com { color: #475569; font-style: italic; }
+    .c-fn { color: #F59E0B; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px;
+      width: 1px; background: rgba(148,163,184,.18);
+    }
+    .timeline-item { position: relative; padding-bottom: 32px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -28px; top: 4px;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: #0B0F14; border: 2px solid #6366F1;
+    }
+    .timeline-item.current::before { background: #22C55E; border-color: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,.15); }
+
+    /* Stat */
+    .stat-num {
+      font-family: "Poppins", sans-serif;
+      font-size: 2rem; font-weight: 800; line-height: 1;
+    }
   </style>
 </head>
 <body class="text-slate-100 antialiased bg-grid">
@@ -222,16 +325,17 @@
   <header class="sticky top-0 z-50 border-b border-slate-800/60 bg-bg/90 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between gap-4">
       <a href="#" class="font-display font-bold text-base tracking-wider text-white uppercase">
-        JOAOPEC<span class="text-brand">.DEV</span>
+        JOÃO CURCINO<span class="text-brand">_</span>
       </a>
       <nav class="hidden md:flex items-center gap-8">
+        <a href="#projetos" class="nav-link">Projetos</a>
+        <a href="#stack" class="nav-link">Stack</a>
+        <a href="#carreira" class="nav-link">Carreira</a>
         <a href="#sobre" class="nav-link">Sobre</a>
-        <a href="#servicos" class="nav-link">Serviços</a>
-        <a href="#cases" class="nav-link">Projetos</a>
-        <a href="#processo" class="nav-link">Processo</a>
+        <a href="#contato" class="nav-link">Contato</a>
       </nav>
-      <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="hidden md:inline-flex items-center gap-2 border border-brand/50 text-brand rounded-md px-4 py-2 text-xs font-bold tracking-widest uppercase hover:bg-brand/10 transition-colors">
-        Orçamento <span>→</span>
+      <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" class="hidden md:inline-flex items-center gap-2 border border-brand/50 text-brand rounded-md px-4 py-2 text-xs font-bold tracking-widest uppercase hover:bg-brand/10 transition-colors">
+        Falar comigo <span>→</span>
       </a>
       <!-- Mobile menu button -->
       <button class="md:hidden text-slate-400" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
@@ -239,74 +343,87 @@
       </button>
     </div>
     <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800/60 bg-bg/95 px-5 py-4 flex flex-col gap-4">
+      <a href="#projetos" class="nav-link">Projetos</a>
+      <a href="#stack" class="nav-link">Stack</a>
+      <a href="#carreira" class="nav-link">Carreira</a>
       <a href="#sobre" class="nav-link">Sobre</a>
-      <a href="#servicos" class="nav-link">Serviços</a>
-      <a href="#cases" class="nav-link">Projetos</a>
-      <a href="#processo" class="nav-link">Processo</a>
-      <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="nav-link text-brand">Orçamento →</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" class="nav-link text-brand">Falar comigo →</a>
     </div>
   </header>
 
   <main>
 
     <!-- ─── HERO ────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20">
+    <section class="relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-18">
       <div class="absolute inset-0 pointer-events-none">
         <div class="absolute -top-20 left-1/4 w-[480px] h-[480px] bg-brand/10 rounded-full blur-[130px]"></div>
         <div class="absolute top-10 right-1/5 w-96 h-96 bg-cyanx/8 rounded-full blur-[130px]"></div>
       </div>
       <div class="relative max-w-6xl mx-auto px-5">
-        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-center">
+        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-12 items-center">
 
           <!-- Coluna esquerda: copy -->
           <div class="space-y-7 reveal">
+            <div class="inline-flex items-center gap-2.5 border border-greenx/25 bg-greenx/8 rounded-full px-3.5 py-1.5">
+              <span class="pulse-dot"></span>
+              <span class="text-xs font-semibold text-greenx tracking-wide">Disponível para novos projetos</span>
+            </div>
+
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full overflow-hidden border border-brand/40 shrink-0">
+              <div class="w-11 h-11 rounded-full overflow-hidden border border-brand/40 shrink-0">
                 <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
               </div>
-              <div class="section-label !mb-0">JOÃO CURCINO · FULL-STACK ENGINEER</div>
+              <div class="section-label !mb-0">JOÃO CURCINO · SOFTWARE ENGINEER</div>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.06] tracking-tight">
-              Sites e sistemas que ajudam sua empresa a <span class="text-brand">fechar mais negócios</span>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
+              Construo soluções que unem <span class="text-brand">lógica</span> e <span class="text-cyanx">design</span><span class="text-brand">_</span>
             </h1>
-            <p class="text-slate-400 text-lg leading-relaxed">
-              Crio landing pages, sites institucionais e plataformas web com foco em conversão, performance e uma presença digital que passa confiança desde o primeiro clique.
+            <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
+              Sou desenvolvedor full-stack focado em backend. Transformo ideia em produto: sites que vendem, plataformas que escalam e integrações que automatizam o que antes era manual.
             </p>
+
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="btn-primary !px-7 !py-3.5 !text-sm">
-                <i class="fa-brands fa-whatsapp"></i> Pedir orçamento
-              </a>
-              <a href="#cases" class="btn-outline !px-7 !py-3.5 !text-sm">
+              <a href="#projetos" class="btn-primary !px-7 !py-3.5 !text-sm">
                 Ver projetos <span>→</span>
               </a>
+              <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" class="btn-outline !px-7 !py-3.5 !text-sm">
+                <i class="fa-brands fa-whatsapp"></i> Falar comigo
+              </a>
+              <a href="assets/joao-curcino-cv.pdf" target="_blank" class="btn-outline !px-7 !py-3.5 !text-sm">
+                <i class="fa-solid fa-download text-xs"></i> Download CV
+              </a>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-500 pt-1">
+              <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand/70"></i> Salvador, BA · Remoto</span>
+              <span class="flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-cyanx/70"></i> Eng. de Software · UNIFACS</span>
+              <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amberx/70"></i> Backend & Integrações</span>
             </div>
           </div>
 
-          <!-- Coluna direita: stats + destaques -->
-          <div class="reveal space-y-4" style="animation-delay:.1s">
-            <div class="grid grid-cols-2 gap-4">
-              <div class="border border-slate-800 rounded-xl p-5 hover:border-brand/30 transition-colors">
-                <p class="text-2xl font-bold text-white font-display">Web</p>
-                <p class="text-sm text-slate-500 mt-1 leading-snug">sites rápidos e profissionais</p>
+          <!-- Coluna direita: code identity card -->
+          <div class="reveal" style="animation-delay:.1s">
+            <div class="code-card shadow-glow">
+              <div class="code-head">
+                <span class="code-dot" style="background:#ef4444"></span>
+                <span class="code-dot" style="background:#f59e0b"></span>
+                <span class="code-dot" style="background:#22c55e"></span>
+                <span class="ml-2 text-xs text-slate-500">~/joao.ts</span>
               </div>
-              <div class="border border-slate-800 rounded-xl p-5 hover:border-cyanx/30 transition-colors">
-                <p class="text-2xl font-bold text-white font-display">UX</p>
-                <p class="text-sm text-slate-500 mt-1 leading-snug">jornada clara para orçamento</p>
-              </div>
-            </div>
-            <div class="border border-slate-800 rounded-xl p-5 hover:border-greenx/30 transition-colors">
-              <p class="text-2xl font-bold text-white font-display">Tech</p>
-              <p class="text-sm text-slate-500 mt-1">estrutura pronta para crescer</p>
-            </div>
-            <div class="border border-slate-800/60 rounded-xl p-5 bg-panel/40">
-              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">Stack</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Next.js</span>
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Laravel</span>
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">APIs</span>
+              <div class="code-body">
+<div><span class="ln">1</span><span class="c-com">// software engineer / backend-focused</span></div>
+<div><span class="ln">2</span><span class="c-kw">const</span> <span class="c-var">joao</span> = {</div>
+<div><span class="ln">3</span>&nbsp;&nbsp;<span class="c-prop">role</span>: <span class="c-str">'Software Engineer'</span>,</div>
+<div><span class="ln">4</span>&nbsp;&nbsp;<span class="c-prop">stack</span>: [<span class="c-str">'TypeScript'</span>, <span class="c-str">'NestJS'</span>, <span class="c-str">'Next.js'</span>],</div>
+<div><span class="ln">5</span>&nbsp;&nbsp;<span class="c-prop">city</span>: <span class="c-str">'Salvador, BA'</span>,</div>
+<div><span class="ln">6</span>&nbsp;&nbsp;<span class="c-prop">focus</span>: [<span class="c-str">'APIs'</span>, <span class="c-str">'pagamentos'</span>, <span class="c-str">'automação'</span>],</div>
+<div><span class="ln">7</span>&nbsp;&nbsp;<span class="c-prop">coffee</span>: <span class="c-num">Infinity</span>,</div>
+<div><span class="ln">8</span>&nbsp;&nbsp;<span class="c-fn">build</span>(<span class="c-var">idea</span>) {</div>
+<div><span class="ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> <span class="c-var">idea</span>.<span class="c-fn">ship</span>();</div>
+<div><span class="ln">10</span>&nbsp;&nbsp;}</div>
+<div><span class="ln">11</span>};</div>
               </div>
             </div>
           </div>
@@ -323,9 +440,9 @@
 
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
           <div>
-            <div class="section-label">01 / SERVIÇOS</div>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O que eu posso construir para você</h2>
-            <p class="text-slate-400 mt-3 max-w-xl">Pacotes claros para quem precisa sair do improviso e vender com uma presença digital mais forte.</p>
+            <div class="section-label">01 / O que eu faço</div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Do site simples ao sistema sob medida</h2>
+            <p class="text-slate-400 mt-3 max-w-xl">Pacotes claros para quem precisa de presença digital forte — e capacidade técnica para quando a operação pedir mais.</p>
           </div>
         </div>
 
@@ -339,7 +456,7 @@
               <span class="text-4xl font-black text-slate-800/60 font-display">01</span>
             </div>
             <h3 class="text-lg font-bold">Landing page de venda</h3>
-            <p class="text-sm text-slate-400 mt-3 leading-relaxed">Página direta para campanha, tráfego pago, lançamento ou serviço específico, com CTA forte e narrativa persuasiva.</p>
+            <p class="text-sm text-slate-400 mt-3 leading-relaxed">Página direta para campanha, tráfego pago ou lançamento, com CTA forte e narrativa que converte.</p>
             <ul class="mt-5 space-y-2 text-xs text-slate-500">
               <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>Copy e estrutura de conversão</li>
               <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>WhatsApp, formulário ou agenda</li>
@@ -355,7 +472,7 @@
               <span class="text-4xl font-black text-slate-800/60 font-display">02</span>
             </div>
             <h3 class="text-lg font-bold">Site institucional</h3>
-            <p class="text-sm text-slate-400 mt-3 leading-relaxed">Presença profissional para empresas que precisam gerar confiança, explicar serviços e receber contatos qualificados.</p>
+            <p class="text-sm text-slate-400 mt-3 leading-relaxed">Presença profissional para gerar confiança, explicar serviços e receber contatos qualificados.</p>
             <ul class="mt-5 space-y-2 text-xs text-slate-500">
               <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>Home, serviços, sobre e contato</li>
               <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>SEO técnico básico</li>
@@ -371,10 +488,10 @@
               <span class="text-4xl font-black text-slate-800/60 font-display">03</span>
             </div>
             <h3 class="text-lg font-bold">Sistema sob medida</h3>
-            <p class="text-sm text-slate-400 mt-3 leading-relaxed">Plataformas, dashboards e automações para reduzir trabalho manual e organizar processos importantes da empresa.</p>
+            <p class="text-sm text-slate-400 mt-3 leading-relaxed">Plataformas, APIs e integrações (pagamentos, assinatura digital) para reduzir trabalho manual e escalar a operação.</p>
             <ul class="mt-5 space-y-2 text-xs text-slate-500">
               <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>Painéis administrativos</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>APIs e integrações</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>APIs e integrações bancárias</li>
               <li class="flex items-center gap-2"><i class="fa-solid fa-check text-greenx"></i>Arquitetura escalável</li>
             </ul>
           </article>
@@ -385,8 +502,8 @@
 
     <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
 
-    <!-- ─── PROJECTS ──────────────────────────────────────────── -->
-    <section id="cases" class="py-16 md:py-20 relative">
+    <!-- ─── SELECTED WORK ──────────────────────────────────────── -->
+    <section id="projetos" class="py-16 md:py-20 relative">
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/4 rounded-full blur-[140px]"></div>
       </div>
@@ -394,11 +511,11 @@
 
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
           <div>
-            <div class="section-label">02 / PROJETOS</div>
+            <div class="section-label">02 / Projetos · Selected work · 2024–2025</div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projetos em destaque</h2>
-            <p class="text-slate-400 mt-3 max-w-xl">Exemplos de como transformo necessidade técnica em experiência mais clara para o cliente final.</p>
+            <p class="text-slate-400 mt-3 max-w-xl">Trabalho real no ar — de site institucional a marketplace fullstack.</p>
           </div>
-          <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Vi%20seus%20cases%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" class="btn-outline shrink-0">
+          <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Vi%20seus%20projetos%20e%20quero%20conversar." target="_blank" class="btn-outline shrink-0">
             <i class="fa-brands fa-whatsapp text-sm"></i> Quero algo assim
           </a>
         </div>
@@ -414,7 +531,7 @@
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold">3KAP</h3>
-              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Site para auditoria, RH e TI com comunicação mais profissional, páginas de serviço e caminho direto para contato comercial.</p>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Site para empresa de auditoria, RH e TI com comunicação profissional, páginas de serviço, blog e caminho direto para contato comercial.</p>
               <div class="mt-4 flex items-center justify-between flex-wrap gap-3">
                 <div class="flex items-center gap-3">
                   <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Desktop</span>
@@ -422,7 +539,7 @@
                   <span class="device-tag"><i class="fa-solid fa-mobile-screen text-xs"></i> Mobile</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="tech-tag">Next.js</span>
+                  <span class="tech-tag">PHP</span>
                   <span class="tech-tag">SEO</span>
                 </div>
               </div>
@@ -443,16 +560,16 @@
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold">Vistta</h3>
-              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Marketplace de moda circular que conecta compradoras e vendedoras com anúncios gratuitos, chat integrado e fila de interesse — tudo pensado para facilitar o consumo consciente.</p>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Marketplace de moda circular construído de ponta a ponta: anúncios gratuitos, chat, favoritos e fila de interessadas. Backend NestJS, web Next.js e app Flutter.</p>
               <div class="mt-4 flex items-center justify-between flex-wrap gap-3">
                 <div class="flex items-center gap-3">
-                  <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Desktop</span>
-                  <span class="device-tag"><i class="fa-solid fa-mobile-screen text-xs"></i> Mobile</span>
+                  <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Web</span>
+                  <span class="device-tag"><i class="fa-solid fa-mobile-screen text-xs"></i> App</span>
                 </div>
                 <div class="flex items-center gap-2">
+                  <span class="tech-tag">NestJS</span>
+                  <span class="tech-tag">Next.js</span>
                   <span class="tech-tag">Flutter</span>
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">Realtime</span>
                 </div>
               </div>
               <div class="mt-4 pt-4 border-t border-slate-800">
@@ -472,15 +589,15 @@
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold">Histórias Vivas</h3>
-              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Plataforma de apoio ao cuidado de pessoas com Alzheimer, com experiência clara para organização de memórias multimídia.</p>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Plataforma em Laravel para registrar e organizar memórias multimídia — apoio ao cuidado de pessoas com Alzheimer.</p>
               <div class="mt-4 flex items-center justify-between flex-wrap gap-3">
                 <div class="flex items-center gap-3">
                   <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Desktop</span>
                   <span class="device-tag"><i class="fa-solid fa-mobile-screen text-xs"></i> Mobile</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Laravel</span>
+                  <span class="tech-tag">Blade</span>
                 </div>
               </div>
               <div class="mt-4 pt-4 border-t border-slate-800">
@@ -509,15 +626,15 @@
               <span class="img-badge img-badge-right" style="color:#F59E0B;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.1)">PYTHON</span>
             </div>
             <div class="p-6">
-              <h3 class="text-2xl font-bold">Sistema de Markowitz</h3>
-              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Motor em Python para análise de risco e retorno, mostrando capacidade de construir lógica de negócio além da interface.</p>
+              <h3 class="text-2xl font-bold">Fronteira de Markowitz</h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Motor em Python para análise de risco e retorno de carteiras da B3 — prova de capacidade de construir lógica de negócio, não só interface.</p>
               <div class="mt-4 flex items-center justify-between flex-wrap gap-3">
                 <div class="flex items-center gap-3">
-                  <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Desktop</span>
+                  <span class="device-tag"><i class="fa-solid fa-terminal text-xs"></i> CLI / Notebook</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="tech-tag">Python</span>
-                  <span class="tech-tag">Análise</span>
+                  <span class="tech-tag">NumPy</span>
                 </div>
               </div>
               <div class="mt-4 pt-4 border-t border-slate-800">
@@ -534,62 +651,273 @@
 
     <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
 
-    <!-- ─── PROCESS ───────────────────────────────────────────── -->
-    <section id="processo" class="py-16 md:py-20">
+    <!-- ─── OPEN SOURCE / TÉCNICOS ─────────────────────────────── -->
+    <section id="open-source" class="py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-5">
 
-        <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-12 items-start">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
+          <div>
+            <div class="section-label">03 / Projetos técnicos & estudos · GitHub</div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Código aberto e experimentos</h2>
+            <p class="text-slate-400 mt-3 max-w-xl">Onde eu testo linguagens, exploro ideias e mantenho o aprendizado constante.</p>
+          </div>
+          <a href="https://github.com/JoaoPec" target="_blank" class="btn-outline shrink-0">
+            <i class="fa-brands fa-github text-sm"></i> Ver todos no GitHub
+          </a>
+        </div>
 
-          <div class="reveal">
-            <div class="section-label">03 / PROCESSO</div>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Como o projeto sai do papel</h2>
-            <p class="text-slate-400 mt-4 leading-relaxed">Você não precisa chegar com tudo pronto. Eu ajudo a transformar a ideia em escopo, prioridade e uma primeira versão que já pode gerar contato.</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-            <div class="mt-8 border border-slate-800 rounded-xl p-5">
-              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-4">Ideal para</p>
+          <a href="https://github.com/JoaoPec/eureka" target="_blank" class="repo-card reveal">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fa-solid fa-folder text-cyanx"></i>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#00ADD8"></span> Go</span>
+            </div>
+            <h3 class="font-bold text-base">eureka</h3>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Quiz de expressões algébricas em Go com níveis de dificuldade.</p>
+            <span class="mt-4 text-xs font-semibold text-slate-500 group inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+          </a>
+
+          <a href="https://github.com/JoaoPec/goWallpaper" target="_blank" class="repo-card reveal" style="animation-delay:.04s">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fa-solid fa-folder text-brand"></i>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#00ADD8"></span> Go</span>
+            </div>
+            <h3 class="font-bold text-base">goWallpaper</h3>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">TUI em Go para listar wallpapers e definir o plano de fundo com feh.</p>
+            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+          </a>
+
+          <a href="https://github.com/JoaoPec/TwilioBG" target="_blank" class="repo-card reveal" style="animation-delay:.08s">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fa-solid fa-folder text-greenx"></i>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#F7DF1E"></span> Node.js</span>
+            </div>
+            <h3 class="font-bold text-base">TwilioBG</h3>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Worker em Node.js para enviar lembretes agendados via WhatsApp com Twilio e MongoDB.</p>
+            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+          </a>
+
+          <a href="https://github.com/JoaoPec/agora-vai" target="_blank" class="repo-card reveal" style="animation-delay:.04s">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fa-solid fa-folder text-cyanx"></i>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#3178C6"></span> TypeScript</span>
+            </div>
+            <h3 class="font-bold text-base">agora-vai</h3>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Lista de tarefas com lembretes no browser, feita em Next.js + Tailwind.</p>
+            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+          </a>
+
+          <a href="https://github.com/JoaoPec/tiramisu-presskit" target="_blank" class="repo-card reveal" style="animation-delay:.08s">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fa-solid fa-folder text-amberx"></i>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#3178C6"></span> TypeScript</span>
+            </div>
+            <h3 class="font-bold text-base">tiramisu-presskit</h3>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Press kit de DJ — House, Prog Dark e Psytrance. Site rápido e visualmente marcante.</p>
+            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+          </a>
+
+          <a href="https://github.com/JoaoPec/limpaSalvador_backend" target="_blank" class="repo-card reveal" style="animation-delay:.12s">
+            <div class="flex items-center justify-between mb-3">
+              <i class="fa-solid fa-folder text-greenx"></i>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#F7DF1E"></span> Node.js</span>
+            </div>
+            <h3 class="font-bold text-base">limpaSalvador</h3>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">API Node.js/Express com autenticação, posts e upload de imagens para causa cívica.</p>
+            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
+
+    <!-- ─── STACK / TOOLBELT ───────────────────────────────────── -->
+    <section id="stack" class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <div class="reveal mb-10">
+          <div class="section-label">04 / Stack e ferramentas · Toolbelt · 2025</div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Stack que utilizo no dia a dia</h2>
+          <p class="text-slate-400 mt-3 max-w-xl">Backend é minha base, mas entrego de ponta a ponta — do banco ao deploy.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-5 reveal">
+
+          <!-- categorias -->
+          <div class="space-y-6">
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">Backend & Dados</p>
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1.5 text-xs rounded-md border border-brand/30 bg-brand/8 text-indigo-300 font-medium">prestadores de serviço</span>
-                <span class="px-3 py-1.5 text-xs rounded-md border border-cyanx/30 bg-cyanx/8 text-cyan-300 font-medium">empresas locais</span>
-                <span class="px-3 py-1.5 text-xs rounded-md border border-greenx/30 bg-greenx/8 text-green-300 font-medium">startups</span>
-                <span class="px-3 py-1.5 text-xs rounded-md border border-amberx/30 bg-amberx/8 text-amber-300 font-medium">operações internas</span>
+                <span class="stack-pill">Node.js</span>
+                <span class="stack-pill">NestJS</span>
+                <span class="stack-pill">TypeScript</span>
+                <span class="stack-pill">Laravel (PHP)</span>
+                <span class="stack-pill">Python</span>
+                <span class="stack-pill">REST APIs</span>
+                <span class="stack-pill">GraphQL</span>
+                <span class="stack-pill">PostgreSQL</span>
+                <span class="stack-pill">MySQL</span>
+                <span class="stack-pill">MongoDB</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">Frontend & Mobile</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="stack-pill">React</span>
+                <span class="stack-pill">Vue.js</span>
+                <span class="stack-pill">Next.js</span>
+                <span class="stack-pill">Tailwind</span>
+                <span class="stack-pill">HTML5</span>
+                <span class="stack-pill">CSS3</span>
+                <span class="stack-pill">Flutter</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">DevOps & Ferramentas</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="stack-pill">Docker</span>
+                <span class="stack-pill">Linux</span>
+                <span class="stack-pill">Nginx</span>
+                <span class="stack-pill">Git</span>
+                <span class="stack-pill">CI/CD</span>
+                <span class="stack-pill">Postman</span>
+                <span class="stack-pill">Vercel</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">Workflow IA</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="stack-pill">Claude Code</span>
+                <span class="stack-pill">Cursor</span>
+                <span class="stack-pill">Codex</span>
               </div>
             </div>
           </div>
 
-          <div class="space-y-4 reveal" style="animation-delay:.08s">
-
-            <div class="flex items-start gap-4 border border-slate-800 rounded-xl p-5 hover:border-brand/30 transition-colors">
-              <div class="step-num border-brand/40 text-brand bg-brand/8">01</div>
-              <div>
-                <h3 class="font-bold text-base">Diagnóstico rápido</h3>
-                <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Entendo objetivo, público, oferta, referências e o que precisa acontecer depois que a pessoa entra no site.</p>
+          <!-- domínios destaque -->
+          <div class="border border-slate-800 rounded-xl p-6 bg-panel/30 flex flex-col">
+            <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-4">Domínios em que sou forte</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-greenx/10 text-greenx grid place-items-center shrink-0"><i class="fa-solid fa-credit-card text-sm"></i></div>
+                <div>
+                  <h3 class="font-bold text-sm">Integrações de pagamento</h3>
+                  <p class="text-xs text-slate-500 mt-1 leading-snug">Boleto, PIX e cartão — APIs bancárias processando +5.000 pagamentos/mês em produção.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-brand/10 text-brand grid place-items-center shrink-0"><i class="fa-solid fa-file-signature text-sm"></i></div>
+                <div>
+                  <h3 class="font-bold text-sm">Assinatura digital</h3>
+                  <p class="text-xs text-slate-500 mt-1 leading-snug">Fluxos de assinatura de documentos integrados a sistemas de gestão.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-cyanx/10 text-cyanx grid place-items-center shrink-0"><i class="fa-solid fa-robot text-sm"></i></div>
+                <div>
+                  <h3 class="font-bold text-sm">Automação de processos</h3>
+                  <p class="text-xs text-slate-500 mt-1 leading-snug">Rotinas, relatórios gerenciais e integrações que eliminam trabalho manual.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-amberx/10 text-amberx grid place-items-center shrink-0"><i class="fa-solid fa-database text-sm"></i></div>
+                <div>
+                  <h3 class="font-bold text-sm">SQL & relatórios</h3>
+                  <p class="text-xs text-slate-500 mt-1 leading-snug">Otimização de consultas e relatórios que aceleram a tomada de decisão.</p>
+                </div>
               </div>
             </div>
+            <div class="mt-6 pt-5 border-t border-slate-800 flex flex-wrap gap-2">
+              <span class="tech-tag" style="color:#06B6D4;border-color:rgba(6,182,212,.3)">Building with the Claude API</span>
+              <span class="tech-tag" style="color:#06B6D4;border-color:rgba(6,182,212,.3)">Claude Code 101</span>
+              <span class="tech-tag" style="color:#06B6D4;border-color:rgba(6,182,212,.3)">AI Fluency</span>
+            </div>
+          </div>
 
-            <div class="flex items-start gap-4 border border-slate-800 rounded-xl p-5 hover:border-cyanx/30 transition-colors">
-              <div class="step-num border-cyanx/40 text-cyanx bg-cyanx/8">02</div>
-              <div>
-                <h3 class="font-bold text-base">Estrutura e design</h3>
-                <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Monto a narrativa da página, as seções, CTAs e o visual para deixar sua empresa mais confiável.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
+
+    <!-- ─── CARREIRA ───────────────────────────────────────────── -->
+    <section id="carreira" class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-12 items-start">
+
+          <div class="reveal">
+            <div class="section-label">05 / Carreira · Trajetória · 2022–presente</div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Minha experiência</h2>
+            <p class="text-slate-400 mt-4 leading-relaxed">Da freela ao desenvolvimento de sistemas críticos em produção. Aprendizado constante, entrega real.</p>
+
+            <div class="mt-8 border border-slate-800 rounded-xl p-5">
+              <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-4">Formação</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-graduation-cap text-brand mt-1 text-sm"></i>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-200">Bacharelado em Engenharia de Software</p>
+                    <p class="text-xs text-slate-500">UNIFACS · 2023–2027</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-screwdriver-wrench text-cyanx mt-1 text-sm"></i>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-200">Técnico em Desenvolvimento de Sistemas</p>
+                    <p class="text-xs text-slate-500">SENAI · 2023–2025</p>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="flex items-start gap-4 border border-slate-800 rounded-xl p-5 hover:border-greenx/30 transition-colors">
-              <div class="step-num border-greenx/40 text-greenx bg-greenx/8">03</div>
-              <div>
-                <h3 class="font-bold text-base">Desenvolvimento</h3>
-                <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Construo a versão responsiva, rápida e preparada para integração com WhatsApp, formulário, analytics ou sistemas.</p>
+          <div class="reveal" style="animation-delay:.08s">
+            <div class="timeline">
+
+              <div class="timeline-item current">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                  <h3 class="font-bold text-base">Desenvolvedor de Software Júnior</h3>
+                  <span class="text-xs font-semibold text-greenx">Jan 2025 — Atual</span>
+                </div>
+                <p class="text-xs text-slate-500 mb-2">INFOCRAFT · Salvador, BA</p>
+                <ul class="space-y-1.5 text-sm text-slate-400">
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> APIs REST e novas features em NestJS/TypeScript no backend e Vue.js no frontend, sobre PostgreSQL.</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> Integrações financeiras com APIs bancárias processando +5.000 pagamentos/mês (boleto, PIX, cartão) e assinatura digital.</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> Deploy e configuração de ambientes Linux com Docker, Nginx e Git.</li>
+                </ul>
               </div>
-            </div>
 
-            <div class="flex items-start gap-4 border border-slate-800 rounded-xl p-5 hover:border-amberx/30 transition-colors">
-              <div class="step-num border-amberx/40 text-amberx bg-amberx/8">04</div>
-              <div>
-                <h3 class="font-bold text-base">Publicação e ajustes</h3>
-                <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Coloco no ar, reviso no celular e deixo o caminho de contato funcionando para começar a captar oportunidades.</p>
+              <div class="timeline-item">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                  <h3 class="font-bold text-base">Estagiário em Desenvolvimento de Software</h3>
+                  <span class="text-xs font-semibold text-slate-400">Jul 2024 — Dez 2024</span>
+                </div>
+                <p class="text-xs text-slate-500 mb-2">INFOCRAFT · Salvador, BA</p>
+                <ul class="space-y-1.5 text-sm text-slate-400">
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> Sistema E-Grafite (Laravel + Vue.js): módulos Filantropia (+1.000 inscrições) e AEE (gestão de 454 alunos).</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> APIs REST, integrações externas e assinatura digital de documentos.</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> Consultas SQL e relatórios gerenciais, reduzindo tempo de rotinas críticas.</li>
+                </ul>
               </div>
-            </div>
 
+              <div class="timeline-item">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                  <h3 class="font-bold text-base">Desenvolvedor Freelancer</h3>
+                  <span class="text-xs font-semibold text-slate-400">Jan 2022 — Atual</span>
+                </div>
+                <p class="text-xs text-slate-500 mb-2">Autônomo · Remoto</p>
+                <ul class="space-y-1.5 text-sm text-slate-400">
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> Plataforma institucional para empresa de auditoria em PHP, com blog e SEO técnico.</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> App web de automação (Excel → banco de dados) para gestão de campanhas publicitárias.</li>
+                  <li class="flex gap-2"><i class="fa-solid fa-angle-right text-brand/60 mt-1.5 text-[10px] shrink-0"></i> Sistema de otimização de carteiras em Python (modelo de Markowitz).</li>
+                </ul>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -597,11 +925,11 @@
 
     <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
 
-    <!-- ─── ABOUT ──────────────────────────────────────────────── -->
+    <!-- ─── SOBRE ──────────────────────────────────────────────── -->
     <section id="sobre" class="py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-5">
 
-        <div class="section-label reveal">04 / SOBRE</div>
+        <div class="section-label reveal">06 / Sobre · Quem sou eu</div>
 
         <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-start">
 
@@ -613,22 +941,37 @@
                 <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" />
               </div>
               <p class="text-slate-400 leading-relaxed">
-                Sou João Curcino, desenvolvedor full-stack. Minha diferença é unir execução técnica com visão de negócio: não entrego só uma tela bonita, entrego uma experiência pensada para explicar sua oferta, gerar confiança e abrir conversa com clientes.
+                Sou João Curcino, desenvolvedor full-stack focado em backend. Minha diferença é unir execução técnica com visão de negócio: não entrego só uma tela bonita, entrego uma solução pensada para explicar sua oferta, gerar confiança e funcionar em produção.
               </p>
             </div>
             <p class="text-slate-400 leading-relaxed mt-4">
-              Trabalho com Next.js, React, NestJS, Laravel, Flutter, integrações, APIs e automações. Isso permite começar com um site bem feito e evoluir para sistemas quando sua operação pedir mais.
+              Trabalho desde 2022 com APIs REST, integrações financeiras e sistemas web escaláveis. Isso permite começar com um site bem feito e evoluir para sistemas robustos quando sua operação pedir mais.
             </p>
 
-            <!-- Stack tags -->
             <div class="flex flex-wrap gap-2 mt-6">
-              <span class="tech-tag">Next.js</span>
-              <span class="tech-tag">React</span>
               <span class="tech-tag">NestJS</span>
+              <span class="tech-tag">Next.js</span>
               <span class="tech-tag">Laravel</span>
               <span class="tech-tag">Flutter</span>
               <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
               <span class="tech-tag">APIs REST</span>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 mt-8">
+              <div class="border border-slate-800 rounded-xl p-4 text-center">
+                <p class="stat-num text-brand">3+</p>
+                <p class="text-xs text-slate-500 mt-1.5 leading-snug">Anos codando</p>
+              </div>
+              <div class="border border-slate-800 rounded-xl p-4 text-center">
+                <p class="stat-num text-cyanx">5k+</p>
+                <p class="text-xs text-slate-500 mt-1.5 leading-snug">Pagamentos/mês em produção</p>
+              </div>
+              <div class="border border-slate-800 rounded-xl p-4 text-center">
+                <p class="stat-num text-greenx">15+</p>
+                <p class="text-xs text-slate-500 mt-1.5 leading-snug">Projetos publicados</p>
+              </div>
             </div>
           </div>
 
@@ -669,7 +1012,7 @@
 
     <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
 
-    <!-- ─── CONTACT ───────────────────────────────────────────── -->
+    <!-- ─── CONTATO ───────────────────────────────────────────── -->
     <section id="contato" class="py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-5">
 
@@ -680,16 +1023,21 @@
           <div class="relative grid lg:grid-cols-[1fr_.7fr] gap-10 items-center">
 
             <div>
-              <div class="section-label">05 / CONTATO</div>
-              <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Vamos transformar sua presença digital?</h2>
+              <div class="section-label">07 / Contato · Vamos conversar</div>
+              <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Bora tirar a ideia do papel?</h2>
               <p class="text-slate-400 mt-4 leading-relaxed max-w-lg">Me chama no WhatsApp com uma ideia geral do que você precisa. Eu te ajudo a entender o melhor caminho: landing page, site institucional ou sistema sob medida.</p>
               <div class="mt-7 flex flex-col sm:flex-row gap-3">
-                <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20ou%20sistema." target="_blank" class="btn-primary">
+                <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" class="btn-primary">
                   <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp
                 </a>
                 <a href="mailto:joaopecurcino.dev@gmail.com" class="btn-outline">
                   <i class="fa-solid fa-envelope text-sm"></i> Enviar e-mail
                 </a>
+              </div>
+              <div class="mt-7 flex items-center gap-5 text-slate-500">
+                <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="hover:text-white transition-colors flex items-center gap-2 text-sm"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/JoaoPec" target="_blank" class="hover:text-white transition-colors flex items-center gap-2 text-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://www.instagram.com/joaopec.dev" target="_blank" class="hover:text-white transition-colors flex items-center gap-2 text-sm"><i class="fa-brands fa-instagram"></i> Instagram</a>
               </div>
             </div>
 
@@ -724,9 +1072,9 @@
     <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-6">
         <a href="#" class="font-display font-bold text-sm tracking-wider text-slate-400 uppercase hover:text-white transition-colors">
-          JOAOPEC<span class="text-brand">.DEV</span>
+          JOÃO CURCINO<span class="text-brand">_</span>
         </a>
-        <span class="text-slate-700 text-xs">© <span id="year"></span> João Curcino</span>
+        <span class="text-slate-700 text-xs">© <span id="year"></span> João Curcino · Salvador, BA</span>
       </div>
       <div class="flex items-center gap-5 text-slate-500 text-sm">
         <a href="https://www.linkedin.com/in/joão-curcino-490601262" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5 text-xs"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
