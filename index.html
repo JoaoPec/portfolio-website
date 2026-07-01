@@ -14,16 +14,16 @@
   <meta name="twitter:title" content="João Curcino | Software Engineer" />
   <meta name="twitter:description" content="Desenvolvimento de sites, sistemas e soluções web para empresas." />
   <link rel="icon" type="image/svg+xml"
-    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Inter,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Outfit,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            display: ["Poppins", "sans-serif"],
+            display: ["Outfit", "sans-serif"],
             body: ["Inter", "sans-serif"],
             mono: ["JetBrains Mono", "monospace"]
           },
@@ -45,9 +45,9 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    section[id] { scroll-margin-top: 70px; }
+    section[id] { scroll-margin-top: 80px; }
     body { font-family: "Inter", sans-serif; background: #0B0F14; }
-    h1,h2,h3,h4 { font-family: "Poppins", sans-serif; }
+    h1,h2,h3,h4 { font-family: "Outfit", sans-serif; }
     .bg-grid {
       background-image: radial-gradient(rgba(148,163,184,0.06) 1px, transparent 0);
       background-size: 40px 40px;
@@ -268,9 +268,10 @@
       font-weight: 600;
       color: #fff;
       letter-spacing: .02em;
-      transition: background .15s, opacity .15s;
+      transition: background .15s, opacity .15s, transform .15s;
     }
     .btn-primary:hover { background: #4f52d9; }
+    .btn-primary:active { transform: translateY(1px); }
 
     /* Divider line */
     .h-divider { height: 1px; background: rgba(148,163,184,.08); }
@@ -326,7 +327,7 @@
       font-size: 2rem; font-weight: 800; line-height: 1;
     }
 
-    :focus-visible {
+:focus-visible {
       outline: 2px solid #06B6D4;
       outline-offset: 4px;
     }
@@ -358,7 +359,7 @@
         <a href="#sobre" class="nav-link">Sobre</a>
         <a href="#contato" class="nav-link">Contato</a>
       </nav>
-      <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noreferrer" class="hidden md:inline-flex items-center gap-2 border border-brand/50 text-brand rounded-md px-4 py-2 text-xs font-bold tracking-widest uppercase hover:bg-brand/10 transition-colors">
+<a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noreferrer" class="hidden md:inline-flex items-center gap-2 border border-brand/50 text-brand rounded-md px-4 py-2 text-xs font-bold tracking-widest uppercase hover:bg-brand/10 transition-colors">
         Falar comigo <span>→</span>
       </a>
       <!-- Mobile menu button -->
@@ -378,11 +379,10 @@
 
   <main>
 
-    <!-- ─── HERO ────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-18">
+<!-- ─── HERO ────────────────────────────────────────────── -->
+    <section class="relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-20">
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute -top-20 left-1/4 w-[480px] h-[480px] bg-brand/10 rounded-full blur-[130px]"></div>
-        <div class="absolute top-10 right-1/5 w-96 h-96 bg-cyanx/8 rounded-full blur-[130px]"></div>
+        <div class="absolute -top-20 left-1/4 w-[480px] h-[480px] bg-brand/10 rounded-full blur-[140px]"></div>
       </div>
       <div class="relative max-w-6xl mx-auto px-5">
         <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-12 items-center">
@@ -394,18 +394,11 @@
               <span class="text-xs font-semibold text-greenx tracking-wide">Disponível para novos projetos</span>
             </div>
 
-            <div class="flex items-center gap-4">
-              <div class="w-11 h-11 rounded-full overflow-hidden border border-brand/40 shrink-0">
-                <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" decoding="async" fetchpriority="high" />
-              </div>
-              <div class="section-label !mb-0">JOÃO CURCINO · SOFTWARE ENGINEER</div>
-            </div>
-
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">
-              Construo soluções que unem <span class="text-brand">lógica</span> e <span class="text-cyanx">design</span><span class="text-brand">_</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight">
+              Construo soluções que unem <em class="not-italic font-extrabold text-brand">lógica</em> e <em class="not-italic font-extrabold text-cyanx">design</em><span class="text-brand">_</span>
             </h1>
             <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
-              Sou desenvolvedor full-stack focado em backend. Transformo ideia em produto: sites que vendem, plataformas que escalam e integrações que automatizam o que antes era manual.
+              Desenvolvedor full-stack focado em backend. Transformo ideia em produto: sites que vendem, plataformas que escalam e integrações que automatizam o que antes era manual.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3">
@@ -415,39 +408,18 @@
               <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noreferrer" class="btn-outline !px-7 !py-3.5 !text-sm">
                 <i class="fa-brands fa-whatsapp"></i> Falar comigo
               </a>
-              <a href="assets/joao-curcino-cv.pdf" target="_blank" rel="noreferrer" class="btn-outline !px-7 !py-3.5 !text-sm">
-                <i class="fa-solid fa-download text-xs"></i> Download CV
-              </a>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-500 pt-1">
-              <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand/70"></i> Salvador, BA · Remoto</span>
-              <span class="flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-cyanx/70"></i> Eng. de Software · UNIFACS</span>
-              <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amberx/70"></i> Backend & Integrações</span>
             </div>
           </div>
 
-          <!-- Coluna direita: code identity card -->
+          <!-- Coluna direita: retrato real -->
           <div class="reveal" style="animation-delay:.1s">
-            <div class="code-card shadow-glow">
-              <div class="code-head">
-                <span class="code-dot" style="background:#ef4444"></span>
-                <span class="code-dot" style="background:#f59e0b"></span>
-                <span class="code-dot" style="background:#22c55e"></span>
-                <span class="ml-2 text-xs text-slate-500">~/joao.ts</span>
+            <div class="relative">
+              <div class="relative w-full max-w-sm mx-auto">
+                <img src="assets/pfp_new.png" alt="Foto de João Curcino — Software Engineer" class="w-full h-auto rounded-full shadow-glow" decoding="async" fetchpriority="high" />
               </div>
-              <div class="code-body">
-<div><span class="ln">1</span><span class="c-com">// software engineer / backend-focused</span></div>
-<div><span class="ln">2</span><span class="c-kw">const</span> <span class="c-var">joao</span> = {</div>
-<div><span class="ln">3</span>&nbsp;&nbsp;<span class="c-prop">role</span>: <span class="c-str">'Software Engineer'</span>,</div>
-<div><span class="ln">4</span>&nbsp;&nbsp;<span class="c-prop">stack</span>: [<span class="c-str">'TypeScript'</span>, <span class="c-str">'NestJS'</span>, <span class="c-str">'Next.js'</span>],</div>
-<div><span class="ln">5</span>&nbsp;&nbsp;<span class="c-prop">city</span>: <span class="c-str">'Salvador, BA'</span>,</div>
-<div><span class="ln">6</span>&nbsp;&nbsp;<span class="c-prop">focus</span>: [<span class="c-str">'APIs'</span>, <span class="c-str">'pagamentos'</span>, <span class="c-str">'automação'</span>],</div>
-<div><span class="ln">7</span>&nbsp;&nbsp;<span class="c-prop">coffee</span>: <span class="c-num">Infinity</span>,</div>
-<div><span class="ln">8</span>&nbsp;&nbsp;<span class="c-fn">build</span>(<span class="c-var">idea</span>) {</div>
-<div><span class="ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> <span class="c-var">idea</span>.<span class="c-fn">ship</span>();</div>
-<div><span class="ln">10</span>&nbsp;&nbsp;}</div>
-<div><span class="ln">11</span>};</div>
+              <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 hidden sm:flex items-center gap-2 border border-slate-700 bg-bg/90 backdrop-blur rounded-full px-4 py-2 text-xs text-slate-300 shadow-glow">
+                <i class="fa-solid fa-location-dot text-brand/80 text-[11px]"></i>
+                Salvador, BA · Remoto
               </div>
             </div>
           </div>
@@ -528,20 +500,16 @@
 
     <!-- ─── SELECTED WORK ──────────────────────────────────────── -->
     <section id="projetos" class="py-16 md:py-20 relative">
-      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/4 rounded-full blur-[140px]"></div>
       </div>
       <div class="max-w-6xl mx-auto px-5 relative">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
           <div>
-            <div class="section-label">02 / Projetos · Selected work · 2024–2025</div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projetos em destaque</h2>
             <p class="text-slate-400 mt-3 max-w-xl">Trabalho real no ar — de site institucional a marketplace fullstack.</p>
           </div>
-          <a href="https://wa.me/5571984313715?text=Oi%20Jo%C3%A3o!%20Vi%20seus%20projetos%20e%20quero%20conversar." target="_blank" rel="noreferrer" class="btn-outline shrink-0">
-            <i class="fa-brands fa-whatsapp text-sm"></i> Quero algo assim
-          </a>
         </div>
 
         <div class="grid md:grid-cols-2 gap-5">
@@ -568,7 +536,7 @@
                 </div>
               </div>
               <div class="mt-4 pt-4 border-t border-slate-800">
-                <a href="https://3kap.com.br" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:text-indigo-300 transition-colors">
+<a href="https://3kap.com.br" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:text-indigo-300 transition-colors">
                   Ver projeto ao vivo <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
               </div>
@@ -597,7 +565,7 @@
                 </div>
               </div>
               <div class="mt-4 pt-4 border-t border-slate-800">
-                <a href="https://vistta.app" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-cyanx hover:text-cyan-300 transition-colors">
+<a href="https://vistta.app" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-cyanx hover:text-cyan-300 transition-colors">
                   Ver projeto ao vivo <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
               </div>
@@ -626,7 +594,7 @@
               </div>
               <div class="mt-4 pt-4 border-t border-slate-800">
                 <div class="flex items-center gap-4">
-                  <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-greenx hover:text-green-300 transition-colors">
+<a href="https://www.linkedin.com/feed/update/urn:li:activity:7401600679242371072/?originTrackingId=OWwHlVvDyNDV%2FLn0YM1mCg%3D%3D" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-greenx hover:text-green-300 transition-colors">
                     Ver post <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
                   <a href="https://github.com/JoaoPec/historiasVivas" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
@@ -675,13 +643,12 @@
 
     <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
 
-    <!-- ─── OPEN SOURCE / TÉCNICOS ─────────────────────────────── -->
+<!-- ─── OPEN SOURCE / TÉCNICOS ─────────────────────────────── -->
     <section id="open-source" class="py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-5">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
           <div>
-            <div class="section-label">03 / Projetos técnicos & estudos</div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Open source e projetos privados</h2>
             <p class="text-slate-400 mt-3 max-w-xl">De experimentos públicos a sistemas privados em produção — onde testo ideias e resolvo problemas reais.</p>
           </div>
@@ -690,66 +657,78 @@
           </a>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="border border-slate-800 rounded-xl divide-y divide-slate-800/70 overflow-hidden">
 
-          <div class="repo-card reveal">
-            <div class="flex items-center justify-between mb-3">
+          <div class="reveal flex flex-col md:flex-row md:items-center gap-3 md:gap-6 p-5 md:p-6 transition-colors hover:bg-panel/40">
+            <div class="flex items-center gap-3 md:w-56 shrink-0">
               <i class="fa-solid fa-comments text-greenx"></i>
               <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#777BB4"></span> PHP · Laravel</span>
             </div>
-            <h3 class="font-bold text-base">Notificações de títulos via WhatsApp</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Sistema em Laravel que dispara avisos e cobranças de títulos via WhatsApp de forma automática — agendamento, integração com API de mensagens e controle de envios em produção.</p>
-            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-solid fa-lock text-[10px] text-amberx/70"></i> Projeto privado</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-base">Notificações de títulos via WhatsApp</h3>
+              <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Sistema em Laravel que dispara avisos e cobranças de títulos via WhatsApp de forma automática — agendamento, integração com API de mensagens e controle de envios em produção.</p>
+            </div>
+            <span class="text-xs font-semibold text-slate-500 inline-flex items-center gap-2 shrink-0"><i class="fa-solid fa-lock text-[10px] text-slate-500"></i> Privado</span>
           </div>
 
-          <div class="repo-card reveal" style="animation-delay:.04s">
-            <div class="flex items-center justify-between mb-3">
+          <div class="reveal flex flex-col md:flex-row md:items-center gap-3 md:gap-6 p-5 md:p-6 transition-colors hover:bg-panel/40" style="animation-delay:.04s">
+            <div class="flex items-center gap-3 md:w-56 shrink-0">
               <i class="fa-solid fa-robot text-cyanx"></i>
-              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#6366F1"></span> Bot · IA</span>
+              <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#3178C6"></span> TypeScript · IA</span>
             </div>
-            <h3 class="font-bold text-base">Content Systems</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Bot de Telegram com IA para geração e curadoria de conteúdo — conecta modelos de linguagem ao fluxo de mensagens para automatizar a produção.</p>
-            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-solid fa-lock text-[10px] text-amberx/70"></i> Projeto privado</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-base">Content Systems</h3>
+              <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Bot de Telegram com IA para geração e curadoria de conteúdo — conecta modelos de linguagem ao fluxo de mensagens para automatizar a produção.</p>
+            </div>
+            <span class="text-xs font-semibold text-slate-500 inline-flex items-center gap-2 shrink-0"><i class="fa-solid fa-lock text-[10px] text-slate-500"></i> Privado</span>
           </div>
 
-          <a href="https://github.com/JoaoPec/TwilioBG" target="_blank" rel="noreferrer" class="repo-card reveal" style="animation-delay:.08s">
-            <div class="flex items-center justify-between mb-3">
-              <i class="fa-solid fa-folder text-greenx"></i>
+          <a href="https://github.com/JoaoPec/TwilioBG" target="_blank" rel="noreferrer" class="reveal flex flex-col md:flex-row md:items-center gap-3 md:gap-6 p-5 md:p-6 transition-colors hover:bg-panel/40 group" style="animation-delay:.08s">
+            <div class="flex items-center gap-3 md:w-56 shrink-0">
+              <i class="fa-brands fa-github text-slate-500 group-hover:text-brand transition-colors"></i>
               <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#F7DF1E"></span> Node.js</span>
             </div>
-            <h3 class="font-bold text-base">TwilioBG</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Worker em Node.js para enviar lembretes agendados via WhatsApp com Twilio e MongoDB.</p>
-            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-base">TwilioBG</h3>
+              <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Worker em Node.js para enviar lembretes agendados via WhatsApp com Twilio e MongoDB.</p>
+            </div>
+            <span class="text-xs font-semibold text-brand inline-flex items-center gap-2 shrink-0"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Repositório</span>
           </a>
 
-          <a href="https://github.com/JoaoPec/agora-vai" target="_blank" rel="noreferrer" class="repo-card reveal" style="animation-delay:.04s">
-            <div class="flex items-center justify-between mb-3">
-              <i class="fa-solid fa-folder text-cyanx"></i>
+          <a href="https://github.com/JoaoPec/agora-vai" target="_blank" rel="noreferrer" class="reveal flex flex-col md:flex-row md:items-center gap-3 md:gap-6 p-5 md:p-6 transition-colors hover:bg-panel/40 group" style="animation-delay:.04s">
+            <div class="flex items-center gap-3 md:w-56 shrink-0">
+              <i class="fa-brands fa-github text-slate-500 group-hover:text-brand transition-colors"></i>
               <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#3178C6"></span> TypeScript</span>
             </div>
-            <h3 class="font-bold text-base">agora-vai</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Lista de tarefas com lembretes no browser, feita em Next.js + Tailwind.</p>
-            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-base">agora-vai</h3>
+              <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Lista de tarefas com lembretes no browser, feita em Next.js + Tailwind.</p>
+            </div>
+            <span class="text-xs font-semibold text-brand inline-flex items-center gap-2 shrink-0"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Repositório</span>
           </a>
 
-          <a href="https://github.com/JoaoPec/tiramisu-presskit" target="_blank" rel="noreferrer" class="repo-card reveal" style="animation-delay:.08s">
-            <div class="flex items-center justify-between mb-3">
-              <i class="fa-solid fa-folder text-amberx"></i>
+          <a href="https://github.com/JoaoPec/tiramisu-presskit" target="_blank" rel="noreferrer" class="reveal flex flex-col md:flex-row md:items-center gap-3 md:gap-6 p-5 md:p-6 transition-colors hover:bg-panel/40 group" style="animation-delay:.08s">
+            <div class="flex items-center gap-3 md:w-56 shrink-0">
+              <i class="fa-brands fa-github text-slate-500 group-hover:text-brand transition-colors"></i>
               <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#3178C6"></span> TypeScript</span>
             </div>
-            <h3 class="font-bold text-base">tiramisu-presskit</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">Press kit de DJ — House, Prog Dark e Psytrance. Site rápido e visualmente marcante.</p>
-            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-base">tiramisu-presskit</h3>
+              <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">Press kit de DJ — House, Prog Dark e Psytrance. Site rápido e visualmente marcante.</p>
+            </div>
+            <span class="text-xs font-semibold text-brand inline-flex items-center gap-2 shrink-0"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Repositório</span>
           </a>
 
-          <a href="https://github.com/JoaoPec/limpaSalvador_backend" target="_blank" rel="noreferrer" class="repo-card reveal" style="animation-delay:.12s">
-            <div class="flex items-center justify-between mb-3">
-              <i class="fa-solid fa-folder text-greenx"></i>
+          <a href="https://github.com/JoaoPec/limpaSalvador_backend" target="_blank" rel="noreferrer" class="reveal flex flex-col md:flex-row md:items-center gap-3 md:gap-6 p-5 md:p-6 transition-colors hover:bg-panel/40 group" style="animation-delay:.12s">
+            <div class="flex items-center gap-3 md:w-56 shrink-0">
+              <i class="fa-brands fa-github text-slate-500 group-hover:text-brand transition-colors"></i>
               <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#F7DF1E"></span> Node.js</span>
             </div>
-            <h3 class="font-bold text-base">limpaSalvador</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed flex-1">API Node.js/Express com autenticação, posts e upload de imagens para causa cívica.</p>
-            <span class="mt-4 text-xs font-semibold text-slate-500 inline-flex items-center gap-2"><i class="fa-brands fa-github"></i> Repositório</span>
+            <div class="flex-1">
+              <h3 class="font-bold text-base">limpaSalvador</h3>
+              <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">API Node.js/Express com autenticação, posts e upload de imagens para causa cívica.</p>
+            </div>
+            <span class="text-xs font-semibold text-brand inline-flex items-center gap-2 shrink-0"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Repositório</span>
           </a>
 
         </div>
@@ -874,7 +853,6 @@
         <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-12 items-start">
 
           <div class="reveal">
-            <div class="section-label">05 / Carreira · Trajetória · 2022–presente</div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Minha experiência</h2>
             <p class="text-slate-400 mt-4 leading-relaxed">Da freela ao desenvolvimento de sistemas críticos em produção. Aprendizado constante, entrega real.</p>
 
@@ -889,7 +867,7 @@
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <i class="fa-solid fa-screwdriver-wrench text-cyanx mt-1 text-sm"></i>
+                  <i class="fa-solid fa-screwdriver-wrench text-slate-400 mt-1 text-sm"></i>
                   <div>
                     <p class="text-sm font-semibold text-slate-200">Técnico em Desenvolvimento de Sistemas</p>
                     <p class="text-xs text-slate-500">SENAI · 2023–2025</p>
@@ -949,25 +927,18 @@
 
     <div class="max-w-6xl mx-auto px-5"><div class="h-divider"></div></div>
 
-    <!-- ─── SOBRE ──────────────────────────────────────────────── -->
+<!-- ─── SOBRE ──────────────────────────────────────────────── -->
     <section id="sobre" class="py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-5">
-
-        <div class="section-label reveal">06 / Sobre · Quem sou eu</div>
 
         <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-10 items-start">
 
           <div class="reveal">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Engenharia de software com mentalidade comercial</h2>
 
-            <div class="flex items-start gap-5 mt-6">
-              <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border border-slate-700 shrink-0 shadow-glow">
-                <img src="assets/pfp_new.png" alt="Foto de João Curcino" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-              </div>
-              <p class="text-slate-400 leading-relaxed">
-                Sou João Curcino, desenvolvedor full-stack focado em backend. Minha diferença é unir execução técnica com visão de negócio: não entrego só uma tela bonita, entrego uma solução pensada para explicar sua oferta, gerar confiança e funcionar em produção.
-              </p>
-            </div>
+            <p class="text-slate-400 leading-relaxed mt-6">
+              Sou João Curcino, desenvolvedor full-stack focado em backend. Minha diferença é unir execução técnica com visão de negócio: não entrego só uma tela bonita, entrego uma solução pensada para explicar sua oferta, gerar confiança e funcionar em produção.
+            </p>
             <p class="text-slate-400 leading-relaxed mt-4">
               Trabalho desde 2022 com APIs REST, integrações financeiras e sistemas web escaláveis. Isso permite começar com um site bem feito e evoluir para sistemas robustos quando sua operação pedir mais.
             </p>
