@@ -15,334 +15,12 @@
   <meta name="twitter:description" content="Desenvolvimento de sites, sistemas e soluções web para empresas." />
   <link rel="icon" type="image/svg+xml"
     href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Outfit,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ["Outfit", "sans-serif"],
-            body: ["Inter", "sans-serif"],
-            mono: ["JetBrains Mono", "monospace"]
-          },
-          colors: {
-            bg: "#0B0F14",
-            panel: "#0F172A",
-            brand: "#6366F1",
-            cyanx: "#06B6D4",
-            greenx: "#22C55E",
-            amberx: "#F59E0B"
-          },
-          boxShadow: {
-            glow: "0 0 0 1px rgba(99,102,241,.3), 0 20px 60px rgba(99,102,241,.18)",
-            glowCyan: "0 0 0 1px rgba(6,182,212,.3), 0 20px 60px rgba(6,182,212,.15)"
-          }
-        }
-      }
-    };
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    section[id] { scroll-margin-top: 80px; }
-    body { font-family: "Inter", sans-serif; background: #0B0F14; }
-    h1,h2,h3,h4 { font-family: "Outfit", sans-serif; }
-    .bg-grid {
-      background-image: radial-gradient(rgba(148,163,184,0.06) 1px, transparent 0);
-      background-size: 40px 40px;
-    }
-    .reveal { opacity: 0; transform: translateY(18px); animation: up .7s ease forwards; }
-    @keyframes up { to { opacity: 1; transform: translateY(0); } }
-
-    /* Availability pulse */
-    .pulse-dot {
-      position: relative;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22C55E;
-    }
-    .pulse-dot::after {
-      content: '';
-      position: absolute; inset: -4px;
-      border-radius: 50%;
-      border: 1px solid rgba(34,197,94,.5);
-      animation: pulse 1.8s ease-out infinite;
-    }
-    @keyframes pulse { 0% { transform: scale(.7); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
-
-    /* Project card */
-    .project-card {
-      background: #0D1117;
-      border: 1px solid rgba(148,163,184,.1);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: border-color .25s, transform .25s;
-    }
-    .project-card:hover {
-      border-color: rgba(99,102,241,.45);
-      transform: translateY(-3px);
-    }
-
-    /* Repo card (open source) */
-    .repo-card {
-      background: rgba(13,17,23,.6);
-      border: 1px solid rgba(148,163,184,.1);
-      border-radius: 12px;
-      padding: 22px;
-      transition: border-color .2s, transform .2s, background .2s;
-      display: flex; flex-direction: column;
-    }
-    .repo-card:hover {
-      border-color: rgba(99,102,241,.4);
-      background: rgba(15,23,42,.7);
-      transform: translateY(-2px);
-    }
-
-    /* Service card */
-    .service-card {
-      border: 1px solid rgba(148,163,184,.1);
-      border-radius: 12px;
-      padding: 28px;
-      transition: background .2s, border-color .2s;
-    }
-    .service-card:hover {
-      background: rgba(15,23,42,.9);
-      border-color: rgba(99,102,241,.4);
-    }
-
-    /* About mini cards */
-    .mini-card {
-      background: rgba(15,23,42,.7);
-      border: 1px solid rgba(148,163,184,.1);
-      border-radius: 10px;
-      padding: 18px;
-      transition: border-color .2s;
-    }
-    .mini-card:hover { border-color: rgba(99,102,241,.35); }
-
-    /* Nav links */
-    .nav-link {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #94a3b8;
-      transition: color .15s;
-    }
-    .nav-link:hover { color: #fff; }
-
-    /* Section label */
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #6366F1;
-      margin-bottom: 14px;
-    }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 18px;
-      height: 1px;
-      background: #6366F1;
-    }
-
-    /* Image badge overlay */
-    .img-badge {
-      position: absolute;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 5px 10px;
-      border-radius: 6px;
-    }
-    .img-badge-left {
-      top: 12px;
-      left: 12px;
-      background: rgba(11,15,20,.82);
-      color: #cbd5e1;
-      border: 1px solid rgba(148,163,184,.18);
-      backdrop-filter: blur(6px);
-    }
-    .img-badge-right {
-      top: 12px;
-      right: 12px;
-      background: rgba(6,182,212,.15);
-      color: #06B6D4;
-      border: 1px solid rgba(6,182,212,.3);
-      backdrop-filter: blur(6px);
-    }
-
-    /* Tech tag */
-    .tech-tag {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #64748b;
-      padding: 3px 8px;
-      border: 1px solid rgba(100,116,139,.25);
-      border-radius: 4px;
-    }
-
-    /* Stack pill */
-    .stack-pill {
-      font-size: 12px;
-      font-weight: 500;
-      color: #cbd5e1;
-      padding: 6px 12px;
-      border: 1px solid rgba(148,163,184,.16);
-      border-radius: 7px;
-      background: rgba(15,23,42,.4);
-      transition: border-color .15s, color .15s, background .15s;
-    }
-    .stack-pill:hover {
-      border-color: rgba(99,102,241,.45);
-      color: #fff;
-      background: rgba(99,102,241,.08);
-    }
-
-    /* Device indicator */
-    .device-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #475569;
-    }
-
-    /* Process / step number */
-    .step-num {
-      font-family: "Poppins", sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      border: 1px solid;
-      flex-shrink: 0;
-    }
-
-    /* CTA outline button */
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 1px solid rgba(148,163,184,.25);
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #cbd5e1;
-      letter-spacing: .02em;
-      transition: background .15s, border-color .15s, color .15s;
-    }
-    .btn-outline:hover {
-      background: rgba(255,255,255,.05);
-      border-color: rgba(148,163,184,.4);
-      color: #fff;
-    }
-
-    /* Primary button */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #6366F1;
-      border-radius: 8px;
-      padding: 11px 22px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: .02em;
-      transition: background .15s, opacity .15s, transform .15s;
-    }
-    .btn-primary:hover { background: #4f52d9; }
-    .btn-primary:active { transform: translateY(1px); }
-
-    /* Divider line */
-    .h-divider { height: 1px; background: rgba(148,163,184,.08); }
-
-    /* Code identity card */
-    .code-card {
-      background: #0A0E13;
-      border: 1px solid rgba(148,163,184,.12);
-      border-radius: 12px;
-      overflow: hidden;
-      font-family: "JetBrains Mono", monospace;
-    }
-    .code-head {
-      display: flex; align-items: center; gap: 8px;
-      padding: 12px 16px;
-      border-bottom: 1px solid rgba(148,163,184,.1);
-      background: rgba(15,23,42,.5);
-    }
-    .code-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .code-body {
-      padding: 18px 16px;
-      font-size: 13px;
-      line-height: 1.85;
-      overflow-x: auto;
-    }
-    .code-body .ln { display: inline-block; width: 1.6em; color: #334155; user-select: none; }
-    .c-kw { color: #6366F1; }
-    .c-var { color: #e2e8f0; }
-    .c-prop { color: #06B6D4; }
-    .c-str { color: #22C55E; }
-    .c-num { color: #F59E0B; }
-    .c-com { color: #475569; font-style: italic; }
-    .c-fn { color: #F59E0B; }
-
-    /* Timeline */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px;
-      width: 1px; background: rgba(148,163,184,.18);
-    }
-    .timeline-item { position: relative; padding-bottom: 32px; }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -28px; top: 4px;
-      width: 15px; height: 15px; border-radius: 50%;
-      background: #0B0F14; border: 2px solid #6366F1;
-    }
-    .timeline-item.current::before { background: #22C55E; border-color: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,.15); }
-
-    /* Stat */
-    .stat-num {
-      font-family: "Poppins", sans-serif;
-      font-size: 2rem; font-weight: 800; line-height: 1;
-    }
-
-:focus-visible {
-      outline: 2px solid #06B6D4;
-      outline-offset: 4px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-      .pulse-dot::after { animation: none; }
-    }
-  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/tailwind.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" />
 </head>
 <body class="text-slate-100 antialiased bg-grid">
 
@@ -415,7 +93,11 @@
           <div class="reveal" style="animation-delay:.1s">
             <div class="relative">
               <div class="relative w-full max-w-sm mx-auto">
-                <img src="assets/pfp_new.png" alt="Foto de João Curcino — Software Engineer" class="w-full h-auto rounded-full shadow-glow" decoding="async" fetchpriority="high" />
+                <picture>
+                  <source type="image/avif" srcset="assets/pfp_new-480.avif 480w, assets/pfp_new-800.avif 800w" sizes="(max-width: 768px) 90vw, 384px" />
+                  <source type="image/webp" srcset="assets/pfp_new-480.webp 480w, assets/pfp_new-800.webp 800w" sizes="(max-width: 768px) 90vw, 384px" />
+                  <img src="assets/pfp_new-800.webp" alt="Foto de João Curcino — Software Engineer" class="w-full h-auto rounded-full shadow-glow" width="800" height="800" decoding="async" fetchpriority="high" />
+                </picture>
               </div>
               <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 hidden sm:flex items-center gap-2 border border-slate-700 bg-bg/90 backdrop-blur rounded-full px-4 py-2 text-xs text-slate-300 shadow-glow">
                 <i class="fa-solid fa-location-dot text-brand/80 text-[11px]"></i>
@@ -517,7 +199,11 @@
           <!-- 3KAP -->
           <article class="project-card reveal">
             <div class="relative">
-              <img src="assets/Screenshot 2026-03-18 at 16-31-41 3KAP - Auditoria TI RH.png" alt="Site 3KAP" class="w-full h-56 object-cover object-top" decoding="async" />
+              <picture>
+                <source type="image/avif" srcset="assets/3kap-600.avif 600w, assets/3kap-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <source type="image/webp" srcset="assets/3kap-600.webp 600w, assets/3kap-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <img src="assets/3kap-1200.webp" alt="Site 3KAP" class="w-full h-56 object-cover object-top" width="1200" height="636" loading="lazy" decoding="async" />
+              </picture>
               <span class="img-badge img-badge-left">01 / SITE INSTITUCIONAL</span>
               <span class="img-badge img-badge-right">AO VIVO</span>
             </div>
@@ -546,7 +232,11 @@
           <!-- Vistta -->
           <article class="project-card reveal" style="animation-delay:.06s">
             <div class="relative">
-              <img src="assets/vistta-print.png" alt="Vistta app" class="w-full h-56 object-cover object-top" decoding="async" />
+              <picture>
+                <source type="image/avif" srcset="assets/vistta-print-600.avif 600w, assets/vistta-print-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <source type="image/webp" srcset="assets/vistta-print-600.webp 600w, assets/vistta-print-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <img src="assets/vistta-print-1200.webp" alt="Vistta app" class="w-full h-56 object-cover object-top" width="1200" height="771" loading="lazy" decoding="async" />
+              </picture>
               <span class="img-badge img-badge-left">02 / MARKETPLACE + APP</span>
               <span class="img-badge img-badge-right" style="color:#22C55E;border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.12)">FULLSTACK</span>
             </div>
@@ -575,7 +265,11 @@
           <!-- Histórias Vivas -->
           <article class="project-card reveal" style="animation-delay:.1s">
             <div class="relative">
-              <img src="assets/historiasVivasPrint.png" alt="Histórias Vivas" class="w-full h-56 object-cover object-top" decoding="async" />
+              <picture>
+                <source type="image/avif" srcset="assets/historiasVivasPrint-600.avif 600w, assets/historiasVivasPrint-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <source type="image/webp" srcset="assets/historiasVivasPrint-600.webp 600w, assets/historiasVivasPrint-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <img src="assets/historiasVivasPrint-1200.webp" alt="Histórias Vivas" class="w-full h-56 object-cover object-top" width="1200" height="626" loading="lazy" decoding="async" />
+              </picture>
               <span class="img-badge img-badge-left">03 / PLATAFORMA WEB</span>
               <span class="img-badge img-badge-right" style="color:#22C55E;border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.12)">OPEN SOURCE</span>
             </div>
@@ -608,7 +302,11 @@
           <!-- Missão Ortodoxa -->
           <article class="project-card reveal" style="animation-delay:.2s">
             <div class="relative">
-              <img src="assets/missao-ortodoxa-print.png" alt="Landing page da Missão Ortodoxa Grega em Salvador" class="w-full h-56 object-cover object-top" decoding="async" />
+              <picture>
+                <source type="image/avif" srcset="assets/missao-ortodoxa-print-600.avif 600w, assets/missao-ortodoxa-print-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <source type="image/webp" srcset="assets/missao-ortodoxa-print-600.webp 600w, assets/missao-ortodoxa-print-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 576px" />
+                <img src="assets/missao-ortodoxa-print-1200.webp" alt="Landing page da Missão Ortodoxa Grega em Salvador" class="w-full h-56 object-cover object-top" width="1200" height="750" loading="lazy" decoding="async" />
+              </picture>
               <span class="img-badge img-badge-left">04 / SITE INSTITUCIONAL</span>
               <span class="img-badge img-badge-right">AO VIVO</span>
             </div>
