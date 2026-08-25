@@ -6,7 +6,7 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/tailwind.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./assets/tailwind.css --watch",
-    "build": "npm run build:css"
+    "build": "npm run build:css && node scripts/prepare-public.mjs"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
