@@ -28,4 +28,9 @@ for (const entry of entries) {
   cpSync(source, target, { recursive: true });
 }
 
+const rootFavicon = join(root, 'assets', 'favicon.ico');
+if (existsSync(rootFavicon)) {
+  cpSync(rootFavicon, join(out, 'favicon.ico'));
+}
+
 console.log(`Prepared ${out}`);

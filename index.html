@@ -13,8 +13,11 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="João Curcino | Software Engineer" />
   <meta name="twitter:description" content="Desenvolvimento de sites, sistemas e soluções web para empresas." />
-  <link rel="icon" type="image/svg+xml"
-    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230B0F14"/><text x="50" y="54" font-family="Outfit,sans-serif" font-size="46" font-weight="700" fill="%236366F1" text-anchor="middle" dominant-baseline="middle">JC</text></svg>' />
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="assets/tailwind.css" />
@@ -193,21 +196,13 @@
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projetos em destaque</h2>
             <p class="text-slate-400 mt-3 max-w-xl">Trabalho real no ar, de sites institucionais a marketplace fullstack.</p>
           </div>
-          <div class="project-carousel-controls" aria-label="Controles do carrossel de projetos">
-            <button type="button" class="carousel-btn" data-project-prev aria-label="Projeto anterior">
-              <i class="fa-solid fa-arrow-left"></i>
-            </button>
-            <div class="project-carousel-meter" aria-hidden="true">
-              <span data-project-progress></span>
-            </div>
-            <button type="button" class="carousel-btn" data-project-next aria-label="Próximo projeto">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </div>
         </div>
 
         <div class="project-carousel-wrap reveal" style="animation-delay:.04s">
-          <div class="project-carousel" data-project-carousel tabindex="0" aria-label="Projetos em destaque em carrossel">
+          <button type="button" class="carousel-btn carousel-btn-side carousel-btn-prev" data-project-prev aria-label="Projeto anterior">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div class="project-carousel" data-project-carousel tabindex="0" aria-label="Projetos em destaque em carrossel. Arraste para navegar.">
 
           <!-- 3KAP -->
           <article class="project-card project-slide">
@@ -382,6 +377,12 @@
           </article>
 
         </div>
+          <button type="button" class="carousel-btn carousel-btn-side carousel-btn-next" data-project-next aria-label="Próximo projeto">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <div class="project-carousel-meter project-carousel-meter-floating" aria-hidden="true">
+            <span data-project-progress></span>
+          </div>
       </div>
     </section>
 
@@ -877,6 +878,62 @@
 
     prevProject?.addEventListener("click", () => moveProjectCarousel(-1));
     nextProject?.addEventListener("click", () => moveProjectCarousel(1));
+
+    if (carousel) {
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartScroll = 0;
+      let dragLastDeltaX = 0;
+      let suppressNextClick = false;
+
+      carousel.addEventListener("pointerdown", (event) => {
+        if (event.button !== 0) return;
+        isDragging = true;
+        dragStartX = event.clientX;
+        dragStartScroll = carousel.scrollLeft;
+        dragLastDeltaX = 0;
+        carousel.classList.add("is-dragging");
+        carousel.setPointerCapture?.(event.pointerId);
+      });
+
+      carousel.addEventListener("pointermove", (event) => {
+        if (!isDragging) return;
+        const deltaX = event.clientX - dragStartX;
+        dragLastDeltaX = deltaX;
+        if (Math.abs(deltaX) > 5) suppressNextClick = true;
+        carousel.scrollLeft = dragStartScroll - deltaX;
+        event.preventDefault();
+      });
+
+      const endDrag = (event) => {
+        if (!isDragging) return;
+        const shouldSnap = Math.abs(dragLastDeltaX) > 60;
+        const direction = dragLastDeltaX < 0 ? 1 : -1;
+        isDragging = false;
+        carousel.classList.remove("is-dragging");
+        carousel.releasePointerCapture?.(event.pointerId);
+        if (shouldSnap) {
+          const firstSlide = carousel.querySelector(".project-slide");
+          const distance = firstSlide ? firstSlide.getBoundingClientRect().width + 24 : carousel.clientWidth * 0.8;
+          carousel.scrollTo({ left: Math.max(0, dragStartScroll + direction * distance), behavior: reducedMotion ? "auto" : "smooth" });
+        }
+        dragLastDeltaX = 0;
+      };
+
+      carousel.addEventListener("pointerup", endDrag);
+      carousel.addEventListener("pointercancel", endDrag);
+      carousel.addEventListener("lostpointercapture", () => {
+        isDragging = false;
+        carousel.classList.remove("is-dragging");
+      });
+      carousel.addEventListener("click", (event) => {
+        if (!suppressNextClick) return;
+        event.preventDefault();
+        event.stopPropagation();
+        suppressNextClick = false;
+      }, true);
+    }
+
     carousel?.addEventListener("scroll", updateProjectCarousel, { passive: true });
     carousel?.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
