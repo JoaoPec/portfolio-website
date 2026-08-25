@@ -106,6 +106,7 @@
             </div>
           </div>
 
+          </div>
         </div>
       </div>
     </section>
@@ -187,17 +188,29 @@
       </div>
       <div class="max-w-6xl mx-auto px-5 relative">
 
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 reveal">
           <div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projetos em destaque</h2>
-            <p class="text-slate-400 mt-3 max-w-xl">Trabalho real no ar — de site institucional a marketplace fullstack.</p>
+            <p class="text-slate-400 mt-3 max-w-xl">Trabalho real no ar, de sites institucionais a marketplace fullstack.</p>
+          </div>
+          <div class="project-carousel-controls" aria-label="Controles do carrossel de projetos">
+            <button type="button" class="carousel-btn" data-project-prev aria-label="Projeto anterior">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="project-carousel-meter" aria-hidden="true">
+              <span data-project-progress></span>
+            </div>
+            <button type="button" class="carousel-btn" data-project-next aria-label="Próximo projeto">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-5">
+        <div class="project-carousel-wrap reveal" style="animation-delay:.04s">
+          <div class="project-carousel" data-project-carousel tabindex="0" aria-label="Projetos em destaque em carrossel">
 
           <!-- 3KAP -->
-          <article class="project-card reveal">
+          <article class="project-card project-slide">
             <div class="relative">
               <picture>
                 <source type="image/avif" srcset="assets/3kap-600.avif 600w, assets/3kap-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
@@ -230,7 +243,7 @@
           </article>
 
           <!-- Marcelo Pituba -->
-          <article class="project-card reveal" style="animation-delay:.04s">
+          <article class="project-card project-slide">
             <div class="relative">
               <picture>
                 <source type="image/webp" srcset="assets/marcelo-pituba-hero-600.webp 600w, assets/marcelo-pituba-hero-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 576px" />
@@ -241,7 +254,7 @@
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold">Marcelo Pituba</h3>
-              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Site institucional para psicólogo, feito com React, com hero editorial, navegação por seções, CTA para WhatsApp e conteúdo focado em psicoterapia.</p>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Site institucional para psicólogo, feito com React, com hero editorial, navegação por seções, CTA para WhatsApp e conteúdo de psicoterapia.</p>
               <div class="mt-4 flex items-center justify-between flex-wrap gap-3">
                 <div class="flex items-center gap-3">
                   <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Desktop</span>
@@ -261,7 +274,7 @@
           </article>
 
           <!-- Vistta -->
-          <article class="project-card reveal" style="animation-delay:.08s">
+          <article class="project-card project-slide">
             <div class="relative">
               <picture>
                 <source type="image/avif" srcset="assets/vistta-print-600.avif 600w, assets/vistta-print-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
@@ -294,7 +307,7 @@
           </article>
 
           <!-- Histórias Vivas -->
-          <article class="project-card reveal" style="animation-delay:.1s">
+          <article class="project-card project-slide">
             <div class="relative">
               <picture>
                 <source type="image/avif" srcset="assets/historiasVivasPrint-600.avif 600w, assets/historiasVivasPrint-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
@@ -306,7 +319,7 @@
             </div>
             <div class="p-6">
               <h3 class="text-2xl font-bold">Histórias Vivas</h3>
-              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Plataforma em Laravel para registrar e organizar memórias multimídia — apoio ao cuidado de pessoas com Alzheimer.</p>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">Plataforma em Laravel para registrar e organizar memórias multimídia, apoiando o cuidado de pessoas com Alzheimer.</p>
               <div class="mt-4 flex items-center justify-between flex-wrap gap-3">
                 <div class="flex items-center gap-3">
                   <span class="device-tag"><i class="fa-solid fa-display text-xs"></i> Desktop</span>
@@ -331,7 +344,7 @@
           </article>
 
           <!-- Missão Ortodoxa -->
-          <article class="project-card reveal" style="animation-delay:.2s">
+          <article class="project-card project-slide">
             <div class="relative">
               <picture>
                 <source type="image/avif" srcset="assets/missao-ortodoxa-print-600.avif 600w, assets/missao-ortodoxa-print-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 576px" />
@@ -840,8 +853,45 @@
       });
     });
 
-    const revealItems = document.querySelectorAll(".reveal");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const carousel = document.querySelector("[data-project-carousel]");
+    const prevProject = document.querySelector("[data-project-prev]");
+    const nextProject = document.querySelector("[data-project-next]");
+    const projectProgress = document.querySelector("[data-project-progress]");
+
+    const updateProjectCarousel = () => {
+      if (!carousel || !projectProgress) return;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const progress = maxScroll > 0 ? carousel.scrollLeft / maxScroll : 0;
+      projectProgress.style.transform = `scaleX(${Math.max(0.12, progress)})`;
+      if (prevProject) prevProject.disabled = carousel.scrollLeft <= 4;
+      if (nextProject) nextProject.disabled = carousel.scrollLeft >= maxScroll - 4;
+    };
+
+    const moveProjectCarousel = (direction) => {
+      if (!carousel) return;
+      const firstSlide = carousel.querySelector(".project-slide");
+      const distance = firstSlide ? firstSlide.getBoundingClientRect().width + 24 : carousel.clientWidth * 0.8;
+      carousel.scrollBy({ left: direction * distance, behavior: reducedMotion ? "auto" : "smooth" });
+    };
+
+    prevProject?.addEventListener("click", () => moveProjectCarousel(-1));
+    nextProject?.addEventListener("click", () => moveProjectCarousel(1));
+    carousel?.addEventListener("scroll", updateProjectCarousel, { passive: true });
+    carousel?.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        moveProjectCarousel(-1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        moveProjectCarousel(1);
+      }
+    });
+    window.addEventListener("resize", updateProjectCarousel, { passive: true });
+    updateProjectCarousel();
+
+    const revealItems = document.querySelectorAll(".reveal");
 
     if ("IntersectionObserver" in window && !reducedMotion) {
       const observer = new IntersectionObserver((entries) => {

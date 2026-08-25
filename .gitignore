@@ -2,7 +2,7 @@
 /node_modules/
 
 # Build intermediates
-/src/
+# Keep src/tailwind.css versioned: Vercel build depends on it.
 
 # Local helper scripts (not part of the deployed site)
 /check.ps1
